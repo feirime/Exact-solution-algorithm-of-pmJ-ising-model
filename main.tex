@@ -1,0 +1,75 @@
+% \documentclass[review]{elsarticle}
+\documentclass[utf8, babel, sor, jor, amsmath,amssymb, reprint]{elsarticle} %удалить перед отправкой
+\usepackage[T2A]{fontenc} %удалить перед отправкой
+\usepackage[utf8x]{inputenc} %удалить перед отправкой
+\usepackage[english,russian]{babel} %удалить перед отправкой
+\graphicspath{{images/}}
+
+\usepackage{lineno,hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\modulolinenumbers[5]
+
+\journal{Journal of \LaTeX\ Templates}
+
+\bibliographystyle{elsarticle-num}
+
+
+\usepackage{xcolor}
+\newcommand{\todo}[1] {\textcolor{red}{#1}} %%for TODO comments
+\def\l{\left\langle}
+\def\r{\right\rangle}
+
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amssymb}%
+
+
+
+\begin{document}
+	
+	\begin{frontmatter}
+		
+		
+		\title{Exact solution algorithm of $\pm J$ Ising model}
+		
+		\author[mainaddress, secondaryaddress]{Viacheslav Trukhin\corref{mycorrespondingauthor}}
+		\ead{trukhin.vo@dvfu.ru}
+		
+		\author[mainaddress, secondaryaddress]{Konstantin Nefedev\corref{mycorrespondingauthor}}
+		\ead{nefedev.kv@dvfu.ru}
+		
+		\address[mainaddress]{Far Eastern Federal University, Vladivostok, Russky Island, 10 Ajax Bay, 690922, the Russian Federation}
+		\address[secondaryaddress]{Institute of Applied Mathematics, Far Eastern Branch, Russian Academy of Science, Vladivostok, Radio 7, 690041, the Russian Federation}
+		
+		\begin{abstract}
+			
+			
+		\end{abstract}
+		
+		
+		\begin{keyword}
+			Ising model, GPU and CPU high performance calculations, spin ice, spin glass, statistical thermodynamics.
+			
+		\end{keyword}
+		
+		
+	\end{frontmatter}
+	
+	\linenumbers
+	\newpage
+	\tableofcontents
+	
+	\newpage
+	\section{Введение}
+
+	
+	
+	\section{Благодарности}
+	
+	
+	
+	\bibliography{mybibfile}
+	
+	
+\end{document}
