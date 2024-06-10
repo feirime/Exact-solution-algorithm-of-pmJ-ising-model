@@ -32,6 +32,12 @@
 		
 		\author[mainaddress, secondaryaddress]{Konstantin Nefedev\corref{mycorrespondingauthor}}
 		\ead{nefedev.kv@dvfu.ru}
+
+		\author[mainaddress, secondaryaddress]{Eliza Lobanova\corref{mycorrespondingauthor}}
+		\ead{lobanova.eal@dvfu.ru}
+
+		\author[mainaddress, secondaryaddress]{Anisich Alexandr\corref{mycorrespondingauthor}}
+		\ead{anisich.ai@dvfu.ru}
 		
 		\address[mainaddress]{Far Eastern Federal University, Vladivostok, Russky Island, 10 Ajax Bay, 690922, the Russian Federation}
 		\address[secondaryaddress]{Institute of Applied Mathematics, Far Eastern Branch, Russian Academy of Science, Vladivostok, Radio 7, 690041, the Russian Federation}
@@ -64,6 +70,20 @@
 	Во второй главе рассматривается математический подход к решению, его преимущества и недостатки.
 	
 	Третья глава посвящена алгоритму.
+	\begin{itemize}
+		\item GEMC- таблица для каждого столбца
+		\item каждая C первого столбца идёт в отдельный поток и создётся GEM-срез новой таблицы по следующим формулам:
+		\begin{equation*}
+			E_\Sigma = E_r + E_l + E_m,
+		\end{equation*}
+		\begin{equation*}
+			M_\Sigma = M_r + M_l,
+		\end{equation*}
+		\begin{equation*}
+			G[M, E] += G_r
+		\end{equation*}
+		\item т.к. каждая C представляется двоичным числом, по умолчанию мы ограничены решёткой 8х8 (unsigned long long int = 2**64). Чтобы обойти это ограничение - вносим дополнительную ось в таблице с остатками от деления на 10 ближайших к тысяче простых чисел.
+	\end{itemize}
 	
 	
 	\section{Благодарности}
