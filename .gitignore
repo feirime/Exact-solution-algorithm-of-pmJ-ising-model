@@ -1,16 +1,13 @@
-main.synctex.gz
-main.pdf
-main.log
-main.aux
-main.bbl
-main.blg
-main.spl
-main.out
-main.toc
-mainNotes.bib
-main_old.synctex.gz
+Exact solution.synctex.gz
+Exact solution.pdf
+Exact solution.log
+Exact solution.aux
+Exact solution.bbl
+Exact solution.blg
+Exact solution.spl
+Exact solution.out
+Exact solution.toc
 images/scripts_and_programs/dos
 images/scripts_and_programs/Statsum/data/*
 images/scripts_and_programs/Statsum/.venv/*
 images/scripts_and_programs/Statsum/.idea/*
-main.synctex.gz.sum.synctex

@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
 \expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
@@ -9,5 +9,77 @@
 J.~Romero, M.~Bisson, M.~Fatica, M.~Bernaschi, High performance implementations
   of the 2d ising model on gpus, Computer Physics Communications 256 (2020)
   107473.
+
+\bibitem{Markovich2019}
+M.~LA, Parallel algorithm based on the ising model for solving combinatorial
+  optimization problems, in: Information Technology and Systems 2019, 2019, pp.
+  350--358.
+
+\bibitem{papadimitriou1977euclidean}
+C.~H. Papadimitriou, The euclidean travelling salesman problem is np-complete,
+  Theoretical computer science 4~(3) (1977) 237--244.
+
+\bibitem{karp2010reducibility}
+R.~M. Karp, Reducibility among combinatorial problems, Springer, 2010.
+
+\bibitem{onsager1944crystal}
+L.~Onsager, Crystal statistics. i. a two-dimensional model with an
+  order-disorder transition, Physical Review 65~(3-4) (1944) 117.
+
+\bibitem{zhang2023exact}
+Z.~ZHANG, Exact solution of ferromagnetic three-dimensional (3d) ising model
+  and spontaneous emerge of time, Acta Metall Sin 59~(4) (2023) 489--501.
+
+\bibitem{maren1991logical}
+A.~J. Maren, A logical topology of neural networks, in: Proceedings of the
+  Second Workshop on Neural Networks, 1991.
+
+\bibitem{grant2020adiabatic}
+E.~K. Grant, T.~S. Humble, Adiabatic quantum computing and quantum annealing,
+  in: Oxford Research Encyclopedia of Physics, 2020.
+
+\bibitem{Korol2021}
+A.~O. Korol, V.~Y. Captain, Neural network for determining the curie
+  temperature of the two-dimensional ising model, Far Eastern Mathematical
+  Journal 21~(1) (2021) 51--60.
+
+\bibitem{janke2008monte}
+W.~Janke, Monte carlo methods in classical statistical physics, in:
+  Computational many-particle physics, Springer, 2008, pp. 79--140.
+
+\bibitem{loh2006efficient}
+Y.~L. Loh, E.~W. Carlson, Efficient algorithm for random-bond ising models in
+  2d, Physical review letters 97~(22) (2006) 227205.
+
+\bibitem{katz2007mathematics}
+V.~J. Katz, The Mathematics of Egypt, Mesopotamia, China, India, and Islam: A
+  Sourcebook, Princeton University Press, 2007.
+
+\bibitem{zhang2018topological}
+Z.~Zhang, Topological effects and critical phenomena in the three-dimensional
+  (3d) ising model, Many-Body Approaches at Different Scales: A Tribute to
+  Norman H. March on the Occasion of his 90th Birthday (2018) 331--343.
+
+\bibitem{zhang2013mathematical}
+Z.-D. Zhang, Mathematical structure of the three-dimensional (3d) ising model,
+  Chinese Physics B 22~(3) (2013) 030513.
+
+\bibitem{zhang2016mathematical}
+Z.~ZHANG, Mathematical structure and the conjectured exact solution of
+  threedimensional (3d) ising model, Acta Metall Sin 52~(10) (2016) 1311--1325.
+
+\bibitem{zhang2017nature}
+Z.~Zhang, The nature of three dimensions: Non-local behavior in the
+  three-dimensional (3d) ising model, in: Journal of Physics: Conference
+  Series, Vol. 827, IOP Publishing, 2017, p. 012001.
+
+\bibitem{zhang2020computational}
+Z.~Zhang, Computational complexity of spin-glass three-dimensional (3d) ising
+  model, Journal of Materials Science \& Technology 44 (2020) 116--120.
+
+\bibitem{Panchenko2007}
+T.~V. Panchenko, Y.~Y. Tarasevich, Comparative analysis of the efficiency of
+  application of genetic algorithms and metropolis algorithm in problems of
+  solid state physics, computational methods and programming 8 (2007) 77--87.
 
 \end{thebibliography}

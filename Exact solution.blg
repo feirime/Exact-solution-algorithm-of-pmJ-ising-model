@@ -5,44 +5,49 @@ Reallocating 'name_of_file' (item size: 1) to 15 items.
 The style file: elsarticle-num.bst
 Reallocating 'name_of_file' (item size: 1) to 17 items.
 Database file #1: bibliography.bib
-You've used 1 entry,
+Warning--empty pages in maren1991logical
+Warning--empty publisher in grant2020adiabatic
+Warning--empty pages in grant2020adiabatic
+Warning--can't use both volume and number fields in zhang2017nature
+You've used 18 entries,
             2952 wiz_defined-function locations,
-            677 strings with 5309 characters,
-and the built_in function-call counts, 340 in all, are:
-= -- 26
-> -- 13
-< -- 0
-+ -- 5
-- -- 4
-* -- 24
-:= -- 68
-add.period$ -- 1
-call.type$ -- 1
-change.case$ -- 1
+            786 strings with 8042 characters,
+and the built_in function-call counts, 5097 in all, are:
+= -- 477
+> -- 93
+< -- 4
++ -- 43
+- -- 25
+* -- 301
+:= -- 650
+add.period$ -- 18
+call.type$ -- 18
+change.case$ -- 16
 chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 8
-empty$ -- 32
-format.name$ -- 5
-if$ -- 75
+cite$ -- 22
+duplicate$ -- 177
+empty$ -- 660
+format.name$ -- 30
+if$ -- 1372
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 1
-newline$ -- 11
-num.names$ -- 1
-pop$ -- 5
+int.to.str$ -- 18
+missing$ -- 20
+newline$ -- 62
+num.names$ -- 18
+pop$ -- 123
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 18
+skip$ -- 381
 stack$ -- 0
-substring$ -- 18
-swap$ -- 1
-text.length$ -- 0
+substring$ -- 303
+swap$ -- 42
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 2
-width$ -- 2
-write$ -- 15
+warning$ -- 4
+while$ -- 43
+width$ -- 20
+write$ -- 152
+(There were 4 warnings)
