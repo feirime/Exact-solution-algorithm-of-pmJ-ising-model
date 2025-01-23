@@ -21,15 +21,18 @@
 	
 	\def\Im{\mathop{\mathrm{Im}}\nolimits}
 	
-	\summary Trukhin~V.\,O.$^{1, 2}$\!, Lobanova~E.\,A.$^{1, 2}$\, Anisich~A.\,I.$^{2}$\author
+	\summary Trukhin~V.\,O.$^{1, 2}$\!, Lobanova~E.\,A.$^{1, 2}$, Anisich~A.\,I.$^{1}$, Makarov~A.\,G.$^{1,2}$, Nefedev~K.\,V.$^{1,2}$\author
 	
-	Application of the Chinese residue theorem for dealing with large numbers in supercomputing\title
+	%Application of the Chinese residue theorem for dealing with large numbers in supercomputing\title
+	
+	Glaurung --- non-classic algorithm for the complete enumeration of the Ising model\title
 	
 	The paper presents a parallel algorithm for the exact solution of \(\pm J\) of the Ising model. The main focus is on computational methods for the analysis of planar graphs modeled on the basis of the square Ising lattice with variable exchange integrals. The algorithm is based on a complete enumeration of the system states and is designed under the architecture of a graphics processor. The structure of the algorithm and its application to the solution of problems in statistical thermodynamics are described in detail. Special attention is paid to comparing the execution time of the proposed algorithm with other methods, such as classical brute-force algorithms in Python and C++, as well as using OpenMP technologies. The proposed approach allows us to perform accurate calculations for square lattice systems of Ising spins with the size up to 121 spins.
 	
 	\keywords{algorithms, statistical thermodynamics, Ising model, parallel computing, GPU.}
-	\org{$^1$ Institute for Applied Mathematics, Far Eastern Branch, Russian Academy of Sciences\\ 
-		$^2$ Department of theoretical physics, Far eastern federal university, Russia}
+	\org{$^1$ Department of theoretical physics, Far eastern federal university, Russia}\\ 
+	$^2$ Institute for Applied Mathematics, Far Eastern Branch, Russian Academy of Sciences
+	
 	\references{ %транслитерированный список литературы
 		
 		\begin{thebibliography}{4}
@@ -190,13 +193,14 @@
 	
 	\SupportedBy{Исследование выполнено за счет гранта Российского научного фонда № 24-71-10069, \linebreak https://rscf.ru/project/24-71-10069/\linebreak}
 	
-	\submitted{ октября 2024 г.}
+	\submitted{ февраля 2025 г.}
 	
-	\title{Параллельный алгоритм точного решения $\pm J$ модели Изинга}
+	\title{Glaurung --- неклассический алгоритм полного перебора модели Изинга}
 	
 	\author[1,2]{В.\, О.~Трухин}{Департамент теоретической физики и интеллектуальных технологий, Институт наукоемких технологий и передовых материалов, Дальневосточный федеральный университет. 690922, Россия, г. Владивосток, о. Русский, п. Аякс, 10}{trukhin.vo@dvfu.ru}
 	\author[1,2]{Э.\, А.~Лобанова}{Институт прикладной математики, Дальневосточное отделение Российской академии наук. 690041, Россия, г. Владивосток, Ул. Радио д. 7}{}
-	\author[1]{А.\, И.~Анисич}{}{anisich.ai@dvfu.ru}
+	\author[1]{А.\, И.~Анисич}{}{}
+	\author[1,2]{А.\, Г.~Макаров}{}{}
 	\author[1,2]{К.\, В.~Нефедев}{}{}
 	
 	
@@ -208,7 +212,7 @@
 	%\markleft{В.\, О.~Трухин, В.\, С. Стронгин, Э.\,А.~Лобанова, ...} %добавляем, если много авторов
 	
 	
-	\abstract В статье представлен параллельный алгоритм точного решения \(\pm J\) модели Изинга. Основное внимание уделяется вычислительным методам для анализа планарных графов, моделируемых на основе квадратной решетки Изинга с переменными обменными интегралами. Алгоритм основан на полном переборе состояний системы и спроектирован под архитектуру графического процессора. Подробно описывается структура алгоритма и его применение к решению задач в статистической термодинамике. Особое внимание уделено сравнению времени выполнения предложенного алгоритма с другими методами, такими как классические алгоритмы полного перебора на языках Python и C++, а также с использованием технологий OpenMP. Предложенный подход позволяет проводить точные расчеты для систем квадратной решетки спинов Изинга с размером до 121 спина.
+	\abstract В статье представлен авторский алгоритм полного перебора конфигураций спинов модели Изинга на квадратной решетке. Основное внимание уделено распараллеливанию вычислений на графических процессорах (GPU) с использованием CUDA и на центральном процессоре (CPU) с использованием OpenMP. Подробно описывается структура алгоритма, включая основные этапы его реализации, а также его применение к решению задач статистической термодинамики, в частности, к вычислению плотности состояний. Проведено сравнение производительности предложенного алгоритма с последовательными переборными алгоритмами, реализованными на языках программирования Python и C/C++. Результаты показывают, что предложенный подход существенно ускоряет вычисления и позволяет эффективно анализировать системы квадратной решетки спинов модели Изинга размером до $11 \times 11$ узлов (121 спин) со случайным распределением обменных констант.
 	
 	Ключевые слова: алгоритмы, статистическая термодинамика, модель Изинга, параллельные вычисления, графический процессор.
 	
