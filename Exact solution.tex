@@ -1,520 +1,321 @@
 \documentclass[10pt]{article}
 \usepackage{femj_ru}
+
 \usepackage{algorithm}
 \usepackage{algorithmic}
 
-%% РџРµСЂРµРґ РѕС‚РїСЂР°РІРєРѕР№ РІ Р¶СѓСЂРЅР°Р»:
-% 1. РџРµСЂРµРІРµСЃС‚Рё С„Р°Р№Р» РІ РєРѕРґРёСЂРѕРІРєСѓ windows-1251
-% 2. РІ С„Р°Р№Р»Рµ femj_ru.sty РїРѕРјРµРЅСЏС‚СЊ \RequirePackage[utf8]{inputenc} РЅР° \RequirePackage[cp1251]{inputenc}
-% 3. РІ С„Р°Р№Р»Рµ femj_ru.sty СѓРґР°Р»РёС‚СЊ СЃС‚СЂРѕРєСѓ 10 \RequirePackage{soulutf8}
 
-%Р“Р»СѓР±РѕРєРѕСѓРІР°Р¶Р°РµРјС‹Рµ Р°РІС‚РѕСЂС‹!
 
-% РїСЂРµР¶РґРµ С‡РµРј РїРѕРґРєР»СЋС‡Р°С‚СЊ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°РєРµС‚С‹ TeXa Рё СЃРѕР·РґР°РІР°С‚СЊ РЅРѕРІС‹Рµ РѕРєСЂСѓР¶РµРЅРёСЏ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕР·РЅР°РєРѕРјСЊС‚РµСЃСЊ СЃ СѓР¶Рµ РїСЂРµРґСѓСЃРјРѕС‚СЂРµРЅРЅС‹РјРё РІ СЃС‚РёР»РµРІРѕРј С„Р°Р№Р»Рµ Р¶СѓСЂРЅР°Р»Р°
 
-% РСЃРїРѕР»СЊР·СѓРµРјС‹Рµ РїР°РєРµС‚С‹  РїРµСЂРµС‡РёСЃР»РµРЅС‹ РІ С„Р°Р№Р»Рµ femj_ru.sty СЃС‚СЂРѕРєРё 7-30
-% РћР±РѕР·РЅР°С‡РµРЅРёСЏ РѕРєСЂСѓР¶РµРЅРёР№ Р¶СѓСЂРЅР°Р»Р° Рё РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РєРѕРјР°РЅРґС‹ РїСЂРёРІРµРґРµРЅС‹ РІ СЃС‚РёР»РµРІРѕРј С„Р°Р№Р»Рµ femj_ru.sty СЃС‚СЂРѕРєРё 38-80
+
+
+
+
+%Глубокоуважаемые авторы!
+
+% прежде чем подключать дополнительные пакеты TeXa и создавать новые окружения, пожалуйста, ознакомьтесь с уже предусмотренными в стилевом файле журнала
+
+% Используемые пакеты  перечислены в файле femj_ru.sty строки 7-40
+% Обозначения окружений журнала приведены в стилевом файле femj_ru.sty строки 43-74
+% Дополнительные команды и определения в стилевом файле femj_ru.sty строки 83-109
 
 \begin{document}
-	
-	\Pages(0--0)
-	
-	\def\Im{\mathop{\mathrm{Im}}\nolimits}
-	
-	\summary Trukhin~V.\,O.$^{1, 2}$\!, Lobanova~E.\,A.$^{1, 2}$, Anisich~A.\,I.$^{1}$, Makarov~A.\,G.$^{1,2}$, Nefedev~K.\,V.$^{1,2}$\author
-	
-	%Application of the Chinese residue theorem for dealing with large numbers in supercomputing\title
-	
-	Glaurung --- non-classic algorithm for the complete enumeration of the Ising model\title
-	
-	The paper presents a parallel algorithm for the exact solution of \(\pm J\) of the Ising model. The main focus is on computational methods for the analysis of planar graphs modeled on the basis of the square Ising lattice with variable exchange integrals. The algorithm is based on a complete enumeration of the system states and is designed under the architecture of a graphics processor. The structure of the algorithm and its application to the solution of problems in statistical thermodynamics are described in detail. Special attention is paid to comparing the execution time of the proposed algorithm with other methods, such as classical brute-force algorithms in Python and C++, as well as using OpenMP technologies. The proposed approach allows us to perform accurate calculations for square lattice systems of Ising spins with the size up to 121 spins.
-	
-	\keywords{algorithms, statistical thermodynamics, Ising model, parallel computing, GPU.}
-	\org{$^1$ Department of theoretical physics, Far eastern federal university, Russia}\\ 
-	$^2$ Institute for Applied Mathematics, Far Eastern Branch, Russian Academy of Sciences
-	
-	\references{ %С‚СЂР°РЅСЃР»РёС‚РµСЂРёСЂРѕРІР°РЅРЅС‹Р№ СЃРїРёСЃРѕРє Р»РёС‚РµСЂР°С‚СѓСЂС‹
-		
-		\begin{thebibliography}{4}
-			\setlength{\parsep}{0pt}\setlength{\itemsep}{3pt}
-					
-			\bibitem{romero2020high}
-			\by Romero, Joshua and Bisson, Mauro and Fatica, Massimiliano and Bernaschi, Massimo
-			\jour Computer Physics Communications
-			\paper High performance implementations of the 2D Ising model on GPUs
-			\vol 256
-			\yr 2020
-			
-			\bibitem{Markovich2019}
-			\by Markovich LA
-			\jour Information Technology and Systems
-			\paper Parallel algorithm based on the Ising model for solving combinatorial optimization problems
-			\pages 350--358
-			\yr 2019
-			
-			\bibitem{papadimitriou1977euclidean}
-			\by Papadimitriou, Christos H
-			\jour Theoretical computer science
-			\paper The Euclidean travelling salesman problem is NP-complete
-			\vol 4
-			\issue 3
-			\pages 237--244
-			\yr 1977
-			
-			\bibitem{karp2010reducibility}
-			\by Karp, Richard M
-			\jour Springer
-			\paper Reducibility among combinatorial problems
-			\yr 2010
-			
-			\bibitem{onsager1944crystal}
-			\by Onsager, Lars
-			\jour Physical Review
-			\paper Crystal statistics. I. A two-dimensional model with an order-disorder transition
-			\vol 65
-			\pages 117
-			\yr 1944
-			
-			\bibitem{zhang2023exact}
-			\by ZHANG, Zhidong
-			\jour Acta Metall Sin
-			\paper Exact Solution of Ferromagnetic Three-Dimensional (3D) Ising Model and Spontaneous Emerge of Time
-			\vol 59
-			\issue 4
-			\pages 489--501
-			\yr 2023
-			
-			\bibitem{maren1991logical}
-			\by Maren, Alianna J
-			\jour Proceedings of the Second Workshop on Neural Networks
-			\paper A logical topology of neural networks
-			\yr 1991
-			
-			\bibitem{grant2020adiabatic}
-			\by Grant, Erica K and Humble, Travis S
-			\jour Oxford Research Encyclopedia of Physics
-			\paper Adiabatic quantum computing and quantum annealing
-			\yr 2020
-			
-			\bibitem{Korol2021}
-			\by Korol, Alyona Olegovna and Captain, Vitaly Yurievich
-			\jour Far Eastern Mathematical Journal
-			\paper Neural network for determining the Curie temperature of the two-dimensional Ising model
-			\vol 21
-			\issue 1
-			\pages 51-60
-			\yr 2021
-			
-			\bibitem{janke2008monte}
-			\by Janke, Wolfhard
-			\jour Computational many-particle physics
-			\paper Monte Carlo methods in classical statistical physics
-			\pages 79-140
-			\yr 2008
-			
-			\bibitem{loh2006efficient}
-			\by Loh, Yen Lee and Carlson, Erica W
-			\jour Physical review letters
-			\paper Efficient algorithm for random-bond Ising models in 2d
-			\vol 97
-			\issue 22
-			\pages 227-205
-			\yr 2006
-			
-			\bibitem{katz2007mathematics}
-			\by Katz, Victor J
-			\jour Physics Letters A
-			\paper The Mathematics of Egypt, Mesopotamia, China, India, and Islam: A Sourcebook
-			\yr 2007
-			
-			\bibitem{zhang2018topological}
-			\by Zhang, Zhi-Dong
-			\jour Many-Body Approaches at Different Scales: A Tribute to Norman H. March on the Occasion of his 90th Birthday
-			\paper Topological Effects and Critical Phenomena in the Three-Dimensional (3D) Ising Model
-			\pages 331-343
-			\yr 2018
-			
-			\bibitem{zhang2007conjectures}
-			\by Zhang, Zhi-Dong
-			\jour Philosophical Magazine
-			\paper Conjectures on the exact solution of three-dimensional (3D) simple orthorhombic Ising lattices
-			\vol 87
-			\issue 34
-			\pages 5309-5419
-			\yr 2007
-			
-			\bibitem{zhang2013mathematical}
-			\by Zhang, Zhi-Dong
-			\jour Chinese Physics B
-			\paper Mathematical structure of the three-dimensional (3D) Ising model
-			\vol 22
-			\issue 3
-			\yr 2013
-			
-			\bibitem{zhang2016mathematical}
-			\by Zhang, Zhi-Dong
-			\jour Acta Metall Sin
-			\paper Mathematical structure and the conjectured exact solution of threedimensional (3D) Ising model
-			\vol 52
-			\issue 10
-			\pages 1311--1325
-			\yr 2017
-			
-			\bibitem{zhang2017nature}
-			\by Zhang, Zhi-Dong
-			\jour Journal of Physics: Conference Series
-			\paper The nature of three dimensions: Non-local behavior in the three-dimensional (3D) Ising model
-			\vol 827
-			\issue 1
-			\yr 2017
-			
-			\bibitem{zhang2020computational}
-			\by Zhang, Zhi-Dong
-			\jour Journal of Materials Science \& Technology
-			\paper Computational complexity of spin-glass three-dimensional (3D) Ising model
-			\vol 44
-			\issue 5
-			\pages 116-120
-			\yr 2020
-			
-			\bibitem{Panchenko2007}
-			\by Panchenko, Tatyana Vyacheslavovna and Tarasevich, Yuri Yurievich
-			\jour РЎomputational methods and programming
-			\paper Comparative analysis of the efficiency of application of genetic algorithms and Metropolis algorithm in problems of solid state physics
-			\vol 8
-			\pages 77-87
-			\yr 2007
-			
-		\end{thebibliography}
-	}
-	
-	\UDC{519.17+РЈР”Рљ 519.11+519.684+519.683}
-	\AMS{68R10 + 82B30 + 65Y05}
-	
-	\SupportedBy{РСЃСЃР»РµРґРѕРІР°РЅРёРµ РІС‹РїРѕР»РЅРµРЅРѕ Р·Р° СЃС‡РµС‚ РіСЂР°РЅС‚Р° Р РѕСЃСЃРёР№СЃРєРѕРіРѕ РЅР°СѓС‡РЅРѕРіРѕ С„РѕРЅРґР° в„– 24-71-10069, \linebreak https://rscf.ru/project/24-71-10069/\linebreak}
-	
-	\submitted{ С„РµРІСЂР°Р»СЏ 2025 Рі.}
-	
-	\title{Glaurung --- РЅРµРєР»Р°СЃСЃРёС‡РµСЃРєРёР№ Р°Р»РіРѕСЂРёС‚Рј РїРѕР»РЅРѕРіРѕ РїРµСЂРµР±РѕСЂР° РјРѕРґРµР»Рё РР·РёРЅРіР°}
-	
-	\author[1,2]{Р’.\, Рћ.~РўСЂСѓС…РёРЅ}{Р”РµРїР°СЂС‚Р°РјРµРЅС‚ С‚РµРѕСЂРµС‚РёС‡РµСЃРєРѕР№ С„РёР·РёРєРё Рё РёРЅС‚РµР»Р»РµРєС‚СѓР°Р»СЊРЅС‹С… С‚РµС…РЅРѕР»РѕРіРёР№, РРЅСЃС‚РёС‚СѓС‚ РЅР°СѓРєРѕРµРјРєРёС… С‚РµС…РЅРѕР»РѕРіРёР№ Рё РїРµСЂРµРґРѕРІС‹С… РјР°С‚РµСЂРёР°Р»РѕРІ, Р”Р°Р»СЊРЅРµРІРѕСЃС‚РѕС‡РЅС‹Р№ С„РµРґРµСЂР°Р»СЊРЅС‹Р№ СѓРЅРёРІРµСЂСЃРёС‚РµС‚. 690922, Р РѕСЃСЃРёСЏ, Рі. Р’Р»Р°РґРёРІРѕСЃС‚РѕРє, Рѕ. Р СѓСЃСЃРєРёР№, Рї. РђСЏРєСЃ, 10}{trukhin.vo@dvfu.ru}
-	\author[1,2]{Р­.\, Рђ.~Р›РѕР±Р°РЅРѕРІР°}{РРЅСЃС‚РёС‚СѓС‚ РїСЂРёРєР»Р°РґРЅРѕР№ РјР°С‚РµРјР°С‚РёРєРё, Р”Р°Р»СЊРЅРµРІРѕСЃС‚РѕС‡РЅРѕРµ РѕС‚РґРµР»РµРЅРёРµ Р РѕСЃСЃРёР№СЃРєРѕР№ Р°РєР°РґРµРјРёРё РЅР°СѓРє. 690041, Р РѕСЃСЃРёСЏ, Рі. Р’Р»Р°РґРёРІРѕСЃС‚РѕРє, РЈР». Р Р°РґРёРѕ Рґ. 7}{}
-	\author[1]{Рђ.\, Р.~РђРЅРёСЃРёС‡}{}{}
-	\author[1,2]{Рђ.\, Р“.~РњР°РєР°СЂРѕРІ}{}{}
-	\author[1,2]{Рљ.\, Р’.~РќРµС„РµРґРµРІ}{}{}
-	
-	
-	
-	
-	\makeface
-	
-	%\markright {Р Р°Р·Р±Р°РІР»РµРЅРЅР°СЏ РјРѕРґРµР»СЊ РєСѓР±РёС‡РµСЃРєРѕРіРѕ СЃРїРёРЅРѕРІРѕРіРѕ Р»СЊРґР° ...} %Р”РѕР±Р°РІР»СЏРµРј, РµСЃР»Рё РґР»РёРЅРЅРѕРµ РЅР°Р·РІР°РЅРёРµ СЃС‚Р°С‚СЊРё
-	%\markleft{Р’.\, Рћ.~РўСЂСѓС…РёРЅ, Р’.\, РЎ. РЎС‚СЂРѕРЅРіРёРЅ, Р­.\,Рђ.~Р›РѕР±Р°РЅРѕРІР°, ...} %РґРѕР±Р°РІР»СЏРµРј, РµСЃР»Рё РјРЅРѕРіРѕ Р°РІС‚РѕСЂРѕРІ
-	
-	
-	\abstract Р’ СЃС‚Р°С‚СЊРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅ Р°РІС‚РѕСЂСЃРєРёР№ Р°Р»РіРѕСЂРёС‚Рј РїРѕР»РЅРѕРіРѕ РїРµСЂРµР±РѕСЂР° РєРѕРЅС„РёРіСѓСЂР°С†РёР№ СЃРїРёРЅРѕРІ РјРѕРґРµР»Рё РР·РёРЅРіР° РЅР° РєРІР°РґСЂР°С‚РЅРѕР№ СЂРµС€РµС‚РєРµ. РћСЃРЅРѕРІРЅРѕРµ РІРЅРёРјР°РЅРёРµ СѓРґРµР»РµРЅРѕ СЂР°СЃРїР°СЂР°Р»Р»РµР»РёРІР°РЅРёСЋ РІС‹С‡РёСЃР»РµРЅРёР№ РЅР° РіСЂР°С„РёС‡РµСЃРєРёС… РїСЂРѕС†РµСЃСЃРѕСЂР°С… (GPU) СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј CUDA Рё РЅР° С†РµРЅС‚СЂР°Р»СЊРЅРѕРј РїСЂРѕС†РµСЃСЃРѕСЂРµ (CPU) СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј OpenMP. РџРѕРґСЂРѕР±РЅРѕ РѕРїРёСЃС‹РІР°РµС‚СЃСЏ СЃС‚СЂСѓРєС‚СѓСЂР° Р°Р»РіРѕСЂРёС‚РјР°, РІРєР»СЋС‡Р°СЏ РѕСЃРЅРѕРІРЅС‹Рµ СЌС‚Р°РїС‹ РµРіРѕ СЂРµР°Р»РёР·Р°С†РёРё, Р° С‚Р°РєР¶Рµ РµРіРѕ РїСЂРёРјРµРЅРµРЅРёРµ Рє СЂРµС€РµРЅРёСЋ Р·Р°РґР°С‡ СЃС‚Р°С‚РёСЃС‚РёС‡РµСЃРєРѕР№ С‚РµСЂРјРѕРґРёРЅР°РјРёРєРё, РІ С‡Р°СЃС‚РЅРѕСЃС‚Рё, Рє РІС‹С‡РёСЃР»РµРЅРёСЋ РїР»РѕС‚РЅРѕСЃС‚Рё СЃРѕСЃС‚РѕСЏРЅРёР№. РџСЂРѕРІРµРґРµРЅРѕ СЃСЂР°РІРЅРµРЅРёРµ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЊРЅРѕСЃС‚Рё РїСЂРµРґР»РѕР¶РµРЅРЅРѕРіРѕ Р°Р»РіРѕСЂРёС‚РјР° СЃ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅС‹РјРё РїРµСЂРµР±РѕСЂРЅС‹РјРё Р°Р»РіРѕСЂРёС‚РјР°РјРё, СЂРµР°Р»РёР·РѕРІР°РЅРЅС‹РјРё РЅР° СЏР·С‹РєР°С… РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёСЏ Python Рё C/C++. Р РµР·СѓР»СЊС‚Р°С‚С‹ РїРѕРєР°Р·С‹РІР°СЋС‚, С‡С‚Рѕ РїСЂРµРґР»РѕР¶РµРЅРЅС‹Р№ РїРѕРґС…РѕРґ СЃСѓС‰РµСЃС‚РІРµРЅРЅРѕ СѓСЃРєРѕСЂСЏРµС‚ РІС‹С‡РёСЃР»РµРЅРёСЏ Рё РїРѕР·РІРѕР»СЏРµС‚ СЌС„С„РµРєС‚РёРІРЅРѕ Р°РЅР°Р»РёР·РёСЂРѕРІР°С‚СЊ СЃРёСЃС‚РµРјС‹ РєРІР°РґСЂР°С‚РЅРѕР№ СЂРµС€РµС‚РєРё СЃРїРёРЅРѕРІ РјРѕРґРµР»Рё РР·РёРЅРіР° СЂР°Р·РјРµСЂРѕРј РґРѕ $11 \times 11$ СѓР·Р»РѕРІ (121 СЃРїРёРЅ) СЃРѕ СЃР»СѓС‡Р°Р№РЅС‹Рј СЂР°СЃРїСЂРµРґРµР»РµРЅРёРµРј РѕР±РјРµРЅРЅС‹С… РєРѕРЅСЃС‚Р°РЅС‚.
-	
-	РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°: Р°Р»РіРѕСЂРёС‚РјС‹, СЃС‚Р°С‚РёСЃС‚РёС‡РµСЃРєР°СЏ С‚РµСЂРјРѕРґРёРЅР°РјРёРєР°, РјРѕРґРµР»СЊ РР·РёРЅРіР°, РїР°СЂР°Р»Р»РµР»СЊРЅС‹Рµ РІС‹С‡РёСЃР»РµРЅРёСЏ, РіСЂР°С„РёС‡РµСЃРєРёР№ РїСЂРѕС†РµСЃСЃРѕСЂ.
-	
-	\keywords{Р°Р»РіРѕСЂРёС‚РјС‹, СЃС‚Р°С‚РёСЃС‚РёС‡РµСЃРєР°СЏ С‚РµСЂРјРѕРґРёРЅР°РјРёРєР°, РјРѕРґРµР»СЊ РР·РёРЅРіР°, РїР°СЂР°Р»Р»РµР»СЊРЅС‹Рµ РІС‹С‡РёСЃР»РµРЅРёСЏ, РіСЂР°С„РёС‡РµСЃРєРёР№ РїСЂРѕС†РµСЃСЃРѕСЂ.}
-	
-	\DOI{to be presented}
-	
-	\section*{Р’РІРµРґРµРЅРёРµ}
-	
-	Р—Р°РґР°С‡Р° СЂРµС€РµРЅРёСЏ Р±РѕР»СЊС€РёС… РіСЂР°С„РѕРІ РїРѕР»РЅС‹Рј РїРµСЂРµР±РѕСЂРѕРј СЏРІР»СЏРµС‚СЃСЏ СЃ РѕРґРЅРѕР№ СЃС‚РѕСЂРѕРЅС‹ РѕСЃРЅРѕРІРЅРѕР№ РїСЂРѕР±Р»РµРјРѕР№ РґР»СЏ РјР°С‚РµРјР°С‚РёС‡РµСЃРєРёС… РјРѕРґРµР»РµР№, СЂРµС€РµРЅРёРµ РєРѕС‚РѕСЂС‹С… СЏРІР»СЏРµС‚СЃСЏ РєСЂРёС‚РёС‡РЅС‹Рј РґР»СЏ РїСЂРѕРіРЅРѕР·РёСЂРѕРІР°РЅРёСЏ Рё РѕРїРёСЃР°РЅРёСЏ СЂРµР°Р»СЊРЅС‹С… СЃРѕР±С‹С‚РёР№ Рё СЌРєСЃРїРµСЂРёРјРµРЅС‚РѕРІ, СЃ РґСЂСѓРіРѕР№ СЃС‚РѕСЂРѕРЅС‹ РјРѕР¶РµС‚ СЃР»СѓР¶РёС‚СЊ РѕС‚Р»РёС‡РЅРѕР№ РјРµСЂРѕР№ СЌС„С„РµРєС‚РёРІРЅРѕСЃС‚Рё РєР°Рє Р°РїРїР°СЂР°С‚РЅРѕРіРѕ, С‚Р°Рє Рё РїСЂРѕРіСЂР°РјРјРЅРѕРіРѕ РѕР±РµСЃРїРµС‡РµРЅРёСЏ. Р Р°Р±РѕС‚Р° РїРѕ РѕРїС‚РёРјРёР·Р°С†РёРё С‚Р°РєРёС… СЂРµС€РµРЅРёР№ Р°РєС‚РёРІРЅРѕ РІРµРґРµС‚СЃСЏ \cite{romero2020high}. 
-	
-	Р’ РґР°РЅРЅРѕР№ СЂР°Р±РѕС‚Рµ РїСЂРµРґСЃС‚Р°РІР»РµРЅ Р°Р»РіРѕСЂРёС‚Рј СЂРµС€РµРЅРёСЏ РїР»Р°РЅР°СЂРЅРѕРіРѕ РіСЂР°С„Р°, РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅРѕРіРѕ РІ РІРёРґРµ РїР»РѕСЃРєРѕР№ РєРІР°РґСЂР°С‚РЅРѕР№ СЂРµС€РµС‚РєРё РР·РёРЅРіР° СЃ РѕР±РјРµРЅРЅС‹РјРё РёРЅС‚РµРіСЂР°Р»Р°РјРё $\pm 1$ (СѓС‚РѕС‡РЅРµРЅРёРµ Р­РґРІР°СЂРґСЃР°-РђРЅРґРµСЂСЃРµРЅР°~\cite{roma2010ground, katzgraber2005correlation}). 
-	
-	Р”Р»СЏ СЃС‚Р°С‚РёСЃС‚РёС‡РµСЃРєРѕР№ СЃСѓРјРјС‹ РµСЃС‚СЊ С‚РѕС‡РЅРѕРµ СЂРµС€РµРЅРёРµ РєР°Рє РґР»СЏ РґРІСѓРјРµСЂРЅРѕР№~\cite{onsager1944crystal}, С‚Р°Рє Рё РґР»СЏ С‚СЂС‘С…РјРµСЂРЅРѕР№~\cite{zhang2023exact} РјРѕРґРµР»РµР№. РџСЂРѕРёР·РІРѕРґРЅС‹РјРё СЌС‚РѕР№ С„СѓРЅРєС†РёРё СЏРІР»СЏСЋС‚СЃСЏ С‚Р°РєРёРµ РїР°СЂР°РјРµС‚СЂС‹ СЃРёСЃС‚РµРјС‹, РєР°Рє СЃРІРѕР±РѕРґРЅР°СЏ СЌРЅРµСЂРіРёСЏ Рё С‚РµРїР»РѕС‘РјРєРѕСЃС‚СЊ. РќРѕ С‚Р°РєРёРµ СЂРµС€РµРЅРёСЏ РЅРµ РґР°СЋС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РјРѕРґРµР»РёСЂРѕРІР°С‚СЊ РїРѕРІРµРґРµРЅРёРµ СЃРёСЃС‚РµРјС‹ Р­РґРІР°СЂРґСЃР°-РђРЅРґРµСЂСЃРѕРЅР° РІ РїРѕР»Рµ РёР»Рё РёСЃРєР°С‚СЊ РµС‘ РјРёРЅРёРјСѓРј. Р”Р»СЏ Р·Р°РґР°С‡Рё РЅР°С…РѕР¶РґРµРЅРёСЏ РјРёРЅРёРјСѓРјР° РµСЃС‚СЊ Р°Р»РіРѕСЂРёС‚РјС‹ РјР°С€РёРЅРЅРѕРіРѕ РѕР±СѓС‡РµРЅРёСЏ~\cite{maren1991logical} Рё РєРІР°РЅС‚РѕРІС‹Р№ Р°Р»РіРѕСЂРёС‚Рј Р°РґРёР°Р±Р°С‚РёС‡РµСЃРєРѕРіРѕ РѕС‚Р¶РёРіР°~\cite{grant2020adiabatic}. РќРµР№СЂРѕРЅРЅС‹Рµ СЃРµС‚Рё~\cite{Korol2021} С‚Р°Рє Р¶Рµ РїРѕР·РІРѕР»СЏСЋС‚ РјРѕРґРµР»РёСЂРѕРІР°С‚СЊ СЃРёСЃС‚РµРјСѓ РІР±Р»РёР·Рё С„Р°Р·РѕРІС‹С… РїРµСЂРµС…РѕРґРѕРІ, РєРѕРіРґР° СЃС‚РѕС…Р°СЃС‚РёС‡РµСЃРєРёРµ Р°Р»РіРѕСЂРёС‚РјС‹~\cite{janke2008monte} С‚СЂР°С‚СЏС‚ РЅР° С‚РµСЂРјР°Р»РёР·Р°С†РёСЋ СЃР»РёС€РєРѕРј РјРЅРѕРіРѕ РІСЂРµРјРµРЅРё.
-	
-	РљСЂРѕРјРµ РїРµСЂРµС‡РёСЃР»РµРЅРЅС‹С… РІС‹С€Рµ Р·Р°РґР°С‡ РµСЃС‚СЊ Р·Р°РґР°С‡Р° СЂР°СЃС‡С‘С‚Р° СЃРІРѕР№СЃС‚РІ СЃРёСЃС‚РµРјС‹ СЃРїРёРЅРѕРІРѕРіРѕ СЃС‚РµРєР»Р° РІ РїРѕР»Рµ РїСЂРё РЅР°Р»РёС‡РёРё СЂР°Р·Р±Р°РІР»РµРЅРёР№. Р”Р»СЏ СЂР°Р·Р±Р°РІР»РµРЅРёР№ СѓР¶Рµ РµСЃС‚СЊ СЌС„С„РµРєС‚РёРІРЅС‹Р№ Р°Р»РіРѕСЂРёС‚Рј~\cite{loh2006efficient}, СЃР»РѕР¶РЅРѕСЃС‚СЊ РєРѕС‚РѕСЂРѕРіРѕ, РїСЂРё СЂР°СЃРїР°СЂР°Р»Р»РµР»РёРІР°РЅРёРё, СЃРѕРІРїР°РґР°РµС‚ СЃРѕ СЃР»РѕР¶РЅРѕСЃС‚СЊСЋ РЅР°С€РµРіРѕ Р°Р»РіРѕСЂРёС‚РјР° - $O(L)$, РіРґРµ $L$ - Р»РёРЅРµР№РЅС‹Р№ СЂР°Р·РјРµСЂ СЃРёСЃС‚РµРјС‹ СЃРїРёРЅРѕРІ РР·РёРЅРіР°.
-	
-	РћРґРЅР°РєРѕ Сѓ С‚РѕС‡РЅРѕРіРѕ СЂРµС€РµРЅРёСЏ РћРЅР·Р°РіРµСЂР°~\cite{onsager1944crystal} РµСЃС‚СЊ Рё СЃСѓС‰РµСЃС‚РІРµРЅРЅРѕРµ РїСЂРµРёРјСѓС‰РµСЃС‚РІРѕ - РЅР° РѕСЃРЅРѕРІРµ РЅРµРіРѕ РјРѕР¶РЅРѕ РіРѕРІРѕСЂРёС‚СЊ Рѕ С‚РѕС‡РЅРѕСЃС‚Рё РґСЂСѓРіРёС… Р°Р»РіРѕСЂРёС‚РјРѕРІ. РџРѕСЌС‚РѕРјСѓ РЅР° СЂРёСЃ. 1 РјС‹ СЃСЂР°РІРЅРёРІР°РµРј С‚РѕС‡РЅРѕРµ СЂРµС€РµРЅРёРµ РґР»СЏ СЌРЅРµСЂРіРёРё Рё РЅР°РјР°РіРЅРёС‡РµРЅРЅРѕСЃС‚Рё СЃ С‚РµРјРё РіСЂР°С„РёРєР°РјРё, РєРѕС‚РѕСЂС‹Рµ РґР°С‘С‚ РЅР°С€ Р°Р»РіРѕСЂРёС‚Рј.
-	
-	\section{РњРѕРґРµР»СЊ РР·РёРЅРіР°}
-	РџСЂРѕСЃС‚РѕРµ РјР°С‚РµРјР°С‚РёС‡РµСЃРєРѕРµ РѕРїРёСЃР°РЅРёРµ РјРѕРґРµР»Рё РР·РёРЅРіР° (РњР), РЅР°СЂСЏРґСѓ СЃ РѕС‚СЃСѓС‚СЃС‚РІРёРµРј РІ РЅР°СЃС‚РѕСЏС‰РµРµ РІСЂРµРјСЏ С‚РѕС‡РЅРѕРіРѕ СЂРµС€РµРЅРёСЏ, РґРµР»Р°РµС‚ РµРµ СЌС‚Р°Р»РѕРЅРѕРј РІ С‚РµРѕСЂРёРё СЃР»РѕР¶РЅРѕСЃС‚Рё, С‚Р°Рє РєР°Рє Р»СЋР±Р°СЏ РєРѕРјР±РёРЅР°С‚РѕСЂРЅР°СЏ NP-СЃР»РѕР¶РЅР°СЏ Р·Р°РґР°С‡Р° РјРѕР¶РµС‚ Р±С‹С‚СЊ СЃРІРµРґРµРЅР° Рє Р·Р°РґР°С‡Рµ РЅР°С…РѕР¶РґРµРЅРёСЏ РјРёРЅРёРјР°Р»СЊРЅРѕР№ СЌРЅРµСЂРіРёРё РІ РњР~\cite{Markovich2019}. РќР°РїСЂРёРјРµСЂ, РѕРЅР° СЌРєРІРёРІР°Р»РµРЅС‚РЅР° С‚Р°РєРёРј РєРѕРјР±РёРЅР°С‚РѕСЂРЅС‹Рј Р·Р°РґР°С‡Р°Рј РѕРїС‚РёРјРёР·Р°С†РёРё, РєР°Рє Р·Р°РґР°С‡Р° РєРѕРјРјРёРІРѕСЏР¶РµСЂР° (TSP)~\cite{papadimitriou1977euclidean} РёР»Рё Р·Р°РґР°С‡Р° РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ СЂР°Р·СЂРµР·Р° РіСЂР°С„Р° ({}MAX-CUT)~\cite{karp2010reducibility}.
-	
-	Р’ СЂР°Р±РѕС‚Рµ СЌРЅРµСЂРіРёСЏ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃРїРёРЅРѕРІ РР·РёРЅРіР° СЂР°СЃСЃС‡РёС‚С‹РІР°РµС‚СЃСЏ РїРѕ С„РѕСЂРјСѓР»Рµ
-	
-	\begin{equation}
-		E = \sum\limits_{i=1}^N \sum\limits_{j=1}^N J_{ij} S_i S_j,
-	\end{equation}
-	РіРґРµ $S_i, S_j = \pm 1$ - Р·РЅР°С‡РµРЅРёСЏ СЃРїРёРЅРѕРІ, $J_{ij} = \pm 1$ - РєРѕРЅСЃС‚Р°РЅС‚Р° РѕР±РјРµРЅР° РјРµР¶РґСѓ РІР·Р°РёРјРѕРґРµР№СЃС‚РІСѓСЋС‰РёРјРё СЃРїРёРЅР°РјРё РІ РјРѕРґРµР»Рё Р­РґРІР°СЂРґСЃР°-РђРЅРґРµСЂСЃРѕРЅР°. Р Р°СЃС‡С‘С‚ СЌРЅРµСЂРіРёРё РјРѕР¶РЅРѕ СЂР°СЃРїР°СЂР°Р»Р»РµР»РёС‚СЊ, СЃС‡РёС‚Р°СЏ РїРѕ РѕС‚РґРµР»СЊРЅРѕСЃС‚Рё СЌРЅРµСЂРіРёРё РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ С†РµРїРѕС‡РµРє СЃРїРёРЅРѕРІ, Р° Р·Р°С‚РµРј РѕС‚РґРµР»СЊРЅРѕ РґРѕР±Р°РІР»СЏСЏ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ РјРµР¶РґСѓ СЃРїРёРЅР°РјРё РѕС‚РґРµР»СЊРЅС‹С… С†РµРїРѕС‡РµРє. РўР°РєРѕР№ РјРµС‚РѕРґ СЂР°СЃРїР°СЂР°Р»Р»РµР»РёРІР°РЅРёСЏ СѓРґРѕР±РµРЅ Рё РґР»СЏ РїРµСЂРµСЃС‡С‘С‚Р° РјР°РіРЅРёС‚РЅРѕРіРѕ РёР·Р±С‹С‚РєР°. 
-	
-	\section{РњР°С‚РµРјР°С‚РёС‡РµСЃРєРёР№ РїРѕРґС…РѕРґ}
-	
-	Р Р°СЃСЃРјРѕС‚СЂРёРј РѕРґРЅРѕРјРµСЂРЅСѓСЋ С†РµРїРѕС‡РєСѓ РёР· С‚СЂС‘С… СЃРїРёРЅРѕРІ. РћР±РѕР·РЅР°С‡РёРј $\beta = \frac{1}{kT}$. РџСЂРёРјРµРј РѕР±РјРµРЅРЅС‹Рµ РёРЅС‚РµРіСЂР°Р»С‹ $J$ РІРµР·РґРµ СЂР°РІРЅС‹РјРё РµРґРёРЅРёС†Рµ. РЎС‚Р°С‚РёСЃС‚РёС‡РµСЃРєР°СЏ СЃСѓРјРјР° РїСЂРёРЅРёРјР°РµС‚ РІРёРґ:
-	
-	\begin{equation}
-		Z_3 = e^{3\beta - 3\beta h} + 3e^{\beta - h - \beta} + 3e^{\beta h - \beta} + e^{3\beta + 3\beta h}
-		\label{eq:stat_3}
-	\end{equation}
-	
-	РџСЂРёСЃРѕРµРґРёРЅРёРј РµС‰С‘ РѕРґРЅСѓ С†РµРїРѕС‡РєСѓ РїР°СЂР°Р»Р»РµР»СЊРЅРѕ РїРµСЂРІРѕР№:
-	
-	\begin{equation}
-		\label{eq:stat_3_un}
-		\begin{alignedat}{2}
-			Z_6 = Z_3 e^{\beta  h-\beta }+Z_3 e^{\beta  h-\beta }+Z_3 e^{\beta  h-\beta }+Z_3 e^{3 \beta +3 \beta  h}+ \\
-			Z_3 e^{\beta  (-h)-\beta }+Z_3 e^{\beta  (-h)-\beta }+Z_3 e^{\beta  (-h)-\beta }+Z_3 e^{3 \beta -3 \beta  h}
-		\end{alignedat}
-	\end{equation}
-	
-	Р’ СЂРµР·СѓР»СЊС‚Р°С‚Рµ РїРѕР»СѓС‡Р°РµРј СЃС‚Р°С‚РёСЃС‚РёС‡РµСЃРєСѓСЋ СЃСѓРјРјСѓ РґР»СЏ СЂРµС€РµС‚РєРё $3 \times 2$:
-	
-	\begin{equation}
-		\label{eq:stat_3_res}
-		\begin{alignedat}{2}
-			Z_6 = 6 e^{-5 \beta }+12 e^{-\beta }+2 e^{3 \beta }+e^{9 \beta -6 \beta  h}+6 e^{3 \beta -4 \beta  h}+6 e^{-3 \beta -2 \beta  h}+\\
-			9 e^{\beta -2 \beta  h}+6 e^{2 \beta  h-3 \beta }+9 e^{\beta +2 \beta  h}+6 e^{3 \beta +4 \beta  h}+e^{9 \beta +6 \beta  h}
-		\end{alignedat}
-	\end{equation}
-	
-	Р’ С‚Р°РєРѕРј РїСЂРёСЃРѕРµРґРёРЅРµРЅРёРё Рё РЅР°СЂР°С‰РёРІР°РЅРёРё СЂРµС€РµС‚РєРё Рё Р·Р°РєР»СЋС‡Р°РµС‚СЃСЏ РёРґРµСЏ РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅРѕРіРѕ Р°Р»РіРѕСЂРёС‚РјР°
-	
-	\section{РђР»РіРѕСЂРёС‚Рј}
-	Р”Р°Р»РµРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅ РїСЃРµРІРґРѕРєРѕРґ, СЂРµР°Р»РёР·РѕРІР°РЅРЅС‹Р№ РІ РїРѕСЃР»РµРґСЃС‚РІРёРё РЅР° СЏР·С‹РєРµ CUDA. РџРѕ С…РѕРґСѓ РІС‹РїРѕР»РЅРµРЅРёСЏ Р°Р»РіРѕСЂРёС‚РјР° РїР»РѕСЃРєР°СЏ СЂРµС€РµС‚РєР° СЃРїРёРЅРѕРІ РґРµР»РёС‚СЃСЏ РЅР° 1D С†РµРїРё, РїР°СЂР°Р»Р»РµР»СЊРЅС‹Рµ РґСЂСѓРі РґСЂСѓРіСѓ, Рё РїРѕСЃС‚РµРїРµРЅРЅРѕ Р·Р°РїРёСЃС‹РІР°СЋС‚СЃСЏ СЂРµР·СѓР»СЊС‚Р°С‚С‹ РїРµСЂРµР±РѕСЂР° СЃРѕСЃС‚РѕСЏРЅРёР№ РєР°Р¶РґРѕР№ РЅРѕРІРѕР№ С†РµРїРё. РЎРЅР°С‡Р°Р»Р° РїРµСЂРµР±РёСЂР°СЋС‚СЃСЏ РІСЃРµ СЃРѕСЃС‚РѕСЏРЅРёСЏ РїРµСЂРІРѕР№ С†РµРїРё Рё РЅР°Р±РѕСЂ РїР°СЂР°РјРµС‚СЂРѕРІ GEMC (РІС‹СЂРѕР¶РґРµРЅРёРµ-СЌРЅРµСЂРіРёСЏ-СЃРїРёРЅРѕРІС‹Р№ РёР·Р±С‹С‚РѕРє-РєРѕРЅС„РёРіСѓСЂР°С†РёСЏ СЃРїРёРЅРѕРІ РІ РІРµРґСѓС‰РµР№ - РїРѕСЃР»РµРґРЅРµР№ РїСЂРѕСЃС‡РёС‚Р°РЅРЅРѕР№ - С†РµРїРѕС‡РєРµ) РїРµСЂРµРґР°С‘С‚СЃСЏ РЅР° $2^L$ РїРѕС‚РѕРєРѕРІ. РўР°РєРёРј РѕР±СЂР°Р·РѕРј, РєР°Р¶РґС‹Р№ РїРѕС‚РѕРє РїРµСЂРµР±РёСЂР°РµС‚ РІСЃРµ СЃРѕСЃС‚РѕСЏРЅРёСЏ СЃР»РµРґСѓСЋС‰РµР№ С†РµРїРѕС‡РєРё С‚РѕР»СЊРєРѕ РґР»СЏ РѕРґРЅРѕРіРѕ СЃРѕСЃС‚РѕСЏРЅРёСЏ РІРµРґСѓС‰РµР№ С†РµРїРѕС‡РєРё). Р”Р°Р»РµРµ Р·Р°РїРѕР»РЅСЏРµС‚СЃСЏ РјРЅРѕРіРѕРјРµСЂРЅР°СЏ РјР°С‚СЂРёС†Р° G-tensor [РєРѕРЅС„РёРіСѓСЂР°С†РёСЏ РєСЂР°Р№РЅРµРіРѕ СЃР»РѕСЏ][E][M][РЅР°Р±РѕСЂ РїСЂРѕСЃС‚С‹С… С‡РёСЃР»Рµ] СЃ РѕСЃСЏРјРё РїРѕРґ РЅР°Р±РѕСЂ РєРѕРЅС„РёРіСѓСЂР°С†РёР№ РїСЂРёСЃРѕРµРґРёРЅСЏРµРјРѕР№ С†РµРїРѕС‡РєРё, РјР°РєСЃРёРјР°Р»СЊРЅРѕР№ СЌРЅРµСЂРіРёРё $\times 2 + 1$, РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ СЃРїРёРЅРѕРІРѕРіРѕ РёР·Р±С‹С‚РєР° $\times 2 + 1$ Рё РЅР°Р±РѕСЂР° РїСЂРѕСЃС‚С‹С… С‡РёСЃРµР» РґР»СЏ Р·Р°РїРёСЃРё РІС‹СЂРѕР¶РґРµРЅРёСЏ, СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ. Р’ СЌС‚РѕС‚ С‚РµРЅР·РѕСЂ РІ РїСЂРѕС†РµСЃСЃРµ СЂР°СЃС‡С‘С‚Р° Р°С‚РѕРјР°СЂРЅРѕ РґРѕР±Р°РІР»СЏР»Р°СЃСЊ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РІС‹СЂРѕР¶РґРµРЅРёРё РїРѕ РєРѕРѕСЂРґРёРЅР°С‚Р°Рј СЌРЅРµСЂРіРёРё $+ E_{max}$ Рё СЃРїРёРЅРѕРІРѕРіРѕ РёР·Р±С‹С‚РєР° $+ M_{max}$.
-	
-	РџРѕСЃРєРѕР»СЊРєСѓ РІС‹СЂРѕР¶РґРµРЅРёРµ СЃРѕСЃС‚РѕСЏРЅРёР№ СЃ РѕРґРёРЅР°РєРѕРІРѕР№ СЌРЅРµСЂРіРёРµР№ Рё СЃРїРёРЅРѕРІС‹Рј РёР·Р±С‹С‚РєРѕРј РјРѕРіСѓС‚ РїСЂРёРЅРёРјР°С‚СЊ Р·РЅР°С‡РµРЅРёСЏ РѕС‚ $1$ РґРѕ $\approx 2^{N}$, РіРґРµ $N$ -- СЂР°Р·РјРµСЂ СЂРµС€РµС‚РєРё, С‚Рѕ РїСЂРё СЂР°Р·РјРµСЂР°С… Р±РѕР»СЊС€Рµ С‡РµРј $8 \times 8$ РІС‹СЂРѕР¶РґРµРЅРёСЏ СѓР¶Рµ РЅРµ РїРѕРјРµС‰Р°СЋС‚СЃСЏ РІ С†РµР»РѕС‡РёСЃР»РµРЅРЅС‹Р№ РІСЃС‚СЂРѕРµРЅРЅС‹Р№ С‚РёРї Р±РѕР»СЊС€РёРЅСЃС‚РІР° РЅРёР·РєРѕСѓСЂРѕРІРЅРµРІС‹С… СЏР·С‹РєРѕРІ. Р”Р»СЏ СЂРµС€РµРЅРёСЏ СЌС‚РѕР№ РїСЂРѕР±Р»РµРјС‹ РїРѕР»СѓС‡Р°РµРјС‹Рµ РїСЂРё СЂРµС€РµРЅРёРё РІС‹СЂРѕР¶РґРµРЅРёСЏ СЂР°Р·Р±РёРІР°СЋС‚СЃСЏ РЅР° РїСЂРѕСЃС‚С‹Рµ С‡РёСЃР»Р°, Р° РїРѕСЃР»Рµ РІСЃРµС… СЂР°СЃС‡С‘С‚РѕРІ СЂР°СЃС€РёС„СЂРѕРІС‹РІР°СЋС‚СЃСЏ СЃ РїРѕРјРѕС‰СЊСЋ РєРёС‚Р°Р№СЃРєРѕР№ С‚РµРѕСЂРµРјС‹ РѕР± РѕСЃС‚Р°С‚РєР°С… \cite{katz2007mathematics}.
-	
-	Р’С‹С‡РёСЃР»РµРЅРёРµ GEM РґР»СЏ Р·Р°РїРёСЃРё РѕРґРЅРѕР№ РєРѕРЅС„РёРіСѓСЂР°С†РёРё РїСЂРёСЃРѕРµРґРёРЅСЏРµРјРѕР№ С†РµРїРё РїСЂРѕРёР·РІРѕРґРёР»РѕСЃСЊ РїРѕ С„РѕСЂРјСѓР»Р°Рј:
-	
-	\begin{equation}
-		\begin{split}
-		E_\Sigma = E_l + E_r + E_m; \\
-		M_\Sigma = M_l + M_r; \\
-		G[M, E] += G_l,
-		\end{split}
-	\end{equation}
-	
-	\noindent РіРґРµ $E_l, E_r, E_m$ - СЌРЅРµСЂРіРёРё РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёР№ СЃРїРёРЅРѕРІ Р»РµРІРѕР№ СЂРµС€РµС‚РєРё РјРµР¶РґСѓ СЃРѕР±РѕР№, РїСЂР°РІРѕР№ (РїСЂРёСЃРѕРµРґРёРЅСЏРµРјРѕР№) С†РµРїРѕС‡РєРё Рё СЌРЅРµСЂРіРёСЏ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёР№ РјРµР¶РґСѓ РЅРёРјРё СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ. РЎС‡РёС‚Р°РµС‚СЃСЏ, С‡С‚Рѕ С†РµРїРѕС‡РєРё РґРѕР±Р°РІР»СЏСЋС‚СЃСЏ СЃР»РµРІР° РЅР°РїСЂР°РІРѕ. $M_l$ $M_r$ -- СЃРїРёРЅРѕРІС‹Рµ РёР·Р±С‹С‚РєРё Р»РµРІРѕР№ СЂРµС€РµС‚РєРё Рё РїСЂР°РІРѕР№ (РїСЂРёСЃРѕРµРґРёРЅСЏРµРјРѕР№) С†РµРїРѕС‡РєРё СЃРїРёРЅРѕРІ. $G_r$ -- РІС‹СЂРѕР¶РґРµРЅРёСЏ СЃРѕСЃС‚РѕСЏРЅРёР№ РїСЂР°РІРѕР№ (РїСЂРёСЃРѕРµРґРёРЅСЏРµРјРѕР№) СЂРµС€РµС‚РєРё.
-	
-	РўР°РєРёРј РѕР±СЂР°Р·РѕРј, РєР°Р¶РґС‹Р№ РёР· $2^L$ РїРѕС‚РѕРєРѕРІ СЂР°Р±РѕС‚Р°РµС‚ РЅР°Рґ СЃРІРѕРµР№ РєРѕРЅС„РёРіСѓСЂР°С†РёРµР№ РІРµРґСѓС‰РµР№ С†РµРїРё Рё РѕР±РЅРѕРІР»СЏРµС‚ РѕР±С‰РёР№ РґР»СЏ РІСЃРµС… РїРѕС‚РѕРєРѕРІ G-С‚РµРЅР·РѕСЂ. РђР»РіРѕСЂРёС‚Рј РѕР±РµСЃРїРµС‡РёРІР°РµС‚ РЅРµ РѕРґРЅРѕРІСЂРµРјРµРЅРЅСѓСЋ Р·Р°РїРёСЃСЊ РґР»СЏ РєР°Р¶РґРѕР№ СЏС‡РµР№РєРё. 
-	
-	\begin{algorithm}[H]
-		\textbf{Р’Р’РћР”:} Р Р°Р·РјРµСЂ СЂРµС€РµС‚РєРё Рё СЂР°СЃРїСЂРµРґРµР»РµРЅРёРµ РѕР±РјРµРЅРЅС‹С… РёРЅС‚РµРіСЂР°Р»РѕРІ.\\
-		\textbf{Р’Р«Р’РћР”:} РџРѕР»РЅР°СЏ РїР»РѕС‚РЅРѕСЃС‚СЊ СЃРѕСЃС‚РѕСЏРЅРёР№.
-		\begin{algorithmic}
-			\STATE {РќР°СЃС‚СЂРѕР№РєР° РіСЂР°С„РёС‡РµСЃРєРѕРіРѕ РїСЂРѕС†РµСЃСЃРѕСЂР°:}
-			\STATE {РЎРѕР·РґР°РЅРёРµ РјР°СЃСЃРёРІР° РєРѕРЅС„РёРіСѓСЂР°С†РёР№ РѕРґРЅРѕРјРµСЂРЅРѕР№ С†РµРїРѕС‡РєРё РјРµС‚РѕРґРѕРј Р±РёС‚РѕРІРѕРіРѕ СЃРґРІРёРіР°}
-			\STATE {РЎРѕР·РґР°РЅРёРµ G-С‚РµРЅР·РѕСЂР° [РєРѕРЅС„РёРіСѓСЂР°С†РёСЏ РєСЂР°Р№РЅРµРіРѕ СЃР»РѕСЏ][E][M][РЅР°Р±РѕСЂ РїСЂРѕСЃС‚С‹С… С‡РёСЃРµР»]}
-			\FOR {Р’СЃРµ СЃР»РѕРё СЂРµС€РµС‚РєРё\\}
-			{
-				\FOR {РљР°Р¶РґР°СЏ РєРѕРЅС„РёРіСѓСЂР°С†РёСЏ РІРЅРµС€РЅРµРіРѕ СЃР»РѕСЏ РЅР°СЂР°С‰РёРІР°РµРјРѕР№ СЂРµС€РµС‚РєРё\\}
-				{
-					\FOR {РљР°Р¶РґР°СЏ РєРѕРЅС„РёРіСѓСЂР°С†РёСЏ РґРѕР±Р°РІР»СЏРµРјРѕР№ С†РµРІРѕС‡РєРё СЃРїРёРЅРѕРІ\\}
-					{
-						\STATE {Р Р°СЃС‡С‘С‚ СЌРЅРµСЂРіРёРё Рё СЃРїРёРЅРѕРІРѕРіРѕ РёР·Р±С‹С‚РєР°}
-						\STATE {РђС‚РѕРјР°СЂРЅРѕРµ РґРѕР±Р°РІР»РµРЅРёРµ РїРѕР»СѓС‡РµРЅРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ РІС‹СЂРѕР¶РґРµРЅРёСЏ СЃРѕСЃС‚РѕСЏРЅРёСЏ Р±Р°Р·РѕРІРѕР№ СЂРµС€РµС‚РєРё РІ С‚РµРЅР·РѕСЂ РІС‹СЂРѕР¶РґРµРЅРёСЏ РїРѕР»СѓС‡Р°РµРјРѕР№ СЂРµС€РµС‚РєРё G[РєРѕРЅС„РёРіСѓСЂР°С†РёСЏ РєСЂР°Р№РЅРµРіРѕ СЃР»РѕСЏ][СЌРЅРµСЂРіРёСЏ][СЃРїРёРЅРѕРІС‹Р№ РёР·Р±С‹С‚РѕРє][РЅР°Р±РѕСЂ РїСЂРѕСЃС‚С‹С… С‡РёСЃРµР»]}
-					}
-					\ENDFOR\\
-				}
-				\ENDFOR
-			}
-			\ENDFOR
-			\STATE{Р Р°СЃС€РёС„СЂРѕРІРєР° РІС‹СЂРѕР¶РґРµРЅРёР№ РЅР°Р±РѕСЂР° РїСЂРѕСЃС‚С‹С… С‡РёСЃРµР»}
-			\STATE{РџРµСЂРµС„РѕСЂРјРёСЂРѕРІР°РЅРёРµ РґР°РЅРЅС‹С… РёР· G-С‚РµРЅР·РѕСЂР° РІ РїР»РѕС‚РЅРѕСЃС‚СЊ СЃРѕСЃС‚РѕСЏРЅРёР№: РІС‹СЂРѕР¶РґРµРЅРёРµ, СЌРЅРµСЂРіРёСЏ, СЃРїРёРЅРѕРІС‹Р№ РёР·Р±С‹С‚РѕРє}
-		\end{algorithmic}
-		\caption{Р Р°СЃС‡РµС‚ РїР»РѕС‚РЅРѕСЃС‚Рё СЃРѕСЃС‚РѕСЏРЅРёР№ РјРµС‚РѕРґРѕРј РїРѕР»РЅРѕРіРѕ РїРµСЂРµР±РѕСЂР°.}
-		\label{algo:dos_exhaustive}
-	\end{algorithm}
-	
-	Р’ С‚Р°Р±Р»РёС†Рµ 1 РїСЂРµРґСЃС‚Р°РІР»РµРЅРѕ СЃСЂР°РІРЅРµРЅРёРµ РІСЂРµРјРµРЅРё РІС‹РїРѕР»РЅРµРЅРёСЏ РЅР°С€РµРіРѕ Р°Р»РіРѕСЂРёС‚РјР° РїРµСЂРµР±РѕСЂР° СЃ РєР»Р°СЃСЃРёС‡РµСЃРєРёРјРё Р°Р»РіРѕСЂРёС‚РјР°РјРё РїРµСЂРµР±РѕСЂР° РЅР° РґСЂСѓРіРёС… СЏР·С‹РєР°С….
-	
-	\begin{table}[h]
-		\begin{center}
-			\label{Time_Table}
-			\caption{РЎСЂР°РІРЅРµРЅРёРµ РІСЂРµРјС‘РЅ, Р·Р°С‚СЂР°С‡РёРІР°РµРјС‹С… РЅР° РїРѕР»РЅС‹Р№ РїРµСЂРµР±РѕСЂ СЃРёСЃС‚РµРј СЃРїРёРЅРѕРІ РР·РёРЅРіР° СЃ РїРѕРјРѕС‰СЊСЋ СЂР°Р·Р»РёС‡РЅС‹С… РїСЂРѕРіСЂР°РјРјРЅС‹С… СЃСЂРµРґСЃС‚РІ (Р·РЅР°С‡РµРЅРёСЏ СѓРєР°Р·Р°РЅС‹ РІ СЃРµРєСѓРЅРґР°С…). Р’ СЃС‚СЂРѕРєРµ "CUDA" РїСЂРµРґСЃС‚Р°РІР»РµРЅ РїРѕР»СѓС‡РµРЅРЅС‹Р№ Р°Р»РіРѕСЂРёС‚Рј РїРµСЂРµР±РѕСЂР°.}
-			\begin{tabular}{|c|c|c|c|c|c|}
-				\hline
-				& $3 \times 3$ & $4 \times 4$ & $5 \times 5$ & $6 \times 6$ & $7 \times 7$  \\ \hline
-				РѕРґРёРЅ РїРѕС‚РѕРє Python & 0            & 4.09         & -            & ---          & ---           \\ \hline
-				Python + numba    & 0            & 0.046        & 66           & ---          & ---           \\ \hline
-				РѕРґРёРЅ РїРѕС‚РѕРє РЅР° C++ & 0.003        & 0.201        & 204.564      & ---          & ---           \\ \hline
-				РЎ++ + OpenMP      & -            & -            & 23.443       & ---          & ---           \\ \hline
-				CUDA              & 0.305        & 0.602        & 2.385        & 15.153       & 89.114        \\ \hline
-			\end{tabular}
-		\end{center}
-	\end{table}
-	
-	\section*{Р—Р°РєР»СЋС‡РµРЅРёРµ}
-	Р•СЃС‚СЊ РѕРїСЂРµРґРµР»С‘РЅРЅР°СЏ С‚РѕРїРѕР»РѕРіРёС‡РµСЃРєР°СЏ С‚СЂСѓРґРЅРѕСЃС‚СЊ~\cite{zhang2018topological} РІ С‚РѕРј С‡С‚РѕР±С‹ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РѕР±С‹С‡РЅС‹Рµ РЅРёР·РєРѕС‚РµРјРїРµСЂР°С‚СѓСЂРЅС‹Рµ СЂР°СЃС€РёСЂРµРЅРёСЏ~\cite{katz2007mathematics}, РѕР±С‹С‡РЅС‹Рµ РІС‹СЃРѕРєРѕС‚РµРјРїРµСЂР°С‚СѓСЂРЅС‹Рµ СЂР°СЃС€РёСЂРµРЅРёСЏ~\cite{zhang2013mathematical}, РїРµСЂС‚СѓСЂР±Р°С‚РёРІРЅСѓСЋ РіСЂСѓРїРїСѓ РїРµСЂРµРЅРѕСЂРјРёСЂРѕРІРєРё~\cite{zhang2016mathematical} Рё РјРѕРґРµР»РёСЂРѕРІР°РЅРёРµ РњРѕРЅС‚Рµ-РљР°СЂР»Рѕ~\cite{zhang2017nature} РґР»СЏ РјРѕРґРµР»РёСЂРѕРІР°РЅРёСЏ 3D-СЃРёСЃС‚РµРјС‹ СЃРїРёРЅРѕРІ РР·РёРЅРіР°. РљСЂРѕРјРµ С‚РѕРіРѕ, СѓР¶Рµ Р±С‹Р»Рѕ РїРѕРєР°Р·Р°РЅРѕ, С‡С‚Рѕ 3D-РјРѕРґРµР»СЊ РЅРµ РјРѕР¶РµС‚ РёРјРµС‚СЊ Р°Р»РіРѕСЂРёС‚РјРёС‡РµСЃРєСѓСЋ СЃР»РѕР¶РЅРѕСЃС‚СЊ РјРµРЅСЊС€Рµ Рћ($2^{mnl}$), РіРґРµ $m$, $n$, $l$ - Р»РёРЅРµР№РЅС‹Рµ СЂР°Р·РјРµСЂС‹~\cite{zhang2020computational}. Р­С‚Рѕ РґРµР»Р°РµС‚ РїР°СЂР°Р»Р»РµР»СЊРЅС‹Р№ РїРѕРґС…РѕРґ Рє С‚РѕС‡РЅРѕРјСѓ СЂРµС€РµРЅРёСЋ РЅР°РёР±РѕР»РµРµ РїРµСЂСЃРїРµРєС‚РёРІРЅС‹Рј РІ СЂР°РјРєР°С… С‚РѕС‡РЅРѕРіРѕ РјРѕРґРµР»РёСЂРѕРІР°РЅРёСЏ.
-	
-	РџСЂРµРґСЃС‚Р°РІР»РµРЅРЅС‹Р№ Р°Р»РіРѕСЂРёС‚Рј РІС‹РґР°С‘С‚ СѓРЅРёРєР°Р»СЊРЅС‹Рµ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё РєРѕРЅС„РёРіСѓСЂР°С†РёРё СЃРёСЃС‚РµРјС‹, РїРѕСЌС‚РѕРјСѓ СЃ РїРѕРјРѕС‰СЊСЋ РЅРёС… РјРѕР¶РЅРѕ С‚РѕС‡РЅРѕ РѕРїСЂРµРґРµР»СЏС‚СЊ, РіР»РѕР±Р°Р»СЊРЅС‹Р№ Р»Рё РјРёРЅРёРјСѓРј Р±С‹Р» РЅР°Р№РґРµРЅ СЃ РїРѕРјРѕС‰СЊСЋ, РЅР°РїСЂРёРјРµСЂ, Р°Р»РіРѕСЂРёС‚РјР° РњРѕРЅС‚Рµ-РљР°СЂР»Рѕ~\cite{janke2008monte} РёР»Рё РіРµРЅРµС‚РёС‡РµСЃРєРѕРіРѕ Р°Р»РіРѕСЂРёС‚РјР°~\cite{Panchenko2007}. Р—Р° СЃС‡С‘С‚ РЅРµРіРѕ РјРѕР¶РЅРѕ РІС‹С‡РёСЃР»РёС‚СЊ РѕРїС‚РёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ С€Р°РіРѕРІ РњРµС‚СЂРѕРїРѕР»РёСЃР°, РЅРµРѕР±С…РѕРґРёРјС‹С… РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РіР»РѕР±Р°Р»СЊРЅС‹С… РјРёРЅРёРјСѓРјРѕРІ. РџРѕР»СѓС‡РµРЅРЅС‹Рµ СЃ РїРѕРјРѕС‰СЊСЋ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё СЃРѕСЃС‚РѕСЏРЅРёР№ СЃРёСЃС‚РµРјС‹ РїРѕР·РІРѕР»СЏСЋС‚ СЂР°СЃСЃС‡РёС‚Р°С‚СЊ СЃРІРѕР№СЃС‚РІР° СЃРїРёРЅРѕРІС‹С…, РєРѕС‚РѕСЂС‹Рµ Р±РµР· РїРѕР»РЅРѕР№ РїР»РѕС‚РЅРѕСЃС‚Рё СЃРѕСЃС‚РѕСЏРЅРёР№ РїРѕР»СѓС‡РёС‚СЊ РЅРµР»СЊР·СЏ. Р’ С‚РѕРј С‡РёСЃР»Рµ СѓРґР°Р»РѕСЃСЊ РєР»Р°СЃСЃРёС„РёС†РёСЂРѕРІР°С‚СЊ СЂРµС€РµС‚РєСѓ РјРѕРґРµР»Рё Р­РґРІР°СЂРґСЃР°-РђРЅРґРµСЂСЃРѕРЅР° РІ РѕРґРёРЅ РёР· РІРёРґРѕРІ РјР°РіРЅРµС‚РёРєРѕРІ РёР»Рё РїСЂРѕРІРµСЃС‚Рё С‡РёСЃР»РµРЅРЅС‹Р№ СЌРєСЃРїРµСЂРёРјРµРЅС‚ РїРѕ РѕРїСЂРµРґРµР»РµРЅРёСЋ С„Р°Р·РѕРІС‹С… СЃРІРѕР№СЃС‚РІ С‚Р°РєРёС… СЂРµС€РµС‚РѕРє РІ РїРѕР»Рµ.
-	
-	
-	\begin{thebibliography}{20}
-		\setlength{\parsep}{0pt}\setlength{\itemsep}{3pt}
-		
-		\bibitem{romero2020high}
-		\by Romero, Joshua and Bisson, Mauro and Fatica, Massimiliano and Bernaschi, Massimo
-		\jour Computer Physics Communications
-		\paper High performance implementations of the 2D Ising model on GPUs
-		\vol 256
-		\yr 2020
-		
-		\bibitem{roma2010ground}
-		\by Rom{\'a}, F and Risau-Gusman, S and Ramirez-Pastor, AJ and Nieto, F and Vogel, EE
-		\jour Physical Review BвЂ”Condensed Matter and Materials Physics
-		\paper Ground-state topology of the Edwards-Anderson$\pm$J spin glass model
-		\vol 82
-		\issue 21
-		\pages 214-401
-		\yr 2010
-		
-		\bibitem{katzgraber2005correlation}
-		\by Katzgraber, Helmut G and Lee, Lik Wee
-		\jour Physical Review BвЂ”Condensed Matter and Materials Physics
-		\paper Correlation length of the two-dimensional Ising spin glass with bimodal interactions
-		\vol 71
-		\issue 13
-		\pages 134-404
-		\yr 2005
-		
-		\bibitem{Markovich2019}
-		\by Markovich LA
-		\jour Information Technology and Systems
-		\paper Parallel algorithm based on the Ising model for solving combinatorial optimization problems
-		\pages 350--358
-		\yr 2019
-		
-		\bibitem{papadimitriou1977euclidean}
-		\by Papadimitriou, Christos H
-		\jour Theoretical computer science
-		\paper The Euclidean travelling salesman problem is NP-complete
-		\vol 4
-		\issue 3
-		\pages 237--244
-		\yr 1977
-		
-		\bibitem{karp2010reducibility}
-		\by Karp, Richard M
-		\jour Springer
-		\paper Reducibility among combinatorial problems
-		\yr 2010
-		
-		\bibitem{onsager1944crystal}
-		\by Onsager, Lars
-		\jour Physical Review
-		\paper Crystal statistics. I. A two-dimensional model with an order-disorder transition
-		\vol 65
-		\pages 117
-		\yr 1944
-		
-		\bibitem{zhang2023exact}
-		\by ZHANG, Zhidong
-		\jour Acta Metall Sin
-		\paper Exact Solution of Ferromagnetic Three-Dimensional (3D) Ising Model and Spontaneous Emerge of Time
-		\vol 59
-		\issue 4
-		\pages 489--501
-		\yr 2023
-		
-		\bibitem{maren1991logical}
-		\by Maren, Alianna J
-		\jour Proceedings of the Second Workshop on Neural Networks
-		\paper A logical topology of neural networks
-		\yr 1991
-		
-		\bibitem{grant2020adiabatic}
-		\by Grant, Erica K and Humble, Travis S
-		\jour Oxford Research Encyclopedia of Physics
-		\paper Adiabatic quantum computing and quantum annealing
-		\yr 2020
-		
-		\bibitem{Korol2021}
-		\by Korol, Alyona Olegovna and Captain, Vitaly Yurievich
-		\jour Far Eastern Mathematical Journal
-		\paper Neural network for determining the Curie temperature of the two-dimensional Ising model
-		\vol 21
-		\issue 1
-		\pages 51-60
-		\yr 2021
-		
-		\bibitem{janke2008monte}
-		\by Janke, Wolfhard
-		\jour Computational many-particle physics
-		\paper Monte Carlo methods in classical statistical physics
-		\pages 79-140
-		\yr 2008
-		
-		\bibitem{loh2006efficient}
-		\by Loh, Yen Lee and Carlson, Erica W
-		\jour Physical review letters
-		\paper Efficient algorithm for random-bond Ising models in 2d
-		\vol 97
-		\issue 22
-		\pages 227-205
-		\yr 2006
-		
-		\bibitem{katz2007mathematics}
-		\by Katz, Victor J
-		\jour Physics Letters A
-		\paper The Mathematics of Egypt, Mesopotamia, China, India, and Islam: A Sourcebook
-		\yr 2007
-		
-		\bibitem{zhang2018topological}
-		\by Zhang, Zhi-Dong
-		\jour Many-Body Approaches at Different Scales: A Tribute to Norman H. March on the Occasion of his 90th Birthday
-		\paper Topological Effects and Critical Phenomena in the Three-Dimensional (3D) Ising Model
-		\pages 331-343
-		\yr 2018
-		
-		\bibitem{zhang2007conjectures}
-		\by Zhang, Zhi-Dong
-		\jour Philosophical Magazine
-		\paper Conjectures on the exact solution of three-dimensional (3D) simple orthorhombic Ising lattices
-		\vol 87
-		\issue 34
-		\pages 5309-5419
-		\yr 2007
-		
-		\bibitem{zhang2013mathematical}
-		\by Zhang, Zhi-Dong
-		\jour Chinese Physics B
-		\paper Mathematical structure of the three-dimensional (3D) Ising model
-		\vol 22
-		\issue 3
-		\yr 2013
-		
-		\bibitem{zhang2016mathematical}
-		\by Zhang, Zhi-Dong
-		\jour Acta Metall Sin
-		\paper Mathematical structure and the conjectured exact solution of threedimensional (3D) Ising model
-		\vol 52
-		\issue 10
-		\pages 1311--1325
-		\yr 2017
-		
-		\bibitem{zhang2017nature}
-		\by Zhang, Zhi-Dong
-		\jour Journal of Physics: Conference Series
-		\paper The nature of three dimensions: Non-local behavior in the three-dimensional (3D) Ising model
-		\vol 827
-		\issue 1
-		\yr 2017
-		
-		\bibitem{zhang2020computational}
-		\by Zhang, Zhi-Dong
-		\jour Journal of Materials Science \& Technology
-		\paper Computational complexity of spin-glass three-dimensional (3D) Ising model
-		\vol 44
-		\issue 5
-		\pages 116-120
-		\yr 2020
-		
-		\bibitem{Panchenko2007}
-		\by Panchenko, Tatyana Vyacheslavovna and Tarasevich, Yuri Yurievich
-		\jour РЎomputational methods and programming
-		\paper Comparative analysis of the efficiency of application of genetic algorithms and Metropolis algorithm in problems of solid state physics
-		\vol 8
-		\pages 77-87
-		\yr 2007
-		
-	\end{thebibliography}
-	
-	
-	
-	\EndArticle
-\end{document} 
+
+\Pages(1--8)
+
+\author[1,2]{Trukhin~V.\,O.}{Far Eastern Federal University}{}
+\author[1,2]{Lobanova~E.\,A.}{Institute for Applied Mathematics, Far Eastern Branch, Russian Academy of Sciences}{}
+\author[1]{Anisich~A.\,I.}{}{}
+\author[1,2]{Makarov~A.\,G.}{}{}
+\author[1,2]{Nefedev~K.\,V.}{}{}
+
+\summary
+%Application of the Chinese residue theorem for dealing with large numbers in supercomputing\title
+
+Glaurung --- non-classic algorithm for the complete enumeration of the Ising model\title
+
+The article presents a novel algorithm for the complete enumeration of spin configurations in the Ising model on a square lattice. Particular attention is given to the parallelization of computations on graphics processing units (GPUs) using CUDA and on central processing units (CPUs) using OpenMP. The structure of the algorithm is described in detail, including its main implementation steps, as well as its application to solving problems in statistical thermodynamics, specifically the calculation of the density of states. A performance comparison is conducted between the proposed algorithm and sequential enumeration algorithms implemented in Python and C/C++. The results demonstrate that the proposed approach significantly accelerates computations and enables efficient analysis of square-lattice spin systems in the Ising model with sizes up to $11 \times 11$ nodes (121 spins) and random distributions of exchange constants.
+
+\keywords{algorithms, statistical thermodynamics, Ising model, parallel computing.}
+
+\UDC{519.17+УДК 519.11+519.684+519.683}
+\AMS{68R10 + 82B30 + 65Y05}
+
+\SupportedBy{Исследование выполнено за счет гранта \linebreak Российского научного фонда № 24-71-10069, \linebreak \href{https://rscf.ru/project/24-71-10069/}{https://rscf.ru/project/24-71-10069/}.}
+
+\submitted{ февраля 2025 г.}
+
+\author[1,2]{В.\, О.~Трухин}{Дальневосточный федеральный университет, 690922, г.~Владивосток, о.~Русский, п.~Аякс,~10}{trukhin.vo@dvfu.ru}
+\author[1,2]{Э.\, А.~Лобанова}{Институт прикладной математики ДВО РАН, 690041, г.~Владивосток, ул.~Радио,~7}{}
+\author[1]{А.\, И.~Анисич}{}{}
+\author[1,2]{А.\, Г.~Макаров}{}{}
+\author[1,2]{К.\, В.~Нефедев}{}{}
+
+\title{Glaurung --- неклассический алгоритм полного перебора модели Изинга}
+
+\makeface
+
+
+
+
+
+\abstract
+В работе представлен авторский алгоритм полного перебора конфигураций спинов модели Изинга на квадратной решетке. Основное внимание уделено распараллеливанию вычислений на графических процессорах (GPU) с использованием CUDA и на центральном процессоре (CPU) с использованием OpenMP. Подробно описывается структура алгоритма, включая основные этапы его реализации, а также его применение к решению задач статистической термодинамики, в частности, к вычислению плотности состояний. Проведено сравнение производительности предложенного алгоритма с последовательными переборными алгоритмами, реализованными на языках программирования Python и C/C++. Результаты показывают, что предложенный подход существенно ускоряет вычисления и позволяет эффективно анализировать системы квадратной решетки спинов модели Изинга размером до $11 \times 11$ узлов (121 спин) со случайным распределением обменных констант.
+
+\keywords{алгоритмы, статистическая термодинамика, модель Изинга, параллельные вычисления.}
+
+\DOI{2025}
+
+\section*{Введение}
+
+Поиск точных решений для статистических моделей, с одной стороны, является критически важным для прогнозирования или описания реальных событий и экспериментов, с другой стороны – это вычислительно сложная проблема и может служить мерой эффективности как программного, так и аппаратного обеспечения. 
+В данной работе представлен алгоритм поиска точного решения, которое представлено в виде плотности всех возможных состояний для квадратной решетки спинов модели Изинга со случайным распределением обменных констант~\cite{roma2010ground, katzgraber2005correlation} (пример решетки представлен на рисунке~\ref{fig1}). Эта модель не ограничивается лишь статистической физикой и может быть представлена в виде графа. Таким образом, решение данной модели вызывает интерес в различных областях науки. В настоящее время активно ведутся работы по оптимизации таких решений~\cite{romero2020high}.
+Термодинамические системы с фиксированным количеством частиц могут быть охарактеризованы канонической статистической суммой. Значение этой функции заключается в том, что производные от нее позволяют вычислить важные термодинамические параметры системы, такие как свободная энергия и теплоемкость. Точное решение для статистической суммы есть для двумерной модели Изинга~\cite{onsager1944crystal}, но это решение не позволяет моделировать поведение системы со случайным распределением обменных констант или с заданным магнитным полем, но является хорошим подспорьем в проверке точности различных алгоритмов. Для решения задачи нахождения минимума в настоящее время существуют различные алгоритмы, такие как: алгоритмы машинного обучения~\cite{maren1991logical}, квантовый алгоритм адиабатического отжига~\cite{grant2020adiabatic}, нейронные сети~\cite{Korol2021} и множество стохастических алгоритмов~\cite{janke2008monte}. Однако, в отличие от упомянутых методов, стохастические алгоритмы могут затрачивать слишком много времени на достижение термодинамического равновесия (релаксацию).
+
+\begin{figure}[tbp!]
+\begin{center}
+\includegraphics[width=200px]{EA_model}
+\caption {Пример решетки спинов Изинга со случайным распределением обменных констант.}
+\label{fig1}
+\end{center}
+\end{figure}
+
+\section{Модель Изинга}
+Простое математическое описание модели Изинга вместе с отсутствием её точного решения делает её эталоном в теории сложности, так как любая NP-сложная задача может быть сведена к задаче нахождения вектора состояний для модели Изинга со случайным распределением обменных констант~\cite{Markovich2019, papadimitriou1977euclidean, karp2010reducibility}.
+
+В работе энергия взаимодействия спинов Изинга рассчитывается по формуле
+
+\begin{equation}
+    E = -\sum\limits_{<i,j>} J_{ij} S_i S_j,
+\end{equation}
+где $S_i, S_j = \pm 1$ - значения спинов, $J_{ij} = \pm 1$ - константа обмена между взаимодействующими спинами в модели Эдвардса\,--\,Андерсона, $\left\langle i,j \right\rangle$ - суммирование по ближайшим соседям. Расчёт энергии можно распараллелить, считая по отдельности энергии взаимодействия цепочек спинов, а затем отдельно добавляя взаимодействия между спинами отдельных цепочек. Такой метод распараллеливания удобен и для пересчёта спинового избытка.
+
+\section{Математический подход}
+
+\textbf{Что такое статистическая сумма и почему она важна?}
+
+\textbf{Что такое h?}
+
+
+Рассмотрим одномерную цепочку из трёх спинов. Обозначим $\beta = \frac{1}{kT}$. Примем обменные интегралы $J$ везде равными единице. Статистическая сумма принимает вид:
+
+\begin{equation}
+    Z_3 = e^{3\beta - 3\beta h} + 3e^{\beta - h - \beta} + 3e^{\beta h - \beta} + e^{3\beta + 3\beta h}
+    \label{eq:stat_3}
+\end{equation}
+
+Присоединим ещё одну цепочку параллельно первой:
+
+\begin{equation}
+    \label{eq:stat_3_un}
+    \begin{alignedat}{2}
+        Z_6 = Z_3 e^{\beta  h-\beta }+Z_3 e^{\beta  h-\beta }+Z_3 e^{\beta  h-\beta }+Z_3 e^{3 \beta +3 \beta  h}+ \\
+        Z_3 e^{\beta  (-h)-\beta }+Z_3 e^{\beta  (-h)-\beta }+Z_3 e^{\beta  (-h)-\beta }+Z_3 e^{3 \beta -3 \beta  h}
+    \end{alignedat}
+\end{equation}
+
+В результате получаем статистическую сумму для решетки $3 \times 2$:
+
+\begin{equation}
+    \label{eq:stat_3_res}
+    \begin{alignedat}{2}
+        Z_6 = 6 e^{-5 \beta }+12 e^{-\beta }+2 e^{3 \beta }+e^{9 \beta -6 \beta  h}+6 e^{3 \beta -4 \beta  h}+6 e^{-3 \beta -2 \beta  h}+\\
+        9 e^{\beta -2 \beta  h}+6 e^{2 \beta  h-3 \beta }+9 e^{\beta +2 \beta  h}+6 e^{3 \beta +4 \beta  h}+e^{9 \beta +6 \beta  h}
+    \end{alignedat}
+\end{equation}
+
+В таком присоединении и наращивании решетки и заключается идея представленного алгоритма
+
+\section{Алгоритм}
+На вход алгоритма мы подаем матрицу связей $J$ и линейный размер системы $L$. В результате работы мы хотим получить данные, которые опишут систему во всех ее состояниях, т.е. энергию, спиновый избыток и вырождение состояний.
+
+На первом этапе берутся нулевой и первый столбцы и рассчитывается их плотность состояний как независимых одномерных цепочек и для каждой заполняется четырехмерный массив: первая ось  – это удвоенная максимальная энергия + 1, вторая ось – удвоенный спиновый избыток + 1, третья ось – это конфигурации, ее размер  $2^L$, и четвертая ось имеет размерность количества простых чисел, остатки от деления на которые записываются по этим координатам. Размер этой оси также увеличен на 1 для проверки на совпадение?????. Избежать добавление этой оси можно только в случае размерности системы, не превышающей $8 \times 8$, в ином случае вырождение может выходить за рамки целочисленного встроенного типа данных большинства низкоуровневых языков.
+
+\begin{algorithm}[H]
+    \textbf{ВВОД:} Размер решетки и распределение обменных интегралов.\\
+    \textbf{ВЫВОД:} Полная плотность состояний.
+    \begin{algorithmic}
+        \STATE {Создание массива конфигураций одномерной цепочки методом битового сдвига}
+        \STATE {Создание G-тензора [конфигурация крайнего слоя][энергия системы][спиновый избыток][набор простых чисел]}
+        \FOR {Все слои решетки\\}
+        {
+            \FOR {Каждая конфигурация внешнего слоя наращиваемой решетки\\}
+            {
+                \FOR {Каждая конфигурация добавляемой цевочки спинов\\}
+                {
+                    \STATE {Расчёт энергии и спинового избытка}
+                    \STATE {Атомарное добавление полученного значения вырождения состояния базовой решетки в тензор вырождения получаемой решетки G[конфигурация крайнего слоя][энергия][спиновый избыток][набор простых чисел]}
+                }
+                \ENDFOR\\
+            }
+            \ENDFOR
+        }
+        \ENDFOR
+        \STATE{Расшифровка вырождений набора простых чисел}
+        \STATE{Переформирование данных из G-тензора в плотность состояний: вырождение, энергия, спиновый избыток}
+    \end{algorithmic}
+    \caption{Алгоритм расчета плотности состояний методом полного перебора.}
+    \label{algo:dos_exhaustive}
+\end{algorithm}
+
+
+
+
+\section{Реализация алгоритма на CUDA}
+Устройство функции представлено в АЛГОРИТМ 1.
+
+Второй этап заключается в соединение двух массивов состояний, полученных на предыдущем шаге, в один новый, размерность которого будет учитывать новое количество спинов.  Реализация функции объединения представлено в АЛГОРИТМ 2.
+
+Третий этап зацикливает первую и вторую функции до конца решетки, формулы для расчета размерности на каждом этапе весьма тривиальны. В последнем приращении у финального массива состояний можно не задавать ось конфигураций.
+
+АЛГОРИТМ 1.
+
+На последнем этапе мы должны раскодировать массив просуммированных остатков от деления на простые числа в массив вырождений, делаем это, основываясь на китайской теореме об остатках и расширенном алгоритме Эвклида~\cite{katz2007mathematics}.
+
+АЛГОРИТМ 2.
+
+При реализации алгоритма с помощью технологии параллельного программирования CUDA ускорение вычислений достигается за счет расчета уникального индекса для каждого CUDA-ядра, что позволяет каждому потоку обрабатывать свой участок данных. Это достигается путем распараллеливания внешнего цикла, где индексы вычисляются как $x = blockIdx.x \times blockDim.x + threadIdx.x$, и итерации по массиву данных с шагом $blockDim.x \times gridDim.x$, что обеспечивает эффективное использование ресурсов GPU и минимизирует время выполнения.
+
+
+
+\section{Реализация алгоритма на OpenMP}
+
+
+
+
+\section{Сравнение быстродействия (расширить описание)}
+В рамках анализа быстродействия алгоритма было проведено сравнение времени работы алгоритма с алгоритмами прямого перебора, написанных на языках программирования Python и С++, с технологиями параллелизации по ядрам процессора (таблица~\ref{Time_Table}). Использование метода прямого перебора для сравнения аргументировано тем, что именно его можно взять за эталон сложности для данных методов. Таким образом, мы смогли наблюдать кратное превосходство разработанного метода, что развивает интерес дальнейших исследований в этой области.
+
+
+\textbf{Добавить описание вычислителей}
+
+
+В таблице~\ref{Time_Table} представлено сравнение времени выполнения авторского алгоритма перебора с классическими алгоритмами перебора с различными реализациями.
+
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            & $4 \times 4$ & $5 \times 5$ & $6 \times 6$ & $7 \times 7$ & $8 \times 8$ & $9 \times 9$ & $10 \times 10$ & $11 \times 11$  \\ \hline
+            Один поток Python & 4.09         & -            & ---          & ---          & ---          & ---          & ---          & ---           \\ \hline
+            Python + numba    & 0.046        & 66           & ---          & ---          & ---          & ---          & ---          & ---           \\ \hline
+            Один поток на C++ & 0.201        & 204.564      & ---          & ---          & ---          & ---          & ---          & ---           \\ \hline
+            С++ + OpenMP      & -            & 23.443       & ---          & ---          & ---          & ---          & ---          & ---           \\ \hline
+            CUDA              & 0.602        & 2.385        & 15.153       & 89.114          & ---          & ---          & ---          & ---        \\ \hline
+        \end{tabular}
+    \end{center}
+    \caption{Сравнение времени, затрачиваемого на полный перебор систем спинов Изинга в зависимости от реализации алгоритма и размера системы (значения указаны в секундах).}
+    \label{Time_Table}
+\end{table}
+
+\section*{Заключение}
+В результате работы алгоритма мы получаем уникальные данные, характеризующие исследуемую систему. Уникальность заключается в том, что можно определить, глобальный ли минимум был найден с помощью алгоритмов, не являющихся точными, например, Монте-Карло или генетического алгоритма~\cite{Panchenko2007}. Также это позволяет определить оптимальное количество шагов для алгоритма Метрополиса, необходимое для нахождения глобального минимума.
+Полученные с помощью алгоритма характеристики состояний позволяют рассчитать свойства спиновых систем, которые без полной плотности состояний получить нельзя. В том числе для классификации решетки Эдвардса\,--\,Андерсона на ферромагнитное, антиферромагнитное состояния, и состояние спинового стекла, а также провести численный эксперимент по определению фазовых свойств таких решеток в поле.
+
+
+
+\begin{thebibliography}{4}
+\setlength{\parsep}{0pt}\setlength{\itemsep}{3pt}
+
+\Bibitem{roma2010ground}
+\by Rom{\'a}, F and Risau-Gusman, S and Ramirez-Pastor, AJ and Nieto, F and Vogel, EE
+\jour Physical Review B—Condensed Matter and Materials Physics
+\paper Ground-state topology of the Edwards-Anderson$\pm$J spin glass model
+\vol 82
+\issue 21
+\pages 214-401
+\yr 2010
+
+\Bibitem{katzgraber2005correlation}
+\by Katzgraber, Helmut G and Lee, Lik Wee
+\jour Physical Review B—Condensed Matter and Materials Physics
+\paper Correlation length of the two-dimensional Ising spin glass with bimodal interactions
+\vol 71
+\issue 13
+\pages 134-404
+\yr 2005
+
+\Bibitem{romero2020high}
+\by Romero, Joshua and Bisson, Mauro and Fatica, Massimiliano and Bernaschi, Massimo
+\jour Computer Physics Communications
+\paper High performance implementations of the 2D Ising model on GPUs
+\vol 256
+\yr 2020
+
+\Bibitem{onsager1944crystal}
+\by Onsager, Lars
+\jour Physical Review
+\paper Crystal statistics. I. A two-dimensional model with an order-disorder transition
+\vol 65
+\pages 117
+\yr 1944
+
+\Bibitem{maren1991logical}
+\by Maren, Alianna J
+\jour Proceedings of the Second Workshop on Neural Networks
+\paper A logical topology of neural networks
+\yr 1991
+
+\Bibitem{grant2020adiabatic}
+\by Grant, Erica K and Humble, Travis S
+\jour Oxford Research Encyclopedia of Physics
+\paper Adiabatic quantum computing and quantum annealing
+\yr 2020
+
+\Bibitem{Korol2021}
+\by Korol, Alyona Olegovna and Captain, Vitaly Yurievich
+\jour Far Eastern Mathematical Journal
+\paper Neural network for determining the Curie temperature of the two-dimensional Ising model
+\vol 21
+\issue 1
+\pages 51-60
+\yr 2021
+
+\Bibitem{janke2008monte}
+\by Janke, Wolfhard
+\jour Computational many-particle physics
+\paper Monte Carlo methods in classical statistical physics
+\pages 79-140
+\yr 2008
+
+\Bibitem{Markovich2019}
+\by Markovich LA
+\jour Information Technology and Systems
+\paper Parallel algorithm based on the Ising model for solving combinatorial optimization problems
+\pages 350--358
+\yr 2019
+
+\Bibitem{papadimitriou1977euclidean}
+\by Papadimitriou, Christos H
+\jour Theoretical computer science
+\paper The Euclidean travelling salesman problem is NP-complete
+\vol 4
+\issue 3
+\pages 237--244
+\yr 1977
+
+\Bibitem{karp2010reducibility}
+\by Karp, Richard M
+\jour Springer
+\paper Reducibility among combinatorial problems
+\yr 2010
+
+\Bibitem{katz2007mathematics}
+\by Katz, Victor J
+\jour Physics Letters A
+\paper The Mathematics of Egypt, Mesopotamia, China, India, and Islam: A Sourcebook
+\yr 2007
+
+\Bibitem{Panchenko2007}
+\by Panchenko, Tatyana Vyacheslavovna and Tarasevich, Yuri Yurievich
+\jour Computational methods and programming
+\paper Comparative analysis of the efficiency of application of genetic algorithms and Metropolis algorithm in problems of solid state physics
+\vol 8
+\pages 77-87
+\yr 2007
+
+\end{thebibliography}
+
+\EndArticle
+
+\end{document}

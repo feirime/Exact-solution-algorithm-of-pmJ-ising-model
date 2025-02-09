@@ -1,101 +1,111 @@
-\NeedsTeXFormat{LaTeX2e}[2001/01/27] % Р”Р»СЏ Р¶СѓСЂРЅР°Р»Р°!!!
-\ProvidesPackage{femj_ru}[2018/05/08 15:45 v1.022 Far Eastern Mathematical Journal]
+\NeedsTeXFormat{LaTeX2e}[2001/01/27] % Для журнала!!!
+\ProvidesPackage{femj_ru}[2024/09/10 10:06 v1.042 Far Eastern Mathematical Journal]
 
 \lccode`\-=`\-
 
-% Р·Р°РіСЂСѓР·РєР° РїР°РєРµС‚РѕРІ
+% загрузка пакетов
+%%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 \usepackage[twoside,papersize={175mm,250mm},top=20mm,textwidth=135mm,totalheight=210mm,left =16mm,%bindingoffset=40mm,ignore,textheight,
             includeheadfoot,headsep=5ex,headheight=12pt,footskip=0pt,marginparwidth=0pt,marginparsep=0pt,columnsep=0pt]{geometry}
-\RequirePackage{inputenc}
-\RequirePackage{soul}
+\RequirePackage[cp1251]{inputenc}
 \RequirePackage[T2A]{fontenc}
 \RequirePackage[english, russian]{babel}
 \RequirePackage{amsbib}
-\RequirePackage{amsmath,amssymb,amsthm,amsfonts,amscd}% amscd - РґРёР°РіСЂР°РјРјС‹
-\RequirePackage{tensor}% С‚РµРЅР·РѕСЂС‹
-\RequirePackage{cite}
-
-%\hypersetup{% РїРµС‡Р°С‚СЊ С‡С‘СЂРЅС‹Рј РіРёРїРµСЂСЃСЃС‹Р»РѕРє
-%colorlinks=true,
-%linkcolor=black,
-%citecolor=black,
-%urlcolor=black,
-%filecolor=black,
-%} 
-
-% С€СЂРёС„С‚С‹
-\RequirePackage{mathrsfs}
-\RequirePackage[sans]{dsfont}
+\RequirePackage{amsmath,amssymb,amsthm,amsfonts,amscd}% amscd - диаграммы
+\IfFileExists{nccmath.sty}{\RequirePackage{nccmath}}{\typeout{no nccmath.sty}}% тензоры
+\IfFileExists{tensor.sty}{\RequirePackage{tensor}}{\typeout{no tensor.sty}}% тензоры
+\IfFileExists{cite.sty}{\RequirePackage{cite}}{\typeout{no cite.sty}}
+% шрифты
+\IfFileExists{mathrsfs.sty}{\RequirePackage{mathrsfs}}{\typeout{no mathrsfs.sty}}
+\IfFileExists{dsfont.sty}{\RequirePackage[sans]{dsfont}}{\typeout{no dsfont.sty}}
 \RequirePackage{mflogo}
 \RequirePackage[nointegrals]{wasysym}
-\let\m@thcal\mathcal\RequirePackage{pzccal}\let\mathcal\m@thcal
+\IfFileExists{pzccal.sty}{\let\m@thcal\mathcal\RequirePackage{pzccal}\let\mathcal\m@thcal}{\typeout{no pzccal.sty}}
 
-\RequirePackage{faktor}% СЃС‚СЂРѕС‡РЅС‹Рµ РґСЂРѕР±Рё
+\IfFileExists{faktor.sty}{\RequirePackage{faktor}}{\typeout{no faktor.sty}}% строчные дроби
 \RequirePackage{graphicx}
-\RequirePackage{caption3}
-\RequirePackage{caption3}\captionsetup{font=small}\DeclareCaptionLabelSeparator{colon}{. }
-
 \RequirePackage{epstopdf}
-\RequirePackage{soul}% РїРµС‡Р°С‚СЊ РІ СЂР°Р·СЂСЏРґРєСѓ (РјРѕР¶РЅРѕ СЃР¶РёРјР°С‚СЊ С‚РµРєСЃС‚)
+\RequirePackage{soul}% печать в разрядку (можно сжимать текст)
+\RequirePackage{graphicx}
+\RequirePackage{caption3}\captionsetup{font=small}\DeclareCaptionLabelSeparator{colon}{. }
+\RequirePackage{soul}% печать в разрядку (можно сжимать текст)
 \RequirePackage{misccorr}
 
-% РћРїСЂРµРґРµР»РµРЅРёРµ С€СЂРёС„С‚РѕРІ
+% Определение шрифтов
 \DeclareSymbolFont{euex}{U}{euex}{m}{n}
 \DeclareFontEncoding{OT2}{wncyr}{\wncyr}
 \DeclareSymbolFont{wncyr}{OT2}{wncyr}{m}{n}
 \DeclareSymbolFont{wncyi}{OT2}{wncyr}{m}{it}
+%%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-% РћРїСЂРµРґРµР»РµРЅРёРµ СЃС‚РёР»СЏ С‚РµРѕСЂРµРјРѕРїРѕРґРѕР±РЅС‹С… РѕРєСЂСѓР¶РµРЅРёР№ Рё РґРѕРєР°Р·Р°С‚РµР»СЊСЃС‚РІ
+% Определение стиля теоремоподобных окружений и доказательств
+%%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 \newtheoremstyle{femj}{1ex}{1ex}{\slshape}{}{\bf}{.}{.5em}{\thmname{#1}\thmnumber{ #2}\thmnote{\normalfont\ #3}}
 \theoremstyle{femj}
-\newtheorem{thm}{\indent РўРµРѕСЂРµРјР°}                                               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newtheorem{lem}{\indent Р›РµРјРјР°}                                                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newtheorem{stat}{\indent РЈС‚РІРµСЂР¶РґРµРЅРёРµ}                                          %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newtheorem{prop}{\indent РџСЂРµРґР»РѕР¶РµРЅРёРµ}                                          %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newtheorem{cor}{\indent РЎР»РµРґСЃС‚РІРёРµ}%[thm]                                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{thm}{\indent Теорема}                                               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{lem}{\indent Лемма}                                                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{stat}{\indent Утверждение}                                          %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{prop}{\indent Предложение}                                          %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{cor}{\indent Следствие}%[thm]                                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newtheorem*{thm*}{\indent РўРµРѕСЂРµРјР°}                                             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newtheorem*{lem*}{\indent Р›РµРјРјР°}                                               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newtheorem*{stat*}{\indent РЈС‚РІРµСЂР¶РґРµРЅРёРµ}                                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newtheorem*{prop*}{\indent РџСЂРµРґР»РѕР¶РµРЅРёРµ}                                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newtheorem*{cor*}{\indent РЎР»РµРґСЃС‚РІРёРµ}                                           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem*{thm*}{\indent Теорема}                                             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem*{lem*}{\indent Лемма}                                               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem*{stat*}{\indent Утверждение}                                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem*{prop*}{\indent Предложение}                                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem*{cor*}{\indent Следствие}                                           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newtheoremstyle{defin}{1ex}{1ex}{\normalfont}{}{\bf}{.}{.25em}{\thmname{#1}\thmnumber{ #2}\thmnote{\normalfont\ #3}}
 \theoremstyle{defin}
-\newtheorem{defin}{\indent РћРїСЂРµРґРµР»РµРЅРёРµ}                                         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newtheorem*{defin*}{\indent РћРїСЂРµРґРµР»РµРЅРёРµ}                                       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{defin}{\indent Определение}                                         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem*{defin*}{\indent Определение}                                       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \theoremstyle{remark}
-\newtheorem{rem}{\indent Р—Р°РјРµС‡Р°РЅРёРµ}                                             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newtheorem*{rem*}{\indent Р—Р°РјРµС‡Р°РЅРёРµ}                                           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{rem}{\indent Замечание}                                             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem*{rem*}{\indent Замечание}                                           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \renewenvironment{proof}[1]{\vskip1ex\indent\Proof#1}{\hfill$\Box$}
-\sodef\tso{}{.2em}{.75em}{\z@}                                                  % РїР°СЂР°РјРµС‚СЂС‹ РїРµС‡Р°С‚Рё РІ СЂР°Р·СЂСЏРґРєСѓ Proof
-\def\Proof{\normalfont\tso{Р”РѕРєР°Р·Р°С‚РµР»СЊСЃС‚РІРѕ}\ifpoint.\else\global\pointtrue\fi\hskip.75em}
+\sodef\tso{}{.2em}{.75em}{\z@}                                                  % параметры печати в разрядку Proof
+\def\Proof{\normalfont\tso{Доказательство}\ifpoint.\else\global\pointtrue\fi\hskip.75em}
 \def\Nopoint{\pointfalse}
 
 \newenvironment{prooft}[1]{\vskip1ex\indent\Prooft#1}{\hfill$\Box$}
-		%Р”РѕРєР°Р·Р°С‚РµР»СЊСЃС‚РІРѕ С‚РµРѕСЂРµРјС‹
-\sodef\tso{}{.2em}{.75em}{\z@}                % РїР°СЂР°РјРµС‚СЂС‹ РїРµС‡Р°С‚Рё РІ СЂР°Р·СЂСЏРґРєСѓ Prooft
-
-\def\Prooft{\normalfont\tso{Р”РѕРєР°Р·Р°С‚РµР»СЊСЃС‚РІРѕ С‚РµРѕСЂРµРјС‹}\ifpoint.\else\global\pointtrue\fi\hskip.75em}
+\sodef\tso{}{.2em}{.75em}{\z@}                % параметры печати в разрядку Prooft
+\def\Prooft{\normalfont\tso{Доказательство теоремы}\ifpoint.\else\global\pointtrue\fi\hskip.75em}
+%%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 \def\Nopoint{\pointfalse}
 
+\chardef\@@atcode=\the\catcode`|                                                % Добавление к буквенным символам (кроме @) символа |
+\catcode`|=11                                                                   % позволяет исключить какое-либо переопределение команд (LA)TEX'а
 
+% Дополнительные команды и определения
 %%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-% Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РєРѕРјР°РЅРґС‹ Рё РѕРїСЂРµРґРµР»РµРЅРёСЏ
-\def\bs#1{\ifcat#1a{\mathbf#1}\else{\boldsymbol#1}\fi}  % РїРµС‡Р°С‚СЊ Р¶РёСЂРЅС‹Рј С€СЂРёС„С‚РѕРј С†РёС„СЂ, Р»Р°С‚РёРЅСЃРєРёС… Рё РіСЂРµС‡РµСЃРєРёС… Р±СѓРєРІ (РЅР°РїСЂРёРјРµСЂ, \bs u, \bs1, \bs\sigma)
-\def\rms#1{{\mathrm#1}}
 
 \def\sign{\mathop{\operator@font sign}\nolimits}
 \def\const {\mathop{\operator@font const}\nolimits}
-\def\mes{\mathop{\operator@font mes}\nolimits}
-\def\rot{\mathop{\operator@font rot}\nolimits}
-\def\grad {\mathop{\operator@font grad}\nolimits}
-\def\divg {\mathop{\operator@font div}\nolimits}
-\def\rank {\mathop{\operator@font rank}\nolimits}
-\def\deff{\stackrel{\rm def}=}              % СЂР°РІРЅРѕ РїРѕ РѕРїСЂРµРґРµР»РµРЅРёСЋ (РєРѕРјР°РЅРґР° \def - РїСЂРёРјС‚РёРІ TEX'Р°)
+%%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+%Производные
+\def\dd#1#2{\dfrac{d#1}{d#2}}
+\def\ddi#1#2{\dfrac{d\mkern1mu#1\hfill}{d#2\hfill}}
+\def\@|dnd#1#2#3{\kern#2\raise#3\hbox{$\scriptstyle#1$}}
+\def\dnd#1#2#3{\dfrac{d\@|dnd{#1}{.1em}{1ex}#2}{d#3^#1}}
+\def\dndi#1#2#3{\dfrac{d\@|dnd{#1}{.1em}{1ex}#2\hfill}{d#3^#1\hfill}}
+%Частные производные
+\def\Dp#1#2{\dfrac{\partial#1}{\partial#2}}
+\def\Dpi#1#2{\dfrac{\partial\mkern1mu#1\hfill}{\partial#2\hfill}}
+\def\Dpn#1#2#3{\dfrac{\partial\@|dnd{#1}{.06em}{1ex}#2}{\partial#3^#1}}
+\def\Dpni#1#2#3{\dfrac{\partial\@|dnd{#1}{.06em}{1ex}#2\hfill}{\partial#3^#1\hfill}}
+\def\DDp#1#2#3{\dfrac{\partial\@|dnd{2}{.06em}{1ex}#1}{\partial#2\partial#3}}
+
+%%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+\def\rms#1{{\mathrm#1}}
+\def\deff{\stackrel{\rm def}=}              % равно по определению (команда \def - примтив TEX'а)
+\def\bs#1{\ifcat#1a{\mathbf#1}\else{\boldsymbol#1}\fi}  % печать жирным шрифтом цифр, латинских и греческих букв (например, \bs u, \bs1, \bs\sigma)
+\def\hcenter$$#1$${\vskip.5ex plus .25ex minus .125ex\centerline{\hbox{$\displaystyle#1$}}\vskip.5ex  plus .25ex minus .125ex\noindent\ignorespaces} % Строчная выключенная формула без вернмх/нижних отступов
+\def\vds#1{\vadjust{\vskip#1ex}}
+\def\vje{\vadjust{\eject}}
 %%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 \parskip  0pt
 %%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -117,50 +127,48 @@
 \newcount\countC
 \newdimen\dA
 
-\chardef\@@atcode=\the\catcode`|                                                % Р”РѕР±Р°РІР»РµРЅРёРµ Рє Р±СѓРєРІРµРЅРЅС‹Рј СЃРёРјРІРѕР»Р°Рј (РєСЂРѕРјРµ @) СЃРёРјРІРѕР»Р° |
-\catcode`|=11                                                                   % РїРѕР·РІРѕР»СЏРµС‚ РёСЃРєР»СЋС‡РёС‚СЊ РєР°РєРѕРµ-Р»РёР±Рѕ РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ РєРѕРјР°РЅРґ (LA)TEX'Р°
-
 \newtoks\|TITLE
 \newcount\|page
 \newcount\||page
 \newcount\|cA
 \newcount\|sa
-\newif\if|Russian
 \newif\ifpoint
 \pointtrue
 
-% РћСЃРЅРѕРІРЅС‹Рµ РєРѕРјР°РЅРґС‹ Р¶СѓСЂРЅР°Р»Р° Рё Р·Р°РіРѕР»РѕРІРєРѕРІ
+% Основные команды журнала и заголовков
 \countA=\number\year
 \edef\YEAR{\the\countA}
 \advance\countA-2000
 \edef\VOLUME{\the\countA}
 \countA\z@
-\def\NUM{2}				% РЅРѕРјРµСЂ Р¶СѓСЂРЅР°Р»Р° РЅСѓР¶РЅРѕ РјРµРЅСЏС‚СЊ РІСЂСѓС‡РЅСѓСЋ 
+\ifnum\month>6\def\NUM{2}\else\def\NUM{1}\fi % номер журнала 		
 \let\RHeadtext\relax
 \let\LHeadtext\relax
 \def\No{\iflanguage{russian}{\textnumero}{No}}
+\def\ql{\iflanguage{russian}{\guillemotleft\ignorespaces}{``}}
+\def\qr#1{\iflanguage{russian}{\ignorespaces\guillemotright\ifcat#1.#1\else\ #1\fi}{''}}
+\def\qlr#1{\ql#1\qr}
 
-\def\shrtarticle{\|sa\@ne}
-\def\|shrtarticle{\ifnum\|sa=\@ne\noindent{\scshape\underline{РљСЂР°С‚РєРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ}}\vskip4ex\fi}
+\def\shortarticle{\|sa\@ne}
+\def\|shrtarticle{\ifnum\|sa=\@ne\noindent{\scshape\underline{Краткие сообщения}}\vskip4ex\fi}
 
-\def\UDC#1{\setbox\udc=\hbox{\textup{РЈР”Рљ\quad #1}}}
+\def\UDC#1{\setbox\udc=\hbox{\textup{УДК\quad #1}}}
 \def\AMS#1{\setbox\ams=\hbox{\selectlanguage{english}\textup{MSC2020\quad #1}}}
 \setbox\udc=\vbox to \z@{}
 \setbox\ams=\vbox to \z@{}
-
 
 \def\DOI#1{\setbox\doi=\hbox{\selectlanguage{english}\textup{DOI:\quad https://doi.org/10.47910/FEMJ#1}}}
 \setbox\doi=\vbox to \z@{}
 
 
-\long\def\submitted#1{\setbox\wbox=\hbox{\small РџРѕСЃС‚СѓРїРёР»Р° РІ СЂРµРґР°РєС†РёСЋ}
+\long\def\submitted#1{\setbox\wbox=\hbox{\small Поступила в редакцию}
      \setbox\Submitted=\vtop{\hsize=\wd\wbox\small\noindent\box\wbox\par
                             \strut\hfill#1}}
 
 \def\SupportedBy{\@ifnextchar[{\|by}{\||by}}
-\def\|by[#1]#2{\dA=\hsize\hsize=#1\dA                                    % С€РёСЂРёРЅР° Р±РѕРєСЃР° #1 С€РёСЂРёРЅС‹ РїРѕР»РѕСЃС‹
+\def\|by[#1]#2{\dA=\hsize\hsize=#1\dA                                    % ширина бокса #1 ширины полосы
     \setbox\supportedby=\vtop{\small\noindent#2}\hsize=\dA}
-\def\||by#1{\dA=\hsize\hsize=.5\dA                                       % С€РёСЂРёРЅСѓ Р±РѕРєСЃР° РјРѕР¶РЅРѕ РјРµРЅСЏС‚СЊ, РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ 0.5 С€РёСЂРёРЅС‹ РїРѕР»РѕСЃС‹
+\def\||by#1{\dA=\hsize\hsize=.5\dA                                       % ширину бокса можно менять, по умолчанию 0.5 ширины полосы
     \setbox\supportedby=\vtop{\small\noindent#1}\hsize=\dA}
 
 \def\title#1{\TITLE={#1}\refstepcounter{titl}\@listdepth=0}
@@ -170,31 +178,20 @@
 \let\||title\|title
 
 \edef\|AUTHOR{}
+%\let\EMAIL\relax
 \edef\EMAIL{}
 \edef\ORG{}
 \edef\|||{}
 \let\|end\relax
-\def\author{\@ifnextchar[{\let\next\|email\|author}{\||author}}
-\long\def\|author[#1]#2#3#4{\ifnum\|cA=\z@\AUTHOR={#2}\else\AUTHOR=\expandafter{\the\AUTHOR, #2}\fi\advance\|cA\@ne
-    \countC\countB\ifnum\countB>\z@\edef\|||{\hskip-.35em,\ }\fi\ifx\empty#3\empty\else\advance\countB\@ne\fi
-    \edef\|AUTHOR{\|AUTHOR\|||#2${}^{#1}$}\ifnum\countC<\countB\edef\ORG{\ORG\par${}^{\the\countB}$\hskip.1em#3}\fi
-    \ifx\empty#4\empty\else\edef\EMAIL{\EMAIL#4(#2)}\fi}
-\long\def\||author#1#2#3{\ifnum\|cA=\z@\AUTHOR={#1}\else\AUTHOR=\expandafter{\the\AUTHOR, #1}\fi\advance\|cA\@ne
-    \countC\countB\ifnum\countB>\z@\edef\|||{\hskip-.35em,\ }\fi\ifx\empty#2\empty\else\advance\countB\@ne\fi
-    \edef\|AUTHOR{\|AUTHOR\|||#1${}^{\the\countB}$}\ifnum\countC<\countB\edef\ORG{\ORG\par${}^{\the\countB}$\hskip.1em#2}\fi
-    \ifx\empty#3\empty\else\edef\EMAIL{\EMAIL#3(#1)}\fi}
-\def\|email#1(#2)#3\|end{\if#3\relax\let\next\relax\else\let\next\|email\fi\texttt{#1}\ \textrm{(#2)}\ifx\next\relax.\else,\fi\ \next#3\|end}
-\def\||email#1(#2){\texttt{#1}}
-\def\addorg#1{\advance\countB\@ne\edef\ORG{\ORG\par${}^{\the\countB}$\hskip.1em#1}}
 
 \def\markright#1{\def\RHeadtext{#1}}
 \def\markleft#1{\def\LHeadtext{#1}}
 
-\long\def\abstract#1\keywords#2\DOI#3{\begin{quote}\small #1\vskip.5ex {\bf РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°:} {\it #2} \vskip.3ex DOI:\quad https://doi.org/10.47910/FEMJ#3\end{quote}\vskip2ex plus .25ex minus .5ex}
+\long\def\abstract#1\keywords#2\DOI#3{\begin{quote}\small #1\vskip.5ex {\bf Ключевые слова:} {\it #2} \vskip.3ex plus .05ex minus .1ex
+DOI:\quad https://doi.org/10.47910/FEMJ#3\end{quote}\vskip2ex plus .25ex minus .5ex}
 
 \long\def\makeface{
     \everymath{\thinmuskip=1.5mu plus .75mu minus 1mu\medmuskip2mu plus 1mu minus 2mu\thickmuskip=2.5mu plus 1.25mu minus 1mu}
-    \daublesine
     \defaulthyphenchar=127
     \edef\EMAIL{\EMAIL\relax\|end}
     \ifnum\|cA=\@ne\let\next\||email\else\let\next\|email\fi
@@ -202,7 +199,7 @@
     \thispagestyle{titl}
     \|page\c@page
     \|shrtarticle
-    \noindent\box\udc  \par  
+    \ifx\udc\null\vskip-\baselineskip\else\noindent\box\udc\par\fi
     \noindent\box\ams
     \vskip\ifnum\|sa=\@ne4ex\else8ex\fi plus 1ex minus 2ex
     \begin{center}
@@ -213,83 +210,92 @@
     \expandafter\||title\the\TITLE\\\|end&
     \@ifundefined{RHeadtext}{\def\RHeadtext{\the\|TITLE}}{}
     \@ifundefined{LHeadtext}{\def\LHeadtext{\the\AUTHOR}}{}
-%    \vskip 1ex
     {\def\thefootnote{\empty}
-     \setbox\footbox=\vtop{\advance\hsize-16.17pt\footnotesize{\parindent-.6em\ORG}\ifnum\|cA=\@ne\ \else\par\noindent\fi
-      Р­Р»РµРєС‚СЂРѕРЅРЅР°СЏ РїРѕС‡С‚Р°:\ \expandafter\next\EMAIL}\dA=\ht\footbox\advance\dA\dp\footbox\advance\dA.5mm
-    \footnote{\vtop to\dA{\advance\hsize-16.17pt\footnotesize{\parindent-.6em\ORG}\ifnum\|cA=\@ne\ \else\par\noindent\fi
-      Р­Р»РµРєС‚СЂРѕРЅРЅР°СЏ РїРѕС‡С‚Р°:\ \expandafter\next\EMAIL}}}
+    \footnote{\vtop{\advance\hsize-16.17pt\footnotesize{\parindent-.6em\ORG}\ifnum\|cA=\@ne\ \else\par\noindent\fi
+      Электронная почта:\ \expandafter\next\EMAIL}}}
     \setcounter{footnote}0
 }
 
 \let\||Pages\relax
 \def\Pages(#1--#2){\ifnum#1=#2\edef\||Pages{#1}\else\edef\||Pages{#1--#2}\fi\c@page=#1}
 
-% Р°РЅРіР»РёР№СЃРєРёР№ Р°Р±СЃС‚СЂР°РєС‚
-\long\def\summary#1\author#2\title#3\keywords#4\org#5\references#6{\selectlanguage{english}
+%%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+% английский абстракт
+\def\authoren{\@ifnextchar[{\|authoren}{\||authoren}}
+\long\def\|authoren[#1]#2#3{%\ifnum\|cA=\z@\AUTHOR={#2}\else\AUTHOR=\expandafter{\the\AUTHOR, #2}\fi\advance\|cA\@ne
+    \countC\countB\ifnum\countB>\z@\edef\|||{\hskip-.35em,\ }\fi\ifx\empty#3\empty\else\advance\countB\@ne\fi
+    \edef\|AUTHOR{\|AUTHOR\|||#2${}^{#1}$}\ifnum\countC<\countB\edef\ORG{\ORG\par\noindent${}^{\the\countB}$\hskip.1em#3}\fi}
+
+\long\def\||authoren#1#2{%\ifnum\|cA=\z@\AUTHOR={#1}\else\AUTHOR=\expandafter{\the\AUTHOR, #1}\fi\advance\|cA\@ne
+    \countC\countB\ifnum\countB>\z@\edef\|||{\hskip-.35em,\ }\fi\ifx\empty#2\empty\else\advance\countB\@ne\fi
+    \edef\|AUTHOR{\|AUTHOR\|||#1${}^{\the\countB}$}\ifnum\countC<\countB\edef\ORG{\ORG\par\noindent${}^{\the\countB}$\hskip.1em#2}\fi}
+\def\addorgen#1{\advance\countB\@ne\edef\ORG{\ORG\par\noindent${}^{\the\countB}$\hskip.1em#1}}
+\let\author\authoren
+\let\addorg\addorgen
+
+\long\def\summary#1\title#2\keywords#3{\countB\z@\selectlanguage{english}
 \setbox\SummarY=\vbox{\hsize115mm
-{\noindent\it #1} \rm #2.
-\textsl{Far Eastern Mathematical Journal.} \YEAR. V.~\VOLUME. No~\NUM. \hbox{P.~\||Pages.}      % Р”Р»СЏ Р°РІС‚РѕСЂРѕРІ 1--24!?
-\vskip2ex
-
-\vbox{\noindent \footnotesize #5}
-
+{\noindent\it \|AUTHOR}
+\rm #1.
+\textsl{Far Eastern Mathematical Journal.} \YEAR. V.~\VOLUME. No~\NUM. \hbox{P.~\||Pages.}
+\vskip1ex
+\dA=\baselineskip\baselineskip=.75\baselineskip
+{\footnotesize\ORG}
 \vskip2ex
 \centerline{ABSTRACT}
+\baselineskip=\dA
 \vskip1ex
-\noindent#3
+\noindent#2
 \vskip2ex\noindent
-Key words: \textit{#4}
+Key words: \textit{#3}}
+\selectlanguage{russian}
+\let\author\authorru
+\let\addorg\addorgru
+\edef\|AUTHOR{}
+\edef\ORG{}
+\edef\|||{}
 }
-\def\references{#6}
-\selectlanguage{russian}}
+
+\def\authorru{\@ifnextchar[{\let\next\|email\|author}{\||author}}
+\long\def\|author[#1]#2#3#4{\ifnum\|cA=\z@\AUTHOR={#2}\else\AUTHOR=\expandafter{\the\AUTHOR, #2}\fi\advance\|cA\@ne
+    \countC\countB\ifnum\countB>\z@\edef\|||{\hskip-.35em,\ }\fi\ifx\empty#3\empty\else\advance\countB\@ne\fi
+    \edef\|AUTHOR{\|AUTHOR\|||#2${}^{#1}$}\ifnum\countC<\countB\edef\ORG{\ORG\par${}^{\the\countB}$\hskip.1em#3}\fi
+    \ifx\empty#4\empty\else\edef\EMAIL{\EMAIL#4(#2)}\fi}
+\long\def\||author#1#2#3{\ifnum\|cA=\z@\AUTHOR={#1}\else\AUTHOR=\expandafter{\the\AUTHOR, #1}\fi\advance\|cA\@ne
+    \countC\countB\ifnum\countB>\z@\edef\|||{\hskip-.35em,\ }\fi\ifx\empty#2\empty\else\advance\countB\@ne\fi
+    \edef\|AUTHOR{\|AUTHOR\|||#1${}^{\the\countB}$}\ifnum\countC<\countB\edef\ORG{\ORG\par${}^{\the\countB}$\hskip.1em#2}\fi
+    \ifx\empty#3\empty\else\edef\EMAIL{\EMAIL#3(#1)}\fi
+    }
+\def\|email#1(#2)#3\|end{\if#3\relax\let\next\relax\else\let\next\|email\fi\texttt{#1}\ \textrm{(#2)}\ifx\next\relax.\else,\fi\ \next#3\|end}
+\def\||email#1(#2){\texttt{#1}}
+\def\addorgru#1{\advance\countB\@ne\edef\ORG{\ORG\par${}^{\the\countB}$\hskip.1em#1}}
+
 \let\keywords\relax
 
-\def\nosummary#1\author#2\title{}
-
-\def\titleup{
-\thispagestyle{empty}
-\parindent=0pt
-\global\|page\c@page
-\scalebox{1.2}[1.15]{\textbf{Р РћРЎРЎРР™РЎРљРђРЇ РђРљРђР”Р•РњРРЇ РќРђРЈРљ}}\\[.66ex]
-\scalebox{1.1}[1.05]{\textbf{Р”РђР›Р¬РќР•Р’РћРЎРўРћР§РќРћР• РћРўР”Р•Р›Р•РќРР•}}\\[2ex]
-\scalebox{1.3}{\textbf{\textsf{Р”РђР›Р¬РќР•Р’РћРЎРўРћР§РќР«Р™ РњРђРўР•РњРђРўРР§Р•РЎРљРР™ Р–РЈР РќРђР›}}}\\[1.25ex]
-\scalebox{1.3}[1.25]{\textbf{\YEAR\qquad С‚РѕРј \VOLUME\qquad \textnumero~\NUM}}
-\vskip2.25ex
-\hrule height 3pt
-\vskip2pt
-\hrule height .4pt}
+\newtoks\enlit
+\long\def\references#1{\enlit={#1}}
 
 \def\EndArticle{\penalty10000%
     \vskip2ex
-    \noindent\hbox{\box\Submitted}\hfill\hbox{\box\supportedby}
-    \vskip3ex
-    \centerline{\vbox{\hrule width 115mm}}
-    \vskip1.75ex\noindent\hfil\box\SummarY\hfil
-
-\renewcommand{\refname}{References}
-\references
-
+\vbox{
+	\noindent\hbox{\box\Submitted}\hfill\hbox{\box\supportedby}
+    \vskip3ex minus 2ex
+	\centerline{\vbox{\hrule width 115mm}}}
+	\vskip1.75ex\noindent\hfil\box\SummarY\hfil
     \vfill
     \eject
 }
 
-\def\EndPreambule{
-    \vfill
-    \eject
-    \||page=\c@page\advance\||page-\@ne
-}
-
-%РєРѕР»РѕРЅС‚РёС‚СѓР»С‹
+%колонтитулы
 %%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-\def\ps@femj{\let\@mkboth\@gobbletwo% РїРѕСЃС‚СЂР°РЅРёС‡РЅС‹Рµ РєРѕР»РѕРЅС‚РёС‚СѓР»С‹ С‡С‘С‚РЅРѕР№ Рё РЅРµС‡С‘С‚РЅРѕР№ СЃС‚СЂР°РЅРёС†С‹
-     \def\@oddhead{\vbox to 12pt{\hbox to \hsize{\hfill\selectlanguage{russian}\RHeadtext\hfill\thepage}\vfill\hrule\hss}}                          % РЅРµС‡С‘С‚РЅР°СЏ
-     \def\@evenhead{\vbox to 12pt{\hbox to \hsize{\thepage\hfill\selectlanguage{russian}\LHeadtext\hfill}\vfill\hrule\hss}}                         % С‡С‘С‚РЅР°СЏ
+\def\ps@femj{\let\@mkboth\@gobbletwo% постраничные колонтитулы чётной и нечётной страницы
+     \def\@oddhead{\vbox to 12pt{\hbox to \hsize{\hfill\selectlanguage{russian}\RHeadtext\hfill\thepage}\vfill\hrule\hss}}                          % нечётная
+     \def\@evenhead{\vbox to 12pt{\hbox to \hsize{\thepage\hfill\selectlanguage{russian}\LHeadtext\hfill}\vfill\hrule\hss}}                         % чётная
      \let\@oddfoot\@empty%
      \let\@evenfoot\@empty}
 %%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 \def\ps@titl{\let\@mkboth\@gobbletwo%
-    \def\@oddhead{\setbox\wbox=\hbox{\textsl{Р”Р°Р»СЊРЅРµРІРѕСЃС‚РѕС‡РЅС‹Р№ РјР°С‚РµРјР°С‚РёС‡РµСЃРєРёР№ Р¶СѓСЂРЅР°Р».} \YEAR. Рў.~\VOLUME. \textnumero~\NUM. \hbox{РЎ.~\||Pages}}
+    \def\@oddhead{\setbox\wbox=\hbox{\textsl{Дальневосточный математический журнал.} \YEAR. Т.~\VOLUME. \textnumero~\NUM. \hbox{С.~\||Pages}}
         \hsize = \wd\wbox
         \hfill\vbox to12pt{\box\wbox\vfill\hrule}\hfill}
     \let\@evenhead\@oddhead\let\@oddfoot\@empty\let\@evenfoot\@empty}
@@ -318,19 +324,16 @@ Key words: \textit{#4}
 
 
 %%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-\newcount\|countA
-\newcount\|countB
 \newcount\|maxstr
 
 %%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-%%  РџРµСЂРµРІРѕРґ РїРµСЂРµРјРµРЅРЅРѕР№ СЂР°Р·РјРµСЂР° РІ РґРµСЃСЏС‚РёС‡РЅРѕРµ С‡РёСЃР»Рѕ --
-% РјР°РєСЂРѕСЃ РЅР° РѕСЃРЅРѕРІРµ "Р’СЃРµ РїСЂРѕ РўР•РҐ" РїСЂРёР»РѕР¶РµРЅРёРµ D СЃС‚СЂ. 441
-% РІ С‚Р°РєРѕРј РІРёРґРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ РїР°РєРµС‚Рµ pictex
+%%  Перевод переменной размера в десятичное число --
+% макрос на основе "Все про ТЕХ" приложение D стр. 441
 \def\@|edef#1#2{\edef#2{\expandafter\@|removePT\the#1}}
 {\catcode`p=12 \catcode`t=12 \gdef\@|removePT#1pt{#1}}
 %%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-% РѕРїСЂРµРґРµР»РµРЅРёРµ РёРЅС‚РµСЂР»РёРЅСЊСЏР¶Р°
+% определение интерлиньяжа
 \def\baselns#1{\|maxstr=#1\dA=\textheight\divide\dA by \|maxstr%
     \@|edef\dA\@|bsln\xdef\|chbls{\@|bsln}\countA=\|maxstr\advance\countA by 5%
     \divide\dA\countA\@|edef\dA\@|pbsln%
@@ -353,7 +356,7 @@ Key words: \textit{#4}
 
 %%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-%С„РѕСЂРјРёСЂРѕРІР°РЅРёРµ РѕС‚СЃС‚СѓРїР° РїРµСЂРІРѕРіРѕ Р°Р±Р·Р°С†Р°
+%формирование отступа первого абзаца
 \let\@afterindentfalse\@afterindenttrue \@afterindenttrue
 
 %\rdefinedsymbolg
@@ -361,39 +364,21 @@ Key words: \textit{#4}
 \mathcode`g="67
 \let\|ldots\ldots
 \def\ldots{\ifmmode\ifinner\mathinner{\ldotp\mkern-1.5mu\ldotp\mkern-1.5mu\ldotp}\else\mathinner{\ldotp\mkern-.5mu\ldotp\mkern-.5mu\ldotp}\fi
-           \else\|ldots\fi}     % РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ РјРЅРѕРіРѕС‚РѕС‡РёСЏ
+           \else\|ldots\fi}     % переопределение многоточия
 \def\cdots{\ifmmode\ifinner\mathinner{\cdotp\mkern-1.5mu\cdotp\mkern-1.5mu\cdotp}\else\mathinner{\cdotp\mkern-.5mu\cdotp\mkern-.5mu\cdotp}\fi
            \else\|ldots\fi}
 \let\dots\ldots
 
-%РёРЅС‚РµРіСЂР°Р»С‹
+%интегралы
 \def\@cdots{\mathinner{\cdotp\mkern-.5mu\cdotp\mkern-.5mu\cdotp}}
 \def\intdots@{\mathchoice{\@cdots}%
  {\mkern-2mu{\cdotp}\mkern-.75mu{\cdotp}\mkern-.75mu{\cdotp}\mkern-2mu}%
  {\mkern-2.5mu{\cdotp}\mkern-1mu{\cdotp}\mkern-1mu{\cdotp}\mkern-2.5mu}%
  {\mkern-3mu{\cdotp}\mkern-1.5mu{\cdotp}\mkern-1.5mu{\cdotp}\mkern-3mu}}
 
-% Russian double quotes  << >>
-\def\qlr#1{\guillemotleft\ignorespaces#1\ignorespaces\guillemotright}
-
-% Р—Р°РјРµРЅР° Р°РЅРіР»РёР№СЃРєРёС… РЅР°Р·РІР°РЅРёР№ С„СѓРЅРєС†РёРё
-\let\tan\tg
-\let\arctan\arctg
-\let\cot\ctg
-\let\arccot\arcctg
-\let\sinh\sh
-\let\cosh\ch
-\def\tanh{\mathop{\operator@font th}\nolimits}
-\let\coth\cth
-\let\csc\cosec
-
 \def\sum{\DOTSB\sum@\limits}
 \let\ilimits@\limits
 \let\ilimits@@\limits
-\let\le\leqslant
-\let\ge\geqslant
-\let\leq\leqslant
-\let\geq\geqslant
 
 \def\Every{\everymath{\thinmuskip=1.5mu plus .75mu minus 1mu\medmuskip2mu plus 1mu minus 2mu\thickmuskip=2.5mu plus 1.25mu minus 2mu}}
 \def\EVERY{\everymath{\thinmuskip=3mu\medmuskip4mu plus 2mu minus 4mu\thickmuskip=5mu}}
@@ -415,26 +400,7 @@ Key words: \textit{#4}
 \Every
 
 %%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-\def\hcenter$$#1$${\vskip.5ex plus .25ex minus .125ex\centerline{\hbox{$\displaystyle#1$}}\vskip.5ex  plus .25ex minus .125ex\noindent\ignorespaces}
-\def\vds#1{\vadjust{\vskip#1ex}}
-\def\vje{\vadjust{\eject}}
-
-%РџСЂРѕРёР·РІРѕРґРЅС‹Рµ
-\def\dd#1#2{\dfrac{d#1}{d#2}}
-\def\ddi#1#2{\dfrac{d\mkern1mu#1\hfill}{d#2\hfill}}
-\def\@|dnd#1#2#3{\kern#2\raise#3\hbox{$\scriptstyle#1$}}
-\def\dnd#1#2#3{\dfrac{d\@|dnd{#1}{.1em}{1ex}#2}{d#3^#1}}
-\def\dndi#1#2#3{\dfrac{d\@|dnd{#1}{.1em}{1ex}#2\hfill}{d#3^#1\hfill}}
-%Р§Р°СЃС‚РЅС‹Рµ РїСЂРѕРёР·РІРѕРґРЅС‹Рµ
-\def\Dp#1#2{\dfrac{\partial#1}{\partial#2}}
-\def\Dpi#1#2{\dfrac{\partial\mkern1mu#1\hfill}{\partial#2\hfill}}
-\def\Dpn#1#2#3{\dfrac{\partial\@|dnd{#1}{.06em}{1ex}#2}{\partial#3^#1}}
-\def\Dpni#1#2#3{\dfrac{\partial\@|dnd{#1}{.06em}{1ex}#2\hfill}{\partial#3^#1\hfill}}
-\def\DDp#1#2#3{\dfrac{\partial\@|dnd{2}{.06em}{1ex}#1}{\partial#2\partial#3}}
-
-%%::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-% РўРµРєСЃС‚ РІ РІС‹РєР»СЋС‡РµРЅРЅРѕР№ С„РѕСЂРјСѓР»Рµ (СЃРј. РЎРїРёРІР°Рє)
+% Текст в выключенной формуле (см. Спивак)
 
 \newif\iftopfolded@
 \newif\ifbotfolded@
@@ -454,64 +420,7 @@ Key words: \textit{#4}
   \iftopfolded@\vtop{\unvbox\z@}\else\vcenter{\boxz@}\fi\fi}%
  \FN@\next@}
 
-\def\intertext@{%
-  \def\intertext##1{\gdef\text|{##1}\@ifnextchar[{\intertext|}{\intertext||}}
-  \def\intertext|[##1,##2]{
-    \ifvmode\else\\\@empty\fi
-    \noalign{%
-      \penalty\postdisplaypenalty\if##10\vskip\z@\else\vskip##1\fi
-      \vbox{\normalbaselines
-        \ifdim\linewidth=\columnwidth
-        \else \parshape\@ne \@totalleftmargin \linewidth
-        \fi
-        \noindent\text|\par}%
-      \penalty\predisplaypenalty\if##20\vskip\z@\else\vskip##2\fi%
-    }%
-  }
-  \def\intertext||{
-   \ifvmode\else\\\@empty\fi
-    \noalign{%
-      \penalty\postdisplaypenalty\vskip\belowdisplayskip
-      \vbox{\normalbaselines
-        \ifdim\linewidth=\columnwidth
-        \else \parshape\@ne \@totalleftmargin \linewidth
-        \fi
-        \noindent\text|\par}%
-      \penalty\predisplaypenalty\vskip\abovedisplayskip%
-    }%
-  }
-}
-
-\gdef\newmcodes@{\mathcode`\-="2200\mathcode`\'39\mathcode`\*42\mathcode`\."613A%
-  \ifnum\mathcode`\-=45 \else
-    \mathchardef\std@minus\mathcode`\-\relax
-  \fi
-  \mathcode`\-45\mathcode`\/47\mathcode`\:"603A\relax}
-
 \catcode`|=\the\@@atcode
-
-\def\daublesine{
-\mathcode`\==32768
-\mathcode`\<=32768
-\mathcode`\>=32768
-\mathcode`\+=32768
-\mathcode`\-=32768
-}
-
-%РїРµСЂРЅРѕСЃ СЃРёРјРІРѕР»РѕРІ Р±РёРЅР°СЂРЅС‹С… РѕРїРµСЂР°С†РёР№ РІ СЃС‚СЂРѕС‡РЅС‹С… С„РѕСЂРјСѓР»Р°С…
-{
-\catcode`\+\active\gdef+{\mathchar8235\nobreak\discretionary{}{\hbox{$\mathchar8235$}}{}}
-\catcode`\-\active\gdef-{\mathchar"3200\nobreak\discretionary{}{\hbox{$\mathchar"3200$}}{}}
-\catcode`\=\active\gdef={\mskip\thickmuskip\mathchar"3D\mskip\thickmuskip\nobreak\discretionary{}{\hbox{$\mathchar"3D\mskip\thickmuskip$}}{}}
-\catcode`\<\active\gdef<{\mathchar"313C\nobreak\discretionary{}{\hbox{$\mathchar"313C$}}{}}
-\catcode`\>\active\gdef>{\mathchar"313E\nobreak\discretionary{}{\hbox{$\mathchar"313E$}}{}}
-}
-\def\ast{\mathchar"2203\nobreak\discretionary{}{\hbox{$\mathsurround=0pt\mathchar"2203$}}{}}
-\def\times{\mathchar"2202\nobreak\discretionary{}{\hbox{$\mathsurround=0pt\mathchar"2202$}}{}}
-\def\leqslant{\mathchar"3436\nobreak\discretionary{}{\hbox{$\mathsurround=0pt\mathchar"3436$}}{}}
-\def\geqslant{\mathchar"343E\nobreak\discretionary{}{\hbox{$\mathsurround=0pt\mathchar"343E$}}{}}
-\def\neq{\mskip\thickmuskip\mathchar"3D\mskip-2mu\llap/\mskip\thickmuskip\nobreak\discretionary{}{\hbox{$\mathchar"3D\mskip-2mu\llap/\mskip\thickmuskip$}}{}}
-\let\ne\neq
 
 \pagestyle{femj}
 \flushbottom

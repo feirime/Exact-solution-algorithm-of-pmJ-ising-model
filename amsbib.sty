@@ -1,9 +1,9 @@
-%      ┬С├в┬и┬л┬е┬в┬о┬й ├д┬а┬й┬л AMSBIB.STY ┬д┬л├п ┬о├д┬о├а┬м┬л┬е┬н┬и├п ├б┬п┬и├б┬к┬а ┬л┬и├в┬е├а┬а├в├г├а├л
-%             ┬в LaTeX2┬е ┬п┬о├б├а┬е┬д├б├в┬в┬о┬м AmS-TeX'┬о┬в├б┬к┬и├е ┬к┬о┬м┬а┬н┬д
+%      Стилевой файл AMSBIB.STY для оформления списка литературы
+%             в LaTeX2е посредством AmS-TeX'овских команд
 %
-%                    ┬д┬л├п LaTeX2e ┬п┬о┬д MikTeX
+%                    для LaTeX2e под MikTeX
 %
-%             ┬П┬о├б┬л┬е┬д┬н┬е┬е ┬и├б┬п├а┬а┬в┬л┬е┬н┬и┬е 29 ┬м┬а├а├в┬а 2010
+%             Последнее исправление 29 марта 2010
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -37,7 +37,7 @@
 \def\endthebibliography{\nobreak\@@par\def\@noitemerr{}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   ┬М┬а┬к├а┬о├б├л ┬д┬л├п ┬о├д┬о├а┬м┬л┬е┬н┬и├п ├б┬п┬и├б┬к┬а ┬л┬и├в┬е├а┬а├в├г├а├л:
+%   Макросы для оформления списка литературы:
 
 \newcounter{aux@counter}
 
@@ -270,8 +270,7 @@ $\hfil\penalty -\@M
 \ppunbox@{,}{ ``}\paperbox@{''}%
 \ppunbox@{,}{ }\paperinfobox@{}%
 \ppunbox@{,}{ }\jourbox@{}%
-\ppunbox@{,}{ \proc@text@}\procbox@{}%
-\ppunbox@{}{ (}\procinfobox@)%
+\ppunbox@{,}{ \proc@text@}\procbox@{}%\ppunbox@{}{ (}\procinfobox@)%
 \ifvoid\volbox@
 \ppunbox@{,}{ }\yrbox@{}%
 \ppunbox@{,}{ \issuetext}\issuebox@\empty
@@ -370,9 +369,9 @@ $\hfil\penalty -\@M
 \frenchspacing
 \gdef\edtext{\cyrr\cyre\cyrd.}\gdef\pagestext{}%
 \gdef\pagestext{}%
-%\def\inbook@text{┬В~├б┬б.:}% %\def\inbook@text{\CYRV~\cyrs\cyrb.}
+%\def\inbook@text{В~сб.:}% %\def\inbook@text{\CYRV~\cyrs\cyrb.}
 \def\inbook@text{}%
-\def\eds{\gdef\edtext{\cyrr\cyre\cyred.}\makerefbox\edbox@\empty}%
+\def\eds{\gdef\edtext{\cyrr\cyre\cyrd.}\makerefbox\edbox@\empty}%
 \gdef\voltext{}\gdef\voltitletext@{}\gdef\issuetext{\No\,}\gdef\t@appear{\cyrv~\cyrp\cyre \cyrch\cyra\cyrt\cyri}%
 \def\withtext{\cyrs\cyro\cyrv\cyrm.\ \cyrs~}}%
 
@@ -413,7 +412,7 @@ An error might have occurred before I noticed any problems.^^J
 \def\withfont{\rmfamily}
 %\def\byfont{\slshape}
 %\def\byfont{\itshape}
-%   ┬К┬о┬н┬е├ж ┬м┬а┬к├а┬о├б┬о┬в ┬д┬л├п ┬о├д┬о├а┬м┬л┬е┬н┬и├п ├б┬п┬и├б┬к┬а ┬л┬и├в┬е├а┬а├в├г├а├л
+%   Конец макросов для оформления списка литературы
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%% New commands for bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -500,8 +499,7 @@ An error might have occurred before I noticed any problems.^^J
 \ppunbox@{,}{ ``}\paperbox@{''}%
 \ppunbox@{,}{ }\paperinfobox@{}%
 \ppunbox@{,}{ }\jourbox@{}%
-\ppunbox@{,}{ \proc@text@}\procbox@{}%
-\ppunbox@{}{ (}\procinfobox@)%
+\ppunbox@{,}{ \proc@text@}\procbox@{}%\ppunbox@{}{ (}\procinfobox@)%
 \ifvoid\volbox@
 \ppunbox@{,}{ }\yrbox@{}%
 \ppunbox@{,}{ \issuetext}\issuebox@\empty
@@ -534,7 +532,7 @@ An error might have occurred before I noticed any problems.^^J
 }%
 
 
-%%%%%%%%%%%%%% ┬Д┬о┬б┬а┬в┬л┬е┬н┬и┬е ┬о├в ┬н┬о├п┬б├а├п 2009 ┬г┬о┬д┬а %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% Добавление от ноября 2009 года %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newbox\isbnbox@
 \newbox\paperidbox@
 \newbox\totalpagesbox@
@@ -562,7 +560,7 @@ An error might have occurred before I noticed any problems.^^J
 
 \let\@@temp@@href=\href
 \def\href#1#2{\@@temp@@href{#1}{\tt #2}}
-%%%% ┬Н┬а ┬в├л├е┬о┬д┬е ├н├в┬и├е ┬к┬о┬м┬а┬н┬д - ┬н┬и├з┬е┬г┬о %%%%
+%%%% На выходе этих команд - ничего %%%%
 \def\ptype{}
 \def\issn{\makerefbox\issnbox@\empty}
 \def\journalname{\makerefbox\journalnamebox@\empty}
@@ -589,10 +587,10 @@ An error might have occurred before I noticed any problems.^^J
 
 \def\elink{\global\@finalpunct@true\makerefbox\elinkbox@\empty}    \def\elinktext@{}
 \def\arxiv{\global\@finalpunct@true\makerefbox\arxivbox@\empty}    \def\arxivtext@{arXiv:\,\allowbreak}
-%%%% ┬Т┬е┬п┬е├а├м arxiv ┬д┬л├п href-┬о┬в┬а┬н┬и├п: %%%%%%%%%%%%%%%%%%%
+%%%% Теперь arxiv для href-ования: %%%%%%%%%%%%%%%%%%%
 %\def\hrarxiv#1{\edef\next{#1}\ifx\empty\next \ignorespaces\else\if@dataonly\if@finalinfo\@@finalinfo \@finalinfofalse\fi\href{#1}{\lower0.5mm\hbox{\includegraphics[height=3mm]{hrarxiv}}}\else\unskip\unskip\fi\fi}
 \def\hrarxiv#1{\edef\next{#1}\ifx\empty\next \ignorespaces\else\if@dataonly\if@finalinfo\@@finalinfo \@finalinfofalse\fi\href{#1}{arXiv}\else\unskip\unskip\fi\fi}
-%%% (┬в├в┬о├а┬а├п ┬в┬е├а├б┬и├п - ┬п┬о┬к┬а ┬н┬е├в ┬к┬а├а├в┬и┬н┬к┬и, ├в┬а┬м ┬п├а┬о├б├в┬о ┬н┬а┬д┬п┬и├б├м arXiv:)
+%%% (вторая версия - пока нет картинки, там просто надпись arXiv:)
 \def\finalinfo{\global\@finalpunct@true\makerefbox\finalinfobox@\empty}
 \newbox\finalinfobox@
 \def\@@finalinfo{\global\@finalpunct@true\makerefbox\@@finalinfobox@\empty}
@@ -627,12 +625,12 @@ An error might have occurred before I noticed any problems.^^J
 \frenchspacing
 \gdef\edtext{\cyrr\cyre\cyrd.}\gdef\pagestext{}%
 \gdef\pagestext{}%
-%\def\inbook@text{┬В~├б┬б.:}% %\def\inbook@text{\CYRV~\cyrs\cyrb.}
+%\def\inbook@text{В~сб.:}% %\def\inbook@text{\CYRV~\cyrs\cyrb.}
 \def\issueinfotext@{}\def\byytext@{}\def\proc@text@{}%
 \def\inbook@text{}%
 \global\@finalpunct@true
 \def\totalpagestext@{~\cyrs.}%
-\def\eds{\gdef\edtext{\cyrr\cyre\cyred.}\makerefbox\edbox@\empty}%
+\def\eds{\gdef\edtext{\cyrr\cyre\cyrd.}\makerefbox\edbox@\empty}%
 \gdef\voltext{}\gdef\voltitletext@{}\def\bookvoltext@{\cyrt.\,}%
 \gdef\issuetext{\No\,}\gdef\serissuetext@{no.\,}%
 \gdef\t@appear{\cyrv~\cyrp\cyre \cyrch\cyra\cyrt\cyri}%
