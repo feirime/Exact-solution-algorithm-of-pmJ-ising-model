@@ -34,7 +34,7 @@
 
 Glaurung --- non-classic algorithm for the complete enumeration of the Ising model\title
 
-The article presents a novel algorithm for the complete enumeration of spin configurations in the Ising model on a square lattice. Particular attention is given to the parallelization of computations on graphics processing units (GPUs) using CUDA and on central processing units (CPUs) using OpenMP. The structure of the algorithm is described in detail, including its main implementation steps, as well as its application to solving problems in statistical thermodynamics, specifically the calculation of the density of states. A performance comparison is conducted between the proposed algorithm and sequential enumeration algorithms implemented in Python and C/C++. The results demonstrate that the proposed approach significantly accelerates computations and enables efficient analysis of square-lattice spin systems in the Ising model with sizes up to $10 \times 10$ nodes (100 spins) and random distributions of exchange constants.
+The article presents a novel algorithm for the complete enumeration of spin configurations in the Ising model on a square lattice. Particular attention is given to the parallelization of computations on graphics processing units (GPUs) using CUDA and on central processing units (CPUs) using OpenMP. The structure of the algorithm is described in detail, including its main implementation steps, as well as its application to solving problems in statistical thermodynamics, specifically the calculation of the density of states. A performance comparison is conducted between the proposed algorithm and sequential enumeration algorithms implemented in Python and C. The results demonstrate that the proposed approach significantly accelerates computations and enables efficient analysis of square-lattice spin systems in the Ising model with sizes up to $10 \times 10$ nodes (100 spins) and random distributions of exchange constants.
 
 \keywords{algorithms, statistical thermodynamics, Ising model, parallel computing.}
 
@@ -60,7 +60,7 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 
 
 \abstract
-В работе представлен авторский алгоритм полного перебора конфигураций спинов модели Изинга на квадратной решетке. Основное внимание уделено распараллеливанию вычислений на графических процессорах (GPU) с использованием CUDA и на центральном процессоре (CPU) с использованием OpenMP. Подробно описывается структура алгоритма, включая основные этапы его реализации, а также его применение к решению задач статистической термодинамики, в частности, к вычислению плотности состояний. Проведено сравнение производительности предложенного алгоритма с последовательными переборными алгоритмами, реализованными на языках программирования Python и C/C++. Результаты показывают, что предложенный подход существенно ускоряет вычисления и позволяет эффективно анализировать системы квадратной решетки спинов модели Изинга размером до $10 \times 10$ узлов (100 спинов) со случайным распределением обменных констант.
+В работе представлен авторский алгоритм полного перебора конфигураций спинов модели Изинга на квадратной решетке. Основное внимание уделено распараллеливанию вычислений на графических процессорах (GPU) с использованием CUDA и на центральном процессоре (CPU) с использованием OpenMP. Подробно описывается структура алгоритма, включая основные этапы его реализации, а также его применение к решению задач статистической термодинамики, в частности, к вычислению плотности состояний. Проведено сравнение производительности предложенного алгоритма с последовательными переборными алгоритмами, реализованными на языках программирования Python и C. Результаты показывают, что предложенный подход существенно ускоряет вычисления и позволяет эффективно анализировать системы квадратной решетки спинов модели Изинга размером до $10 \times 10$ узлов (100 спинов) со случайным распределением обменных констант.
 
 \keywords{алгоритмы, статистическая термодинамика, модель Изинга, параллельные вычисления.}
 
@@ -184,14 +184,17 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 
 
 \section{Сравнение быстродействия (расширить описание)}
-В рамках анализа быстродействия алгоритма было проведено сравнение времени работы алгоритма с алгоритмами прямого перебора, написанных на языках программирования Python и С++, с технологиями параллелизации по ядрам процессора (таблица~\ref{Time_Table}). Использование метода прямого перебора для сравнения аргументировано тем, что именно его можно взять за эталон сложности для данных методов. Таким образом, мы смогли наблюдать кратное превосходство разработанного метода, что развивает интерес дальнейших исследований в этой области.
+%В рамках анализа быстродействия алгоритма было проведено сравнение времени работы алгоритма с алгоритмами прямого перебора, написанных на языках программирования Python и С, с технологиями параллелизации по ядрам процессора (таблица~\ref{Time_Table}). Использование метода прямого перебора для сравнения аргументировано тем, что именно его можно взять за эталон сложности для данных методов. Таким образом, мы смогли наблюдать кратное превосходство разработанного метода, что развивает интерес дальнейших исследований в этой области.
 
-Вычисления CUDA проводились на устройстве GPU Nvidia Tesla A100 в соотношении одна решетка -- одно GPU устройство. OpenMP и numba, а так же все однопоточные вычисления проводились на \textbf{скопировать описание кластера}
+В рамках анализа быстродействия алгоритма был проведён сравнительный эксперимент: время работы разработанного алгоритма сопоставили с реализациями метода прямого перебора на Python и C, использующими параллелизацию по ядрам процессора (таблица~\ref{Time_Table}). Метод прямого перебора выбран для сравнения, так как его можно считать эталоном сложности для рассматриваемых методов. В результате наблюдается значительное превосходство предложенного алгоритма, что делает перспективным дальнейшее исследование в этой области.
+
+Вычисления CUDA проводились на графическом процессоре Nvidia Tesla A100 в соотношении одна решетка -- одно GPU. OpenMP, Numba, а также все однопоточные вычисления выполнялись на 26-ядерных процессорах Intel Xeon Gold 6230R (2.1 ГГц).
 
 
-В таблице~\ref{Time_Table} представлено сравнение времени выполнения авторского алгоритма перебора с классическими алгоритмами перебора с различными реализациями.
+В таблице~\ref{Time_Table} представлено сравнение времени выполнения предложенного алгоритма перебора с классическими алгоритмами перебора в различных реализациях.
 \begin{table}[h]
 	\centering
+	\caption{Сравнение времени, затрачиваемого на полный перебор систем спинов Изинга в зависимости от реализации алгоритма и размера системы (значения указаны в секундах).}
 	\begin{tabular}{|l|c|c|c|c|c|c|c|}
 		\hline
 		& $4 \times 4$ & $5 \times 5$ & $6 \times 6$ & $7 \times 7$ & $8 \times 8$ & $9 \times 9$ & $10 \times 10$ \\ 
@@ -206,16 +209,15 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 		\hline
 		Python (один поток) & 4.09  & ---   & ---   & ---    & ---    & ---     & --- \\ 
 		\hline
-		Python (+numba)     & 0.046 & 66    & ---   & ---    & ---    & ---     & --- \\ 
+		Python (+numba)     & 3.2 & 4.57    & 14.84   & 131    & ---    & ---     & --- \\ 
 		\hline
 		C (один поток)      & 0.076 & 0.5   & 5.5   & 72.84  & 756    & 7242    & --- \\ 
 		\hline
-		C (+ OpenMP)        & 0.074 & 0.21  & 0.61  & 3.3    & 23     & 206     & 2085 \\ 
+		C (+ OpenMP)        & 0.074 & 0.21  & 0.61  & 3    & 23     & 206     & 2085 \\ 
 		\hline
 		CUDA                & 0.112 & 0.504 & 1.942 & 10.078 & 50.283 & 252.433 & --- \\ 
 		\hline
 	\end{tabular}
-	\caption{Сравнение времени, затрачиваемого на полный перебор систем спинов Изинга в зависимости от реализации алгоритма и размера системы (значения указаны в секундах).}
 	\label{Time_Table}
 \end{table}
 
