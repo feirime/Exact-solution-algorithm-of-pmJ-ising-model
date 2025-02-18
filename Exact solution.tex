@@ -50,7 +50,7 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 \author[1,2]{Э.\, А.~Лобанова}{Институт прикладной математики ДВО РАН, 690041, г.~Владивосток, ул.~Радио,~7}{}
 \author[1]{А.\, И.~Анисич}{}{}
 \author[1,2]{К.\, В.~Макарова}{}{}
-\author[1,2]{А.\, Г.~Макаров}{}{}
+\author[1,2]{А.\, Г.~Макаров}{}{} 
 \author[1,2]{К.\, В.~Нефедев}{}{}
 
 \title{Glaurung --- неклассический алгоритм полного перебора модели Изинга}
@@ -160,7 +160,15 @@ The article presents a novel algorithm for the complete enumeration of spin conf
     \label{algo:dos_exhaustive}
 \end{algorithm}
 
+Пары цепочек рассматриваются поочерёдно как показано на рисунке~\ref{fig:scheme}
 
+\begin{figure}[tbp!]
+\begin{center}
+\includegraphics[width=350px]{images/scheme_with_spins.png}
+\caption {Схема перебора плотности состояний алгоритмом при добавлении каждой новой цепочки спинов. Чёрными рёбрами соединены спины, связи между которыми учитываются на каждом из шагов алгоритма.}
+\label{fig:scheme}
+\end{center}
+\end{figure}
 
 
 \section{Реализация алгоритма на CUDA}
