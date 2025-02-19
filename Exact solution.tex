@@ -175,13 +175,20 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 
 На вход алгоритма мы подаем линейный размер системы $L$ и матрицу связей $J$. В результате работы мы хотим получить данные, которые опишут систему во всех ее состояниях, т.е. энергию, спиновый избыток и вырождение состояний.
 
-На первом этапе берутся два первых столбца и для каждого рассчитывается плотность состояний как для независимых одномерных цепочек. Затем для каждой цепочки заполняется четырехмерный массив: первая ось  – это удвоенная максимальная энергия + 1; вторая ось – удвоенный спиновый избыток + 1; третья ось – это конфигурации, ее размер  $2^L$; четвертая ось имеет размерность количества простых чисел, остатки от деления на которые записываются по этим координатам. Размер этой оси также увеличен на 1 для проверки на совпадение \textcolor{red}{(совпадение чего????? и что такое оси?)}. Избежать добавление этой оси можно только в случае размерности системы, не превышающей $8 \times 8$, в ином случае вырождение может выходить за рамки целочисленного встроенного типа данных большинства низкоуровневых языков.
+На первом этапе берутся два первых столбца и для каждого рассчитывается плотность состояний как для независимых одномерных цепочек.
+Затем для каждой цепочки заполняется четырехмерный массив: первая ось  – это удвоенная максимальная энергия + 1; вторая ось – удвоенный спиновый избыток + 1; третья ось – это конфигурации, ее размер  $2^L$; четвертая ось имеет размерность количества простых чисел, остатки от деления на которые записываются по этим координатам. Размер этой оси также увеличен на 1 для проверки на совпадение \textcolor{red}{(совпадение чего????? и что такое оси?)}. Избежать добавление этой оси можно только в случае размерности системы, не превышающей $8 \times 8$, в ином случае вырождение может выходить за рамки целочисленного встроенного типа данных большинства низкоуровневых языков.
 
-Второй этап заключается в соединение двух массивов состояний, полученных на предыдущем шаге, в один новый, размерность которого будет учитывать новое количество спинов. \textcolor{red}{(Как происходит суммирование??)}
+Второй этап заключается в соединение двух массивов состояний, полученных на предыдущем шаге, в один новый, размерность которого будет учитывать новое количество спинов.
+Перебор всех конфигураций выполняется только один раз для каждой присоединяемой цепочки. 
+\textcolor{red}{(Как происходит суммирование в дос??)}
 
 На последующих этапах берутся следующие столбцы и повторяются действия двух предыдущих этапов, пока не пройдем по всем столбцам. Формулы для расчета размерности на каждом этапе весьма тривиальны. В последнем приращении у финального массива состояний можно не задавать ось конфигураций.
 
+В результате для квадратной решётки размером $L \times L = N$ вычислительная сложность полного перебора снижается с $2^{N}$ до $L \cdot 2^L + (L - 1) \cdot 2^L$. Таким образом, теоретический прирост производительности составляет приблизительно 92\% для решётки из 9 спинов и охватывает 27 порядков величины для 100 спинов.
+
 На последнем этапе мы раскодируем массив просуммированных остатков от деления \textcolor{red}{(нет описания, где суммировали их)} на простые числа в массив вырождений, используя китайскую теорему об остатках и расширенный алгоритм Эвклида~\cite{katz2007mathematics}. \textcolor{red}{(Добавить описание как это происходит?)}
+
+Ускорение обработки достигается за счёт исключения операции хранения информации о состояниях уже обработанной части решётки. Это приводит к невозможности обработки решётки с периодическими граничными условиями. Анализ размерных эффектов при масштабировании, проведённый в работе \cite{trukhin2024thermodynamic}, показал, что влияние поверхностных (граничных) спинов на полученные результаты незначительно. Таким образом, полученные результаты применимы для регулярной решётки.
 
 
 \subsection{Реализация алгоритма на OpenMP и CUDA}
@@ -258,7 +265,7 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 \setlength{\parsep}{0pt}\setlength{\itemsep}{3pt}
 
 \Bibitem{roma2010ground}
-\by Rom{\'a}, F and Risau-Gusman, S and Ramirez-Pastor, AJ and Nieto, F and Vogel, EE
+\by F.~Rom{\'a}, S.~Risau-Gusman, A.~J.~Ramirez-Pastor, F.~Nieto, and E.~E.~Vogel
 \jour Physical Review B—Condensed Matter and Materials Physics
 \paper Ground-state topology of the Edwards-Anderson$\pm$J spin glass model
 \vol 82
@@ -267,7 +274,7 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 \yr 2010
 
 \Bibitem{katzgraber2005correlation}
-\by Katzgraber, Helmut G and Lee, Lik Wee
+\by H.~G.~Katzgraber and L.~W.~Lee
 \jour Physical Review B—Condensed Matter and Materials Physics
 \paper Correlation length of the two-dimensional Ising spin glass with bimodal interactions
 \vol 71
@@ -276,14 +283,14 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 \yr 2005
 
 \Bibitem{romero2020high}
-\by Romero, Joshua and Bisson, Mauro and Fatica, Massimiliano and Bernaschi, Massimo
+\by J.~Romero, M.~Bisson, M.~Fatica, and M.~Bernaschi
 \jour Computer Physics Communications
 \paper High performance implementations of the 2D Ising model on GPUs
 \vol 256
 \yr 2020
 
 \Bibitem{onsager1944crystal}
-\by Onsager, Lars
+\by L.~Onsager
 \jour Physical Review
 \paper Crystal statistics. I. A two-dimensional model with an order-disorder transition
 \vol 65
@@ -291,42 +298,42 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 \yr 1944
 
 \Bibitem{maren1991logical}
-\by Maren, Alianna J
+\by A.~J.~Maren
 \jour Proceedings of the Second Workshop on Neural Networks
 \paper A logical topology of neural networks
 \yr 1991
 
 \Bibitem{grant2020adiabatic}
-\by Grant, Erica K and Humble, Travis S
+\by E.~K.~Grant and T.~S.~Humble
 \jour Oxford Research Encyclopedia of Physics
 \paper Adiabatic quantum computing and quantum annealing
 \yr 2020
 
-\Bibitem{Korol2021}
-\by Korol, Alyona Olegovna and Captain, Vitaly Yurievich
-\jour Far Eastern Mathematical Journal
-\paper Neural network for determining the Curie temperature of the two-dimensional Ising model
+\RBibitem{KorKap21}
+\by А.~О.~Король, В.~Ю.~Капитан
+\paper Нейронная сеть для определения температуры Кюри двумерной модели Изинга
+\jour Дальневост. матем. журн.
+\yr 2021
 \vol 21
 \issue 1
-\pages 51-60
-\yr 2021
+\pages 51--60
 
 \Bibitem{janke2008monte}
-\by Janke, Wolfhard
+\by W.~Janke
 \jour Computational many-particle physics
 \paper Monte Carlo methods in classical statistical physics
 \pages 79-140
 \yr 2008
 
 \Bibitem{Markovich2019}
-\by Markovich LA
+\by L.~A.~Markovich
 \jour Information Technology and Systems
 \paper Parallel algorithm based on the Ising model for solving combinatorial optimization problems
 \pages 350--358
 \yr 2019
 
 \Bibitem{papadimitriou1977euclidean}
-\by Papadimitriou, Christos H
+\by C.~H.~Papadimitriou
 \jour Theoretical computer science
 \paper The Euclidean travelling salesman problem is NP-complete
 \vol 4
@@ -335,19 +342,27 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 \yr 1977
 
 \Bibitem{karp2010reducibility}
-\by Karp, Richard M
+\by R.~M.~Karp
 \jour Springer
 \paper Reducibility among combinatorial problems
 \yr 2010
 
 \Bibitem{katz2007mathematics}
-\by Katz, Victor J
+\by V.~J.~Katz
 \jour Physics Letters A
 \paper The Mathematics of Egypt, Mesopotamia, China, India, and Islam: A Sourcebook
 \yr 2007
 
+\Bibitem{trukhin2024thermodynamic}
+\by T.\,V.~Trukhin, V.\,S.~Strongin, M.\,A.~Chesnokov, A.\,G.~Makarov, E.\,A.~Lobanova, Y.\,A.~Shevchenko, and K.\,V.~Nefedev
+\jour Physica A: Statistical Mechanics and its Applications
+\paper Thermodynamic equilibrium of {\textpm}J Ising model on square lattice
+\vol 655
+\pages 130172
+\yr 2024
+
 \Bibitem{Panchenko2007}
-\by Panchenko, Tatyana Vyacheslavovna and Tarasevich, Yuri Yurievich
+\by T.~V.~Panchenko and Y.~Y.~Tarasevich
 \jour Computational methods and programming
 \paper Comparative analysis of the efficiency of application of genetic algorithms and Metropolis algorithm in problems of solid state physics
 \vol 8
