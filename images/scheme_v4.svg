@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="svg1" inkscape:export-filename="scheme_with_spins.png" inkscape:export-xdpi="300" inkscape:export-ydpi="300" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 555.9 137.1"
+	 style="enable-background:new 0 0 555.9 137.1;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#D6D6D6;}
+	.st1{font-family:'ArialMT';}
+	.st2{font-size:18.5038px;}
+	.st3{font-size:12.0275px;}
+	.st4{fill:none;stroke:#000000;stroke-width:0.5;stroke-linejoin:round;}
+	.st5{fill:none;stroke:#000000;stroke-width:0.5;stroke-linejoin:round;stroke-dasharray:13.04,13.04;}
+	.st6{fill:none;stroke:#000000;stroke-width:0.5;stroke-linejoin:round;stroke-dasharray:11.2455,11.2455;}
+	.st7{fill:none;stroke:#000000;stroke-width:0.455;stroke-linejoin:round;}
+	.st8{font-size:18.5039px;}
+	.st9{fill:none;stroke:#000000;stroke-linejoin:round;}
+	.st10{font-size:24px;}
+</style>
+<sodipodi:namedview  bordercolor="#000000" borderopacity="0.25" id="namedview1" inkscape:current-layer="layer1" inkscape:cx="364.99087" inkscape:cy="-11.710937" inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:showpageshadow="2" inkscape:window-height="830" inkscape:window-maximized="1" inkscape:window-width="1440" inkscape:window-x="-6" inkscape:window-y="-6" inkscape:zoom="0.76851237" pagecolor="#ffffff" showguides="true">
+	</sodipodi:namedview>
+<ellipse id="path1" transform="matrix(2.415433e-03 -1 1 2.415433e-03 0.8528 38.2547)" class="st0" cx="19.6" cy="18.7" rx="13.2" ry="13.2"/>
+<text transform="matrix(1.0873 0 0 1 10.5463 23.4587)" class="st1 st2">S</text>
+<text transform="matrix(1.0873 0 0 1 23.9662 27.1589)" class="st1 st3">0</text>
+<ellipse id="path1-3" transform="matrix(2.415433e-03 -1 1 2.415433e-03 -32.2467 70.8753)" class="st0" cx="19.4" cy="51.6" rx="13.2" ry="13.2"/>
+<ellipse id="path1-2" transform="matrix(2.415433e-03 -1 1 2.415433e-03 -64.9471 103.8958)" class="st0" cx="19.6" cy="84.5" rx="13.2" ry="13.2"/>
+<ellipse id="path1-9" transform="matrix(2.415433e-03 -1 1 2.415433e-03 -97.847 136.7164)" class="st0" cx="19.6" cy="117.4" rx="13.2" ry="13.2"/>
+<ellipse id="path1-34" transform="matrix(0.9999 -1.020247e-02 1.020247e-02 0.9999 -0.1939 0.5938)" class="st0" cx="58.1" cy="19.3" rx="13.2" ry="13.2"/>
+<text transform="matrix(1.0873 0 0 1 49.6049 23.615)" class="st1 st2">S</text>
+<text transform="matrix(1.0873 0 0 1 63.0238 27.3161)" class="st1 st3">1</text>
+<circle id="path1-3-2" class="st0" cx="57.8" cy="52.1" r="13.2"/>
+<ellipse id="path1-2-5" transform="matrix(0.9999 -1.020247e-02 1.020247e-02 0.9999 -0.8642 0.5972)" class="st0" cx="58.1" cy="85" rx="13.2" ry="13.2"/>
+<ellipse id="path1-9-8" transform="matrix(0.9999 -1.020247e-02 1.020247e-02 0.9999 -1.1998 0.5989)" class="st0" cx="58.1" cy="117.9" rx="13.2" ry="13.2"/>
+<circle id="path1-342" class="st0" cx="96.8" cy="18.9" r="13.2"/>
+<text transform="matrix(1.0873 0 0 1 88.5561 23.5632)" class="st1 st2">S</text>
+<text transform="matrix(1.0873 0 0 1 101.9765 27.2634)" class="st1 st3">2</text>
+<circle id="path1-3-3" class="st0" cx="96.6" cy="51.7" r="13.2"/>
+<circle id="path1-2-6" class="st0" cx="96.8" cy="84.6" r="13.2"/>
+<circle id="path1-9-7" class="st0" cx="96.8" cy="117.5" r="13.2"/>
+<circle id="path1-8" class="st0" cx="135.8" cy="18.8" r="13.2"/>
+<text transform="matrix(1.0873 0 0 1 127.789 23.5076)" class="st1 st2">S</text>
+<text transform="matrix(1.0873 0 0 1 141.2094 27.2077)" class="st1 st3">3</text>
+<text transform="matrix(0.9937 0 0 1 7.684 56.4343)" class="st1 st2">S</text>
+<text transform="matrix(0.9937 0 0 1 19.9486 60.1374)" class="st1 st3">10</text>
+<text transform="matrix(0.9937 0 0 1 45.7963 56.2468)" class="st1 st2">S</text>
+<text transform="matrix(0.9937 0 0 1 58.0614 59.947)" class="st1 st3">11</text>
+<text transform="matrix(0.9937 0 0 1 85.2074 56.112)" class="st1 st2">S</text>
+<text transform="matrix(0.9937 0 0 1 97.4721 59.8122)" class="st1 st3">12</text>
+<text transform="matrix(0.9937 0 0 1 124.3114 56.323)" class="st1 st2">S</text>
+<text transform="matrix(0.9937 0 0 1 136.5761 60.0251)" class="st1 st3">13</text>
+<circle id="path1-3-5" class="st0" cx="135.6" cy="51.7" r="13.2"/>
+<circle id="path1-2-4" class="st0" cx="135.8" cy="84.6" r="13.2"/>
+<circle id="path1-9-70" class="st0" cx="135.8" cy="117.4" r="13.2"/>
+<g id="rect9">
+	<g>
+		<polyline class="st4" points="0.5,6.5 0.5,0.5 6.5,0.5 		"/>
+		<line class="st5" x1="19.5" y1="0.5" x2="65.2" y2="0.5"/>
+		<polyline class="st4" points="71.7,0.5 77.7,0.5 77.7,6.5 		"/>
+		<line class="st6" x1="77.7" y1="17.7" x2="77.7" y2="124.6"/>
+		<polyline class="st4" points="77.7,130.2 77.7,136.2 71.7,136.2 		"/>
+		<line class="st5" x1="58.7" y1="136.2" x2="13" y2="136.2"/>
+		<polyline class="st4" points="6.5,136.2 0.5,136.2 0.5,130.2 		"/>
+		<line class="st6" x1="0.5" y1="118.9" x2="0.5" y2="12.1"/>
+	</g>
+</g>
+<ellipse id="path1-34-6" transform="matrix(3.327787e-02 -0.9994 0.9994 3.327787e-02 230.5215 276.3248)" class="st0" cx="258.1" cy="19" rx="13.2" ry="13.2"/>
+<ellipse id="path1-3-2-8" transform="matrix(3.327787e-02 -0.9994 0.9994 3.327787e-02 197.4498 307.7333)" class="st0" cx="257.8" cy="51.8" rx="13.2" ry="13.2"/>
+<ellipse id="path1-2-5-1" transform="matrix(3.327787e-02 -0.9994 0.9994 3.327787e-02 164.858 339.8383)" class="st0" cx="258.1" cy="84.7" rx="13.2" ry="13.2"/>
+<ellipse id="path1-9-8-6" transform="matrix(3.327787e-02 -0.9994 0.9994 3.327787e-02 131.9762 371.6435)" class="st0" cx="258.1" cy="117.6" rx="13.2" ry="13.2"/>
+<circle id="path1-342-1" class="st0" cx="296.8" cy="18.6" r="13.2"/>
+<circle id="path1-3-3-6" class="st0" cx="296.6" cy="51.4" r="13.2"/>
+<circle id="path1-2-6-3" class="st0" cx="296.8" cy="84.3" r="13.2"/>
+<circle id="path1-9-7-1" class="st0" cx="296.8" cy="117.2" r="13.2"/>
+<circle id="path1-8-0" class="st0" cx="335.8" cy="18.5" r="13.2"/>
+<circle id="path1-3-5-7" class="st0" cx="335.6" cy="51.4" r="13.2"/>
+<circle id="path1-2-4-1" class="st0" cx="335.8" cy="84.3" r="13.2"/>
+<circle id="path1-9-70-6" class="st0" cx="335.8" cy="117.1" r="13.2"/>
+<g id="rect9-8">
+	<g>
+		<polyline class="st4" points="239.5,6.7 239.5,0.7 245.5,0.7 		"/>
+		<line class="st5" x1="258.5" y1="0.7" x2="304.2" y2="0.7"/>
+		<polyline class="st4" points="310.7,0.7 316.7,0.7 316.7,6.7 		"/>
+		<line class="st6" x1="316.7" y1="17.9" x2="316.7" y2="124.8"/>
+		<polyline class="st4" points="316.7,130.4 316.7,136.4 310.7,136.4 		"/>
+		<line class="st5" x1="297.7" y1="136.4" x2="252" y2="136.4"/>
+		<polyline class="st4" points="245.5,136.4 239.5,136.4 239.5,130.4 		"/>
+		<line class="st6" x1="239.5" y1="119.1" x2="239.5" y2="12.3"/>
+	</g>
+</g>
+<circle id="path1-342-2" class="st0" cx="496.8" cy="19.2" r="13.2"/>
+<circle id="path1-3-3-3" class="st0" cx="496.5" cy="52.1" r="13.2"/>
+<circle id="path1-2-6-9" class="st0" cx="496.8" cy="85" r="13.2"/>
+<circle id="path1-9-7-8" class="st0" cx="496.8" cy="117.8" r="13.2"/>
+<circle id="path1-8-7" class="st0" cx="535.8" cy="19.1" r="13.2"/>
+<circle id="path1-3-5-74" class="st0" cx="535.5" cy="52" r="13.2"/>
+<circle id="path1-2-4-6" class="st0" cx="535.8" cy="84.9" r="13.2"/>
+<circle id="path1-9-70-3" class="st0" cx="535.8" cy="117.8" r="13.2"/>
+<g id="rect9-1">
+	<g>
+		<polyline class="st4" points="478.2,6.9 478.2,0.9 484.2,0.9 		"/>
+		<line class="st5" x1="497.2" y1="0.9" x2="542.9" y2="0.9"/>
+		<polyline class="st4" points="549.4,0.9 555.4,0.9 555.4,6.9 		"/>
+		<line class="st6" x1="555.4" y1="18.1" x2="555.4" y2="125"/>
+		<polyline class="st4" points="555.4,130.6 555.4,136.6 549.4,136.6 		"/>
+		<line class="st5" x1="536.4" y1="136.6" x2="490.7" y2="136.6"/>
+		<polyline class="st4" points="484.2,136.6 478.2,136.6 478.2,130.6 		"/>
+		<line class="st6" x1="478.2" y1="119.3" x2="478.2" y2="12.5"/>
+	</g>
+</g>
+<path id="path135" d="M194.1,70.9l-11.2,3.2v-6.4L194.1,70.9z"/>
+<path id="path10" d="M186.7,70.9"/>
+<path id="path135-1" d="M394.1,70.6l-11.2,3.2v-6.4L394.1,70.6z"/>
+<path id="path10-1" d="M386.7,70.6"/>
+<path id="path11" class="st7" d="M32.8,18.7h11.9"/>
+<path id="path12" class="st7" d="M58,32.4V39"/>
+<path id="path13" class="st7" d="M58,65.3v6.5"/>
+<path id="path14" class="st7" d="M58,98.2v6.5"/>
+<path id="path15" class="st7" d="M32.6,53.1h12.1"/>
+<path id="path16" class="st7" d="M32.8,84.5h12.1"/>
+<path id="path17" class="st7" d="M32.8,117.4h12.1"/>
+<path id="path11-4" class="st7" d="M271.8,18.2h11.9"/>
+<path id="path12-9" class="st7" d="M297,31.9v6.6"/>
+<path id="path13-5" class="st7" d="M297,64.8v6.5"/>
+<path id="path14-3" class="st7" d="M297,97.7v6.5"/>
+<path id="path15-5" class="st7" d="M271.6,52.6h12.1"/>
+<path id="path16-7" class="st7" d="M271.8,84h12.1"/>
+<path id="path17-4" class="st7" d="M271.8,116.9h12.1"/>
+<path id="path11-47" class="st7" d="M510.2,18.6h11.9"/>
+<path id="path12-2" class="st7" d="M535.3,32.3v6.6"/>
+<path id="path13-8" class="st7" d="M535.3,65.2v6.5"/>
+<path id="path14-1" class="st7" d="M535.3,98.1v6.5"/>
+<path id="path15-9" class="st7" d="M509.9,53H522"/>
+<path id="path16-8" class="st7" d="M510.2,84.4h12.1"/>
+<path id="path17-43" class="st7" d="M510.2,117.3h12.1"/>
+<text transform="matrix(0.9863 0 0 1 8.5438 89.8161)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 20.7157 93.5183)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 27.3139 93.5183)" class="st1 st3">0</text>
+<text transform="matrix(0.9863 0 0 1 46.37 89.6296)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 58.5424 93.3298)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 65.1391 93.3298)" class="st1 st3">1</text>
+<text transform="matrix(0.9863 0 0 1 85.4862 89.4929)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 97.6571 93.196)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 104.2553 93.196)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 124.2943 89.7077)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 136.4677 93.4079)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 143.0634 93.4079)" class="st1 st3">3</text>
+<text transform="matrix(0.9863 0 0 1 8.2602 122.4109)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 20.4325 126.114)" class="st1 st3">3</text>
+<text transform="matrix(0.9863 0 0 1 27.0312 126.114)" class="st1 st3">0</text>
+<text transform="matrix(0.9863 0 0 1 46.0849 122.2253)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 58.2587 125.9245)" class="st1 st3">3</text>
+<text transform="matrix(0.9863 0 0 1 64.8559 125.9245)" class="st1 st3">1</text>
+<text transform="matrix(0.9863 0 0 1 85.2016 122.0906)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 97.3749 125.7878)" class="st1 st3">3</text>
+<text transform="matrix(0.9863 0 0 1 103.9706 125.7878)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 124.0106 122.3035)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 136.183 126.0027)" class="st1 st3">3</text>
+<text transform="matrix(0.9863 0 0 1 142.7802 126.0027)" class="st1 st3">3</text>
+<text transform="matrix(1.0873 0 0 1 249.269 23.697)" class="st1 st2">S</text>
+<text transform="matrix(1.0873 0 0 1 262.6894 27.3972)" class="st1 st3">1</text>
+<text transform="matrix(1.0873 0 0 1 288.2211 23.6443)" class="st1 st2">S</text>
+<text transform="matrix(1.0873 0 0 1 301.642 27.3454)" class="st1 st3">2</text>
+<text transform="matrix(1.0873 0 0 1 327.4555 23.5896)" class="st1 st2">S</text>
+<text transform="matrix(1.0873 0 0 1 340.8754 27.2898)" class="st1 st3">3</text>
+<text transform="matrix(0.9937 0 0 1 245.4608 56.3288)" class="st1 st2">S</text>
+<text transform="matrix(0.9937 0 0 1 257.7265 60.029)" class="st1 st3">11</text>
+<text transform="matrix(0.9937 0 0 1 284.8734 56.1941)" class="st1 st2">S</text>
+<text transform="matrix(0.9937 0 0 1 297.1381 59.8943)" class="st1 st3">12</text>
+<text transform="matrix(0.9937 0 0 1 323.976 56.405)" class="st1 st2">S</text>
+<text transform="matrix(0.9937 0 0 1 336.2406 60.1081)" class="st1 st3">13</text>
+<text transform="matrix(0.9937 0 0 1 123.6947 56.4343)" class="st1 st2">S</text>
+<text transform="matrix(0.9937 0 0 1 135.9594 60.1374)" class="st1 st3">13</text>
+<text transform="matrix(0.9863 0 0 1 246.0365 89.7117)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 258.2084 93.4118)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 264.8061 93.4118)" class="st1 st3">1</text>
+<text transform="matrix(0.9863 0 0 1 285.1518 89.5769)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 297.3246 93.2781)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 303.9213 93.2781)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 323.9604 89.7898)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 336.1332 93.49)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 342.7309 93.49)" class="st1 st3">3</text>
+<text transform="matrix(0.9863 0 0 1 245.7514 122.3064)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 257.9232 126.0066)" class="st1 st3">3</text>
+<text transform="matrix(0.9863 0 0 1 264.5204 126.0066)" class="st1 st3">1</text>
+<text transform="matrix(0.9863 0 0 1 284.8666 122.1726)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 297.0395 125.8718)" class="st1 st3">3</text>
+<text transform="matrix(0.9863 0 0 1 303.6361 125.8718)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 323.6762 122.3845)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 335.8481 126.0847)" class="st1 st3">3</text>
+<text transform="matrix(0.9863 0 0 1 342.4457 126.0847)" class="st1 st3">3</text>
+<text transform="matrix(1.0873 0 0 1 488.5307 23.7048)" class="st1 st2">S</text>
+<text transform="matrix(1.0873 0 0 1 501.9516 27.405)" class="st1 st3">2</text>
+<text transform="matrix(1.0873 0 0 1 527.765 23.6492)" class="st1 st2">S</text>
+<text transform="matrix(1.0873 0 0 1 541.1849 27.3493)" class="st1 st3">3</text>
+<text transform="matrix(0.9937 0 0 1 485.183 56.2536)" class="st1 st2">S</text>
+<text transform="matrix(0.9937 0 0 1 497.4477 59.9538)" class="st1 st3">12</text>
+<text transform="matrix(0.9937 0 0 1 524.2865 56.4675)" class="st1 st2">S</text>
+<text transform="matrix(0.9937 0 0 1 536.5511 60.1677)" class="st1 st3">13</text>
+<text transform="matrix(0.9863 0 0 1 485.4613 89.6365)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 497.6342 93.3367)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 504.2318 93.3367)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 524.2709 89.8484)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 536.4437 93.5486)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 543.0404 93.5486)" class="st1 st3">3</text>
+<text transform="matrix(0.9863 0 0 1 485.1772 122.2312)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 497.349 125.9314)" class="st1 st3">3</text>
+<text transform="matrix(0.9863 0 0 1 503.9467 125.9314)" class="st1 st3">2</text>
+<text transform="matrix(0.9863 0 0 1 523.9857 122.4431)" class="st1 st8">S</text>
+<text transform="matrix(0.9863 0 0 1 536.1586 126.1433)" class="st1 st3">3</text>
+<text transform="matrix(0.9863 0 0 1 542.7552 126.1433)" class="st1 st3">3</text>
+<rect id="rect9-8_1_" x="199.8" y="0.7" class="st4" width="78.2" height="135.7"/>
+<line class="st9" x1="183" y1="70.6" x2="151.4" y2="70.6"/>
+<line class="st9" x1="383" y1="70.6" x2="351.4" y2="70.6"/>
+<rect id="rect9-1_1_" x="401" y="0.9" class="st4" width="115.1" height="135.7"/>
+<text transform="matrix(4.489659e-11 -1 1 4.489659e-11 227.6144 121.1087)" class="st1 st10">G-тензор</text>
+<text transform="matrix(4.489659e-11 -1 1 4.489659e-11 447.2809 120.4427)" class="st1 st10">G-тензор</text>
+</svg>
