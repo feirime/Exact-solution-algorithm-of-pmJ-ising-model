@@ -19,8 +19,8 @@ for label, time_values in times.items():
     plt.plot(sizes, time_values, marker='o', label=label)
 
 # Настройки шрифтов
-plt.xlabel("Размер системы", fontsize=20)
-plt.ylabel("Время (с)", fontsize=20)
+plt.xlabel("Количество спинов N", fontsize=19)
+plt.ylabel("Время (с)", fontsize=19)
 
 #plt.title("Сравнение времени перебора (логарифмическая шкала)", fontsize=26)
 plt.xticks(fontsize=18)
