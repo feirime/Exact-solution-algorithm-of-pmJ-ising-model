@@ -32,11 +32,11 @@
 \summary
 %Application of the Chinese residue theorem for dealing with large numbers in supercomputing\title
 
-Glaurung --- a non-classical complete enumeration algorithm for solving the Ising model\title
+An enumeration decomposition algorithm for solving the Ising model\title
 
 The article presents a novel algorithm for the complete enumeration of spin configurations in the Ising model on a square lattice. Particular attention is given to the parallel algorithmization of computations on central processing units (CPUs) using OpenMP and on graphics processing units (GPUs) using CUDA. The structure of the algorithm is described, including its main implementation steps, as well as its application to solving problems in statistical thermodynamics, specifically the calculation of the density of states. A performance comparison is conducted between the proposed algorithm and sequential enumeration algorithms implemented in Python and C. The results demonstrate that the proposed approach significantly accelerates computations and enables efficient analysis of square-lattice spin systems in the Ising model with sizes up to $10 \times 10$ nodes (100 spins) and with an arbitrary distributions of exchange constants.
 
-\keywords{algorithms, Glaurung algorithm, statistical thermodynamics, Ising model, parallel computing.}
+\keywords{decomposition  algorithm, statistical thermodynamics, Ising model, parallel computing.}
 
 \UDC{519.17+УДК 519.11+519.684+519.683}
 \AMS{68R10 + 82B30 + 65Y05}
@@ -52,7 +52,7 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 \author[1,2]{А.\, Г.~Макаров}{}{} 
 \author[1,2]{К.\, В.~Нефедев}{}{}
 
-\title{Glaurung --- неклассический алгоритм исчерпывающего перечисления для решения модели Изинга}
+\title{Переборный алгоритм декомпозиции для решения модели Изинга}
 
 \makeface
 
@@ -63,14 +63,20 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 \abstract
 В работе представлен авторский алгоритм исчерпывающего перечисления конфигураций спинов в модели Изинга на квадратной решетке. Основное внимание уделено параллельной алгоритмизации вычислений на центральном процессоре (CPU) с использованием OpenMP и на графических процессорах (GPU) с использованием CUDA. Описана структура алгоритма, включая основные этапы его реализации, а также его применение к решению задач статистической термодинамики, в частности, к вычислению плотности состояний. Проведено сравнение производительности предложенного алгоритма с последовательными переборными алгоритмами, реализованными на языках программирования Python и C. Результаты показывают, что предложенный подход существенно ускоряет вычисления и позволяет эффективно анализировать системы квадратной решетки спинов модели Изинга размером до $10 \times 10$ узлов (100 спинов) с произвольным распределением обменных констант.
 
-\keywords{алгоритмы, Glaurung алгоритм, статистическая термодинамика, модель Изинга, параллельные вычисления.}
+\keywords{алгоритм декомпозиции, статистическая термодинамика, модель Изинга, параллельные вычисления.}
 
 \DOI{2025}
 
 \section*{Введение}
 
-Поиск точных решений для моделей в статистической физике, с одной стороны, является критически важным для прогнозирования или описания реальных событий и экспериментов, с другой стороны -- это вычислительно сложная проблема. Точное решение может служить инструментом эффективности как программного, так и аппаратного обеспечения. 
-В данной работе представлен алгоритм поиска точного решения, которое представлено в виде плотности всех возможных состояний для квадратной решетки спинов модели Изинга с произвольным распределением обменных констант~\cite{roma2010ground, katzgraber2005correlation} (пример решетки представлен на рисунке~\ref{fig1}). 
+Поиск точных решений для моделей в статистической физике, с одной стороны, является критически важным для прогнозирования или описания реальных событий и экспериментов, с другой стороны -- это вычислительно сложная проблема.
+Как утверждает Р. Бэкстер в основополагающей работе ``Точно решаемые модели в статистической механике''~\cite{baxter1985} двумерные ``точно решаемые модели'' представляют большую ценность для проверки общих теорий и предположений.
+Общепринято считать, что точное решение может служить инструментом для сравнения других алгоритмов, например, гибридного Монте-Карло~\cite{makarova2023canonical}, а также вычислительного оборудования, даже включая квантовый отжиг \cite{jalowiecki2021brute}.
+
+Модель Изинга -- это модель взаимодействующих спинов (магнитных моментов), которые имеют только две возможные ориентации, ``вверх'' и ``вниз''. Взаимное расположение магнитных моментов на кристаллической или квазикристаллической решетке~\cite{shevchenko2017multicanonical}, а также законы взаимодействия разрешают существование неограниченного числа вариаций систем многих частиц в рамках модели Изинга. Существует очень маленькое число точных решений модели Изинга на решетках, а для спинового стекла поиск точного решения модели Изинга до сих пор является актуальным~\cite{trukhin2024thermodynamic}. Под точным решением модели Изинга понимается вычисление энергии $E$, спинового избытка $M$, а также вырождения $g(E,M)$ для всех $2^N$ возможных состояний $N$ спинов. Существующими приближенными методами Монте-Карло, нейронными сетями и другими статистическими методами можно посчитать лишь небольшую часть из общего числа $2^N$. Задача о поиске основного состояния резко сокращает возможность применения приближенных методов. Решение Онсагера для 2D модели Изинга на простой квадратной решетке нельзя считать точным, поскольку он использовал предельные переходы и получил решение без внешнего магнитного поля, т.е. без спинового избытка~\cite{baxter1985}. В случае использования приближенных методов возникает множество вопросов к достоверности получаемых результатов.
+
+В данной работе представлен алгоритм поиска точного решения, т.е. плотности $g(E,M)/2^N$ для квадратной решетки спинов модели Изинга с произвольным распределением обменных констант~\cite{roma2010ground, katzgraber2005correlation} (пример решетки представлен на рисунке~\ref{fig1}). Алгоритм использует исчерпывающее перечисление всех $2^N$ конфигураций спинов, каждая из которых характеризуется своими значениями $E$ и $M$.
+При этом за счет декомпозиции двумерной модели на одномерные цепочки существенно сокращено количество вычислений для присоединяемых элементов.
 
 
 \begin{figure}[h]
@@ -106,7 +112,7 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 
 
 
-\section{Glaurung алгоритм}
+\section{Алгоритм декомпозиции}
 Идея алгоритма заключается в разработке схемы хранения и сбора данных о всех конфигурациях системы спинов в виде плотности состояний (кратность вырождения конфигураций с одинаковой энергией и спиновым избытком).
 
 
@@ -119,7 +125,7 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=350px]{scheme_v4.png}
-		\caption {Принцип объединения цепочек спинов в работе Glaurung алгоритма. Рёбрами обозначены связи, которые учитываются на каждом шаге.}
+		\caption {Принцип объединения цепочек спинов в работе алгоритма декомпозиции. Рёбрами обозначены связи, которые учитываются на каждом шаге.}
 		\label{fig2}
 	\end{center}
 \end{figure}
@@ -185,7 +191,7 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 Вычисления CUDA проводились на графическом процессоре Nvidia Tesla A100 в соотношении одна решетка -- одно GPU. Всего было задействовано 6912 CUDA-ядер. OpenMP, Numba, а также все однопоточные вычисления выполнялись на 26-ядерных процессорах Intel Xeon Gold 6230R (2.1 ГГц). Многопоточные приложения использовали 104 потока. 
 
 
-В таблице~\ref{Time_Table} представлено сравнение времени выполнения предложенного алгоритма перебора с классическими алгоритмами перебора в различных реализациях.
+В таблице~\ref{Time_Table} представлено сравнение времени выполнения предложенного алгоритма перебора с классическими алгоритмами перебора в различных реализациях. Под классическим алгоритмом полного перебора (brute force, исчерпывающего перечисления) понимается алгоритм, в котором каждая новая конфигурация, для которой считается $E$ и $M$, отличается от предыдущей только одним перевернутым спином, т.е. классический алгоритм является ``односпиновым''. Таким образом используемый нами переборный алгоритм декомпозиции не является классическим, в том смысле, что для расчета используются данные от предыдущих вычислений частей системы.
 
 \begin{table}[h]
 	\centering
@@ -204,7 +210,7 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 		\hline
 		C (+ OpenMP)        & 0.008 & 0.28 & 499 & --- & --- & --- & --- \\ 
 		\hline
-		\multicolumn{8}{|c|}{Glaurung алгоритм} \\ 
+		\multicolumn{8}{|c|}{Алгоритм декомпозиции} \\ 
 		\hline
 		Python (один поток) & 2  & 41.47   & 719   & 9183    & ---    & ---     & --- \\ 
 		\hline
@@ -232,7 +238,7 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=300px]{Fig_3.png}
-		\caption {Сравнение времени перебора систем спинов Изинга Glaurung алгоритмом для многопоточной реализации (логарифмическая шкала).}
+		\caption {Сравнение времени перебора систем спинов Изинга алгоритмом декомпозиции для многопоточной реализации (логарифмическая шкала).}
 		\label{fig3}
 	\end{center}
 \end{figure}
@@ -240,12 +246,12 @@ The article presents a novel algorithm for the complete enumeration of spin conf
 На рисунке \ref{fig3} представлена зависимость времени выполнения для двух наиболее эффективных и перспективных реализаций. Использование логарифмической шкалы позволяет чётко выделить различия между реализациями.
 
 
-Разработанный Glaurung алгоритм продемонстрировал высокую эффективность для исчерпывающего перечисления конфигураций спинов в модели Изинга. Использование технологии OpenMP обеспечило оптимальный баланс между вычислительной сложностью и производительностью, позволяя значительно сократить время расчётов. Полученные результаты подтверждают перспективность дальнейшего изучения гибридных подходов, сочетающих многопоточные вычисления и графические ускорители для решения задач комбинаторной сложности.
+Разработанный алгоритм декомпозиции продемонстрировал высокую эффективность для исчерпывающего перечисления конфигураций спинов в модели Изинга. Использование технологии OpenMP обеспечило оптимальный баланс между вычислительной сложностью и производительностью, позволяя значительно сократить время расчётов. Полученные результаты подтверждают перспективность дальнейшего изучения гибридных подходов, сочетающих многопоточные вычисления и графические ускорители для решения задач комбинаторной сложности.
 
 
 \section*{Заключение}
 
-Предложенный Glaurung алгоритм показывает значительно лучшие результаты по сравнению с классическим перебором, особенно при использовании многопоточных вычислений и аппаратного ускорения.
+Предложенный алгоритм декомпозиции показывает значительно лучшие результаты по сравнению с классическим перебором, особенно при использовании многопоточных вычислений и аппаратного ускорения.
 
 В результате работы алгоритма мы получаем уникальные данные, характеризующие исследуемую систему. Уникальность заключается в том, что можно определить, глобальный ли минимум был найден с помощью алгоритмов, не являющихся точными, например, Монте-Карло или генетического алгоритма~\cite{Panchenko2007}. Также это позволяет определить оптимальное количество шагов для алгоритма Метрополиса, необходимое для нахождения глобального минимума.
 Полученные с помощью алгоритма исчерпывающего перечисления характеристики состояний позволяют рассчитать свойства спиновых систем, которые без полной плотности состояний получить нельзя. В том числе для классификации решетки Эдвардса\,--\,Андерсона на ферромагнитное, антиферромагнитное состояния, и состояние спинового стекла, а также провести численный эксперимент по определению фазовых свойств таких решеток в поле.
@@ -258,6 +264,41 @@ https://rscf.ru/project/24-71-10069/
 
 \begin{thebibliography}{4}
 \setlength{\parsep}{0pt}\setlength{\itemsep}{3pt}
+
+\RBibitem{baxter1985}
+Бэкстер Р. \textit{Точно решаемые модели в статистической механике}. — М.: Мир, 1985.
+
+\Bibitem{jalowiecki2021brute}
+\by K.~Ja{\l}owiecki, M.~Rams, B.~Gardas
+\jour Computer Physics Communications
+\paper Brute-forcing spin-glass problems with CUDA
+\vol 260
+\pages 107728
+\yr 2021
+
+\Bibitem{makarova2023canonical}
+\by K.~Makarova, A.~Makarov, V.~Strongin, Iu.~Titovets, Yu.~Shevchenko, V.~Kapitan, A.~Rybin, D.~Kapitan, A.~Korol, E.~Vasiliev, K.~Nefedev
+\jour Journal of Computational and Applied Mathematics
+\paper Canonical Monte Carlo multispin cluster method
+\vol 427
+\pages 115153
+\yr 2023
+
+\Bibitem{shevchenko2017multicanonical}
+\by Yu.~Shevchenko, A.~Makarov, P.~Andriushchenko, K.~Nefedev
+\jour Journal of Experimental and Theoretical Physics
+\paper Multicanonical sampling of the space of states of H(2,n)-vector models
+\vol 124
+\pages 982--993
+\yr 2017
+
+\Bibitem{trukhin2024thermodynamic}
+\by T.\,V.~Trukhin, V.\,S.~Strongin, M.\,A.~Chesnokov, A.\,G.~Makarov, E.\,A.~Lobanova, Y.\,A.~Shevchenko, and K.\,V.~Nefedev
+\jour Physica A: Statistical Mechanics and its Applications
+\paper Thermodynamic equilibrium of {\textpm}J Ising model on square lattice
+\vol 655
+\pages 130172
+\yr 2024
 
 \Bibitem{roma2010ground}
 \by F.~Rom{\'a}, S.~Risau-Gusman, A.~J.~Ramirez-Pastor, F.~Nieto, and E.~E.~Vogel
@@ -347,14 +388,6 @@ https://rscf.ru/project/24-71-10069/
 \jour Physics Letters A
 \paper The Mathematics of Egypt, Mesopotamia, China, India, and Islam: A Sourcebook
 \yr 2007
-
-\Bibitem{trukhin2024thermodynamic}
-\by T.\,V.~Trukhin, V.\,S.~Strongin, M.\,A.~Chesnokov, A.\,G.~Makarov, E.\,A.~Lobanova, Y.\,A.~Shevchenko, and K.\,V.~Nefedev
-\jour Physica A: Statistical Mechanics and its Applications
-\paper Thermodynamic equilibrium of {\textpm}J Ising model on square lattice
-\vol 655
-\pages 130172
-\yr 2024
 
 \Bibitem{Panchenko2007}
 \by T.~V.~Panchenko and Y.~Y.~Tarasevich
