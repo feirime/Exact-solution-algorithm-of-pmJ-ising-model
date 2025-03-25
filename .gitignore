@@ -7,6 +7,8 @@ Exact solution.blg
 Exact solution.spl
 Exact solution.out
 Exact solution.toc
+Exact solution.fls
+Exact solution.fdb_latexmk
 images/scripts_and_programs/dos
 images/scripts_and_programs/Statsum/data/*
 images/scripts_and_programs/Statsum/.venv/*
